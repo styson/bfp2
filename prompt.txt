@@ -1,0 +1,19 @@
+Build a modern, conversion-focused Ecommerce storefront for a Bounding Fire Productions, a producer of games compatible with Advanced Squad Leader. Don't use any copyrighted photos from Multi-man Publishing.
+
+The vibe: Streetwear luxury, high contrast black and white, bold sans-serif typography.  Use minimal borders, lots of whitespace.
+
+It should be a single page application.
+
+Use latest react, typescript 6, npm, vite, tailwindcss and mui icons, and other npm packages as necessary.
+
+Use json files found in C:\projects\bfp\src for product, board and counter items.
+
+Use tsx,jsx,ts,js files found in C:\projects\bfp\src for site organization, but stay focused in developing a completely new web site, drawing inspiration from coach.comand other gaming product websites. A product carousel on the landing page would be good to try.
+
+Add a global cart, designed as a sliding drawer that opens from the right when the cart icon is clicked. It must show items, subtotal and a checkout button, all this tied to paypal - payment item codes are found in json files.
+
+Include a product grid, a responsive grid (2-col mobile, 4-col desktop). Each product card must have an image with a quick add button that appears to hover, title and price clearly visible, a new arrival badge on any item produced in the last 6 months. 
+
+Insert filters — a left-sidebar filter for size, color and price range (accordion style).
+
+When I click a product, open a modal showing a larger image, product details, a domestic/international shipping selector and add-to-cart buttons.
