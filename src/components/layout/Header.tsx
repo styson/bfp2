@@ -10,14 +10,14 @@ export const Header = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <div className="flex-shrink-0">
+          <a href="/" className="flex-shrink-0">
             <h1 className="text-2xl sm:text-3xl text-[#f0b429] tracking-wider uppercase">
               Bounding Fire
             </h1>
             <p className="text-xs tracking-widest uppercase text-[#e2e2e2]/50 font-sans">
               Productions
             </p>
-          </div>
+          </a>
 
           {/* Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
@@ -26,6 +26,12 @@ export const Header = () => {
               className="text-sm font-semibold uppercase tracking-wider text-[#e2e2e2] hover:text-[#f0b429] transition-colors duration-200"
             >
               Products
+            </a>
+            <a
+              href="#parts"
+              className="text-sm font-semibold uppercase tracking-wider text-[#e2e2e2] hover:text-[#f0b429] transition-colors duration-200"
+            >
+              Parts
             </a>
             <a
               href="#about"

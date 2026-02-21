@@ -1,7 +1,18 @@
+export interface Scenario {
+  id: string;
+  name: string;
+  att?: string;
+  from?: string;
+  boards?: string;
+  arc_id?: string;
+}
+
 export interface Product {
   id: string;
   name: string;
   description: string;
+  includes?: string;
+  scenarios?: Scenario[];
   price: number;
   intPrice?: number;
   image: string;

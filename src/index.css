@@ -5,6 +5,11 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-padding-top: 80px;
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -31,4 +36,38 @@ h1, h2, h3, h4, h5, h6 {
 
 .text-shadow {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.allied {
+  background-color: rgb(130, 237, 189, 0.3);
+}
+.american {
+  background-color: rgb(102, 204, 0, 0.3);
+}
+.axis {
+  background-color: rgb(29, 226, 86, 0.3);
+}
+.british {
+  background-color: rgb(239, 209, 159, 0.3);
+}
+.chinese {
+  background-image: linear-gradient(to right, rgba(171, 202, 233, 0.3), rgba(183, 152, 86, 0.3));
+}
+.finnish {
+  background-color: rgb(208, 211, 212, 0.3);
+}
+.french {
+  background-color: rgb(0, 140, 255, 0.3);
+}
+.german {
+  background-color: rgb(171, 202, 233, 0.3);
+}
+.italian {
+  background-color: rgb(208, 211, 212, 0.3);
+}
+.japanese {
+  background-color: rgba(255, 221, 0, 0.4);
+}
+.russian {
+  background-color: rgb(183, 152, 86, 0.3);
 }

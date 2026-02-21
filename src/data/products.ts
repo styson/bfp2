@@ -17,6 +17,8 @@ function mapProduct(p: SourceProduct): Product {
     inStock: p.active ?? false,
     featured: false,
     ...(p.intPrice && p.intPrice > 0 ? { intPrice: p.intPrice } : {}),
+    ...(p.includes ? { includes: p.includes } : {}),
+    ...(p.scenarios?.length ? { scenarios: p.scenarios } : {}),
   };
 }
 

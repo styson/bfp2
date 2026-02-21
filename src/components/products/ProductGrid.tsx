@@ -84,7 +84,7 @@ export const ProductGrid = ({ products, onProductClick }: ProductGridProps) => {
                 <p className="text-sm text-[#e2e2e2]/40 mb-6 font-sans">
                   Showing {filteredProducts.length} of {products.length} products
                 </p>
-                <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
                   {filteredProducts.map((product) => (
                     <ProductCard
                       key={product.id}

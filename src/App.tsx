@@ -5,6 +5,7 @@ import { ProductCarousel } from './components/products/ProductCarousel';
 import { ProductGrid } from './components/products/ProductGrid';
 import { ProductModal } from './components/products/ProductModal';
 import { CartDrawer } from './components/cart/CartDrawer';
+import { PartsSection } from './components/parts/PartsSection';
 import type { Product } from './types';
 import { products } from './data/products';
 
@@ -36,6 +37,8 @@ function App() {
         )}
 
         <ProductGrid products={products} onProductClick={handleProductClick} />
+
+        <PartsSection />
 
         {/* About Section */}
         <section id="about" className="bg-[#13141f] text-[#e2e2e2] py-20 border-t border-[#f0b429]/20">
