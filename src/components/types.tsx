@@ -66,6 +66,7 @@ export type Part = {
   prices?: CounterOption[];
   intPrice?: number;
   image?: string;
+  image2?: string;
   paypalKey?: string;
   type?: string;
   group?: string;

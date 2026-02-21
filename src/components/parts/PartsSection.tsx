@@ -1,10 +1,65 @@
-import { useState } from 'react';
-import { ShoppingCart } from '@mui/icons-material';
+import { useState, useEffect, useCallback } from 'react';
+import { ShoppingCart, Close, ZoomIn } from '@mui/icons-material';
 import { parts } from '../../data/parts';
 import { useCartStore } from '../../store/cartStore';
 import { formatPrice } from '../../utils/dateHelpers';
 import type { Product } from '../../types';
 import type { Part } from '../types';
+
+// ── Lightbox ───────────────────────────────────────────────────────────────────
+function Lightbox({ src, src2, title, onClose }: { src: string; src2?: string; title: string; onClose: () => void }) {
+  const handleKey = useCallback((e: KeyboardEvent) => {
+    if (e.key === 'Escape') onClose();
+  }, [onClose]);
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKey);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', handleKey);
+      document.body.style.overflow = '';
+    };
+  }, [handleKey]);
+
+  return (
+    <div
+      className="fixed inset-0 z-[100] bg-black/85 flex items-start justify-center p-10 pt-12 overflow-y-auto"
+      onClick={onClose}
+    >
+      <div
+        className="relative max-w-5xl w-full flex flex-col items-center gap-1"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button
+          onClick={onClose}
+          className="absolute -top-10 right-0 text-[#e2e2e2]/60 hover:text-[#f0b429] transition-colors duration-200"
+          aria-label="Close"
+        >
+          <Close />
+        </button>
+        <img
+          src={src}
+          alt={title}
+          className="max-w-full"
+          style={{ imageRendering: 'crisp-edges' }}
+        />
+        {src2 && (
+          <img
+            src={src2}
+            alt={`${title} (B)`}
+            className="max-w-full"
+            style={{ imageRendering: 'crisp-edges' }}
+          />
+        )}
+        {title && (
+          <p className="mt-3 text-sm uppercase tracking-widest text-[#e2e2e2]/50 font-sans">
+            {title}
+          </p>
+        )}
+      </div>
+    </div>
+  );
+}
 
 function partToProduct(part: Part, price: number, label: string): Product {
   return {
@@ -21,29 +76,44 @@ function partToProduct(part: Part, price: number, label: string): Product {
 }
 
 // ── Board card ────────────────────────────────────────────────────────────────
-function BoardCard({ part }: { part: Part }) {
+function BoardCard({ part, onImageClick }: { part: Part; onImageClick: (src: string, title: string, src2?: string) => void }) {
   const { addItem } = useCartStore();
-  if (part.active === false || !part.price) return null;
+  if (!part.price) return null;
+  const soldOut = part.active === false;
 
   return (
     <div className="bg-[#13141f] border border-[#f0b429]/10 hover:border-[#f0b429]/40 transition-[border-color] duration-200 flex flex-col">
       {part.image && (
-        <div className="bg-[#0f1018] overflow-hidden">
-          <img src={part.image} alt={part.name} className="w-full h-28 object-contain p-2" />
+        <div
+          className="bg-[#0f1018] overflow-hidden relative group cursor-zoom-in"
+          onClick={() => onImageClick(part.image!, part.name, part.image2)}
+        >
+          <img src={part.image} alt={part.name} className="w-full h-20 object-contain px-2 pt-2 transition-opacity duration-200 group-hover:opacity-70" />
+          {part.image2 && (
+            <img src={part.image2} alt={`${part.name} B`} className="w-full h-20 object-contain px-2 pb-2 transition-opacity duration-200 group-hover:opacity-70" />
+          )}
+          {!part.image2 && <div className="pb-2" />}
+          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+            <ZoomIn className="text-[#f0b429]" />
+          </div>
         </div>
       )}
       <div className="p-3 flex flex-col gap-2 flex-1 justify-between">
         <p className="text-[#f0b429] uppercase text-sm font-bold leading-tight">{part.name}</p>
-        <div className="flex items-center justify-between gap-2">
-          <span className="text-[#e2e2e2] font-black text-base font-sans">{formatPrice(part.price)}</span>
-          <button
-            onClick={() => addItem(partToProduct(part, part.price!, ''), 'domestic')}
-            className="p-2 bg-[#f0b429] text-[#1a1b2a] hover:bg-[#f0b429]/80 transition-[background-color] duration-200"
-            aria-label={`Add ${part.name} to cart`}
-          >
-            <ShoppingCart fontSize="small" />
-          </button>
-        </div>
+        {soldOut ? (
+          <span className="text-xs font-bold uppercase tracking-wider text-[#e2e2e2]/30 font-sans">Sold Out</span>
+        ) : (
+          <div className="flex items-center justify-between gap-2">
+            <span className="text-[#e2e2e2] font-black text-base font-sans">{formatPrice(part.price)}</span>
+            <button
+              onClick={() => addItem(partToProduct(part, part.price!, ''), 'domestic')}
+              className="p-2 bg-[#f0b429] text-[#1a1b2a] hover:bg-[#f0b429]/80 transition-[background-color] duration-200"
+              aria-label={`Add ${part.name} to cart`}
+            >
+              <ShoppingCart fontSize="small" />
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -93,15 +163,21 @@ function CounterCard({ part }: { part: Part }) {
 }
 
 // ── HASL map card ─────────────────────────────────────────────────────────────
-function HaslCard({ part }: { part: Part }) {
+function HaslCard({ part, onImageClick }: { part: Part; onImageClick: (src: string, title: string) => void }) {
   const { addItem } = useCartStore();
   if (!part.price) return null;
 
   return (
     <div className="bg-[#13141f] border border-[#f0b429]/10 hover:border-[#f0b429]/40 transition-[border-color] duration-200 flex flex-col">
       {part.image && (
-        <div className="bg-[#0f1018] overflow-hidden">
-          <img src={part.image} alt={part.name} className="w-full h-32 object-contain p-2" />
+        <div
+          className="bg-[#0f1018] overflow-hidden relative group cursor-zoom-in"
+          onClick={() => onImageClick(part.image!, part.name)}
+        >
+          <img src={part.image} alt={part.name} className="w-full h-32 object-contain p-2 transition-opacity duration-200 group-hover:opacity-70" />
+          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+            <ZoomIn className="text-[#f0b429]" />
+          </div>
         </div>
       )}
       <div className="p-3 flex flex-col gap-2 flex-1 justify-between">
@@ -127,8 +203,13 @@ export const PartsSection = () => {
   const counters = parts.filter((p) => p.type === 'counters');
   const haslMaps = parts.filter((p) => p.type === 'hasl');
 
+  const [lightbox, setLightbox] = useState<{ src: string; src2?: string; title: string } | null>(null);
+  const openLightbox = useCallback((src: string, title: string, src2?: string) => setLightbox({ src, src2, title }), []);
+  const closeLightbox = useCallback(() => setLightbox(null), []);
+
   return (
     <section id="parts" className="bg-[#13141f] py-16 border-t border-[#f0b429]/20">
+      {lightbox && <Lightbox src={lightbox.src} src2={lightbox.src2} title={lightbox.title} onClose={closeLightbox} />}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-4xl sm:text-5xl uppercase text-[#f0b429] mb-4">Parts & Add-ons</h2>
@@ -144,7 +225,7 @@ export const PartsSection = () => {
           </h3>
           <div className="space-y-8">
             {boardGroups.map((group) => {
-              const activeBoards = group.files?.filter((f) => f.active !== false) ?? [];
+              const activeBoards = group.files ?? [];
               if (activeBoards.length === 0) return null;
               return (
                 <div key={group.group ?? group.name}>
@@ -153,7 +234,7 @@ export const PartsSection = () => {
                   </p>
                   <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
                     {activeBoards.map((board) => (
-                      <BoardCard key={board.paypalKey} part={board} />
+                      <BoardCard key={board.paypalKey} part={board} onImageClick={openLightbox} />
                     ))}
                   </div>
                 </div>
@@ -181,7 +262,7 @@ export const PartsSection = () => {
           </h3>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
             {haslMaps.map((part) => (
-              <HaslCard key={part.paypalKey} part={part} />
+              <HaslCard key={part.paypalKey} part={part} onImageClick={openLightbox} />
             ))}
           </div>
         </div>

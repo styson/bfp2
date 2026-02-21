@@ -34,6 +34,12 @@ export const Header = () => {
               Parts
             </a>
             <a
+              href="#downloads"
+              className="text-sm font-semibold uppercase tracking-wider text-[#e2e2e2] hover:text-[#f0b429] transition-colors duration-200"
+            >
+              Downloads
+            </a>
+            <a
               href="#about"
               className="text-sm font-semibold uppercase tracking-wider text-[#e2e2e2] hover:text-[#f0b429] transition-colors duration-200"
             >

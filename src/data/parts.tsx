@@ -1,7 +1,8 @@
 import type { Part } from '../components/types';
 import { bdA, bdB, bdC, bdD, bdE, bdF, bdG, bdH, bdI, bdJ, bdK, bdL, bdM, bdN, bdO, bdP, bdS, bdT, bdU,
-  bdQ, bdR, bitterest, corregidor, dw1, dw2, dw3, dw4, dw5, dw6, dw7, dw8, dw9, dw10, hw1, neptune, 
-  orsha, schmidt1, schmidt2, schmidt3, schmidt4, voss1, voss2 } from './images';
+  bdQ, bdR, bitterest, corregidor, neptune, orsha, schmidt1, schmidt2, schmidt3, schmidt4, voss1, voss2,
+  dw1, dw1b, dw2, dw2b, dw3, dw3b, dw4, dw4b, dw5, dw5b, dw6, dw6b,
+  dw7, dw7b, dw8, dw8b, dw9, dw9b, dw10, dw10b, hw1, hw1b } from './images';
 
 export const parts: Part[] = [
   {
@@ -12,18 +13,21 @@ export const parts: Part[] = [
       {
         name: 'BFP DW-2',
         image: dw2,
+        image2: dw2b,
         price: 7,
         paypalKey: '6CMETG926PFUA',
       },
       {
         name: 'BFP DW-3',
         image: dw3,
+        image2: dw3b,
         price: 7,
         paypalKey: '6XAHU5MRU645N',
       },
       {
         name: 'BFP DW-4',
         image: dw4,
+        image2: dw4b,
         price: 7,
         paypalKey: 'CEHJ22U4YNQFS',
       },
@@ -55,12 +59,14 @@ export const parts: Part[] = [
       {
         name: 'BFP DW-5',
         image: dw5,
+        image2: dw5b,
         price: 7,
         paypalKey: 'QA9ZUFT9JGWC4',
       },
       {
         name: 'BFP DW-6',
         image: dw6,
+        image2: dw6b,
         price: 7,
         paypalKey: '7B9YCKJPCE8P8',
       },
@@ -98,6 +104,7 @@ export const parts: Part[] = [
       {
         name: 'BFP DW-7',
         image: dw7,
+        image2: dw7b,
         price: 7,
         paypalKey: '8MUC27LY584Z2',
       },
@@ -123,6 +130,7 @@ export const parts: Part[] = [
       {
         name: 'BFP DW-1',
         image: dw1,
+        image2: dw1b,
         price: 7,
         paypalKey: 'RRBBVUCK3HUYE',
         active: false,
@@ -206,6 +214,7 @@ export const parts: Part[] = [
       {
         name: 'BFP DW-8',
         image: dw8,
+        image2: dw8b,
         price: 7,
         paypalKey: 'KNYD57SYRU7QY',
         active: false,
@@ -213,6 +222,7 @@ export const parts: Part[] = [
       {
         name: 'BFP DW-9',
         image: dw9,
+        image2: dw9b,
         price: 7,
         paypalKey: 'VD6GUJSBF386W',
       },
@@ -236,6 +246,7 @@ export const parts: Part[] = [
       {
         name: 'BFP DW-10',
         image: dw10,
+        image2: dw10b,
         price: 7,
         paypalKey: 'DEN3Q2YX6DTDQ',
       },
