@@ -51,12 +51,15 @@ export const ProductCard = ({ product, onQuickAdd, onClick }: ProductCardProps) 
       </div>
 
       {/* Product Info */}
-      <div className="p-4 space-y-1">
-        <h3 className="text-[#f0b429] uppercase text-sm line-clamp-2 min-h-[2.5rem] leading-tight">
+      <div className="p-4 space-y-2">
+        <h3 className="text-[#f0b429] uppercase text-[30px] line-clamp-2 min-h-[4rem] leading-tight">
           {product.name}
         </h3>
-        <p className="text-xs text-[#e2e2e2]/50 uppercase font-sans">{product.category}</p>
-        <p className="text-base font-black text-[#e2e2e2] font-sans">{formatPrice(product.price)}</p>
+        <p className="text-base text-[#e2e2e2]/50 uppercase font-sans">{product.category}</p>
+        <p className="text-2xl font-black text-[#e2e2e2] font-sans">{formatPrice(product.price)}</p>
+        {product.intPrice && (
+          <p className="text-sm text-[#e2e2e2]/60 font-sans">{formatPrice(product.intPrice)} intl.</p>
+        )}
       </div>
     </div>
   );

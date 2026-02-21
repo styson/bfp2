@@ -6,13 +6,12 @@ import { ProductGrid } from './components/products/ProductGrid';
 import { ProductModal } from './components/products/ProductModal';
 import { CartDrawer } from './components/cart/CartDrawer';
 import type { Product } from './types';
-import productsData from './data/products.json';
+import { products } from './data/products';
 
 function App() {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const products = productsData as Product[];
   const featuredProducts = products.filter((p) => p.featured);
 
   const handleProductClick = (product: Product) => {

@@ -99,7 +99,7 @@ export const CartDrawer = () => {
 
             <PayPalScriptProvider
               options={{
-                clientId: 'YOUR_PAYPAL_CLIENT_ID',
+                clientId: 'AWDLbRV6F2nsX2prsNemHPuQIi0-UYo0dltLrs5LbLZ6oW5ZXo0Sjz78THQY2ePjZbGYi7b31A442Tki',
                 currency: 'USD',
               }}
             >

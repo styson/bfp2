@@ -19,13 +19,26 @@ export const ProductGrid = ({ products, onProductClick }: ProductGridProps) => {
   });
 
   const availableCategories = useMemo(() => {
-    const categories = new Set(products.map((p) => p.category));
-    return Array.from(categories);
+    return Array.from(new Set(products.map((p) => p.category)));
+  }, [products]);
+
+  const availableSizes = useMemo(() => {
+    return Array.from(new Set(products.flatMap((p) => p.sizes ?? [])));
+  }, [products]);
+
+  const availableColors = useMemo(() => {
+    return Array.from(new Set(products.flatMap((p) => p.colors ?? [])));
   }, [products]);
 
   const filteredProducts = useMemo(() => {
     return products.filter((product) => {
       if (filters.categories.length > 0 && !filters.categories.includes(product.category)) {
+        return false;
+      }
+      if (filters.sizes.length > 0 && !filters.sizes.some((s) => product.sizes?.includes(s))) {
+        return false;
+      }
+      if (filters.colors.length > 0 && !filters.colors.some((c) => product.colors?.includes(c))) {
         return false;
       }
       if (product.price < filters.priceRange[0] || product.price > filters.priceRange[1]) {
@@ -56,6 +69,8 @@ export const ProductGrid = ({ products, onProductClick }: ProductGridProps) => {
             filters={filters}
             onFilterChange={setFilters}
             availableCategories={availableCategories}
+            availableSizes={availableSizes}
+            availableColors={availableColors}
           />
 
           <div className="flex-1">
