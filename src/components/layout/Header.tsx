@@ -67,7 +67,7 @@ export const Header = () => {
               ) : (
                 <button
                   onClick={() => setAuthModalOpen(true)}
-                  className="hidden sm:flex items-center gap-2 h-10 px-4 border border-[#f0b429]/40 text-xs font-black uppercase tracking-wider text-[#e2e2e2] hover:bg-[#f0b429] hover:text-[#1a1b2a] hover:border-[#f0b429] transition-[background-color,color,border-color] duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#f0b429]"
+                  className="flex items-center gap-2 h-10 px-4 border border-[#f0b429]/40 text-xs font-black uppercase tracking-wider text-[#e2e2e2] hover:bg-[#f0b429] hover:text-[#1a1b2a] hover:border-[#f0b429] transition-[background-color,color,border-color] duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#f0b429]"
                   aria-label="Sign in"
                 >
                   <Login fontSize="small" />

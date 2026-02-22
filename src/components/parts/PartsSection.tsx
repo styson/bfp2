@@ -52,7 +52,7 @@ function Lightbox({ src, src2, title, onClose }: { src: string; src2?: string; t
           />
         )}
         {title && (
-          <p className="mt-3 text-sm uppercase tracking-widest text-[#e2e2e2]/50 font-sans">
+          <p className="mt-3 text-md uppercase tracking-widest text-[#e2e2e2]/80 font-sans">
             {title}
           </p>
         )}
