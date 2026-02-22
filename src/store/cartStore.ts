@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import type { CartStore, Product } from '../types';
+import type { CartStore, CartItem, Product } from '../types';
 
 export const useCartStore = create<CartStore>()(
   persist(
@@ -47,6 +47,10 @@ export const useCartStore = create<CartStore>()(
             item.id === productId ? { ...item, quantity } : item
           ),
         }));
+      },
+
+      setItems: (items: CartItem[]) => {
+        set({ items });
       },
 
       clearCart: () => {

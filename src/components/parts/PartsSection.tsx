@@ -1,5 +1,5 @@
-import { useState, useEffect, useCallback } from 'react';
-import { ShoppingCart, Close, ZoomIn } from '@mui/icons-material';
+import { useState, useEffect, useCallback, useRef } from 'react';
+import { ShoppingCart, Close, ZoomIn, Check } from '@mui/icons-material';
 import { parts } from '../../data/parts';
 import { useCartStore } from '../../store/cartStore';
 import { formatPrice } from '../../utils/dateHelpers';
@@ -78,8 +78,17 @@ function partToProduct(part: Part, price: number, label: string): Product {
 // ── Board card ────────────────────────────────────────────────────────────────
 function BoardCard({ part, onImageClick }: { part: Part; onImageClick: (src: string, title: string, src2?: string) => void }) {
   const { addItem } = useCartStore();
+  const [added, setAdded] = useState(false);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   if (!part.price) return null;
   const soldOut = part.active === false;
+
+  const handleAdd = () => {
+    addItem(partToProduct(part, part.price!, ''), 'domestic');
+    setAdded(true);
+    if (timerRef.current) clearTimeout(timerRef.current);
+    timerRef.current = setTimeout(() => setAdded(false), 1500);
+  };
 
   return (
     <div className="bg-[#13141f] border border-[#f0b429]/10 hover:border-[#f0b429]/40 transition-[border-color] duration-200 flex flex-col">
@@ -106,11 +115,11 @@ function BoardCard({ part, onImageClick }: { part: Part; onImageClick: (src: str
           <div className="flex items-center justify-between gap-2">
             <span className="text-[#e2e2e2] font-black text-base font-sans">{formatPrice(part.price)}</span>
             <button
-              onClick={() => addItem(partToProduct(part, part.price!, ''), 'domestic')}
-              className="p-2 bg-[#f0b429] text-[#1a1b2a] hover:bg-[#f0b429]/80 transition-[background-color] duration-200"
+              onClick={handleAdd}
+              className={`p-2 transition-[background-color] duration-200 ${added ? 'bg-green-500 text-white' : 'bg-[#f0b429] text-[#1a1b2a] hover:bg-[#f0b429]/80'}`}
               aria-label={`Add ${part.name} to cart`}
             >
-              <ShoppingCart fontSize="small" />
+              {added ? <Check fontSize="small" /> : <ShoppingCart fontSize="small" />}
             </button>
           </div>
         )}
@@ -123,9 +132,18 @@ function BoardCard({ part, onImageClick }: { part: Part; onImageClick: (src: str
 function CounterCard({ part }: { part: Part }) {
   const { addItem } = useCartStore();
   const [selectedIdx, setSelectedIdx] = useState(0);
+  const [added, setAdded] = useState(false);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   if (!part.prices?.length) return null;
 
   const selected = part.prices[selectedIdx];
+
+  const handleAdd = () => {
+    addItem(partToProduct(part, selected.price, selected.type), 'domestic');
+    setAdded(true);
+    if (timerRef.current) clearTimeout(timerRef.current);
+    timerRef.current = setTimeout(() => setAdded(false), 1500);
+  };
 
   return (
     <div className="bg-[#13141f] border border-[#f0b429]/10 hover:border-[#f0b429]/40 transition-[border-color] duration-200 p-4 flex flex-col gap-3">
@@ -152,11 +170,11 @@ function CounterCard({ part }: { part: Part }) {
         ))}
       </div>
       <button
-        onClick={() => addItem(partToProduct(part, selected.price, selected.type), 'domestic')}
-        className="w-full flex items-center justify-center gap-2 py-2 bg-[#f0b429] text-[#1a1b2a] font-bold uppercase text-xs tracking-wider hover:bg-[#f0b429]/80 transition-[background-color] duration-200 font-sans"
+        onClick={handleAdd}
+        className={`w-full flex items-center justify-center gap-2 py-2 font-bold uppercase text-xs tracking-wider transition-[background-color] duration-200 font-sans ${added ? 'bg-green-500 text-white' : 'bg-[#f0b429] text-[#1a1b2a] hover:bg-[#f0b429]/80'}`}
       >
-        <ShoppingCart fontSize="small" />
-        Add to Cart
+        {added ? <Check fontSize="small" /> : <ShoppingCart fontSize="small" />}
+        {added ? 'Added!' : 'Add to Cart'}
       </button>
     </div>
   );
@@ -165,7 +183,16 @@ function CounterCard({ part }: { part: Part }) {
 // ── HASL map card ─────────────────────────────────────────────────────────────
 function HaslCard({ part, onImageClick }: { part: Part; onImageClick: (src: string, title: string) => void }) {
   const { addItem } = useCartStore();
+  const [added, setAdded] = useState(false);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   if (!part.price) return null;
+
+  const handleAdd = () => {
+    addItem(partToProduct(part, part.price!, ''), 'domestic');
+    setAdded(true);
+    if (timerRef.current) clearTimeout(timerRef.current);
+    timerRef.current = setTimeout(() => setAdded(false), 1500);
+  };
 
   return (
     <div className="bg-[#13141f] border border-[#f0b429]/10 hover:border-[#f0b429]/40 transition-[border-color] duration-200 flex flex-col">
@@ -185,11 +212,11 @@ function HaslCard({ part, onImageClick }: { part: Part; onImageClick: (src: stri
         <div className="flex items-center justify-between gap-2">
           <span className="text-[#e2e2e2] font-black text-base font-sans">{formatPrice(part.price)}</span>
           <button
-            onClick={() => addItem(partToProduct(part, part.price!, ''), 'domestic')}
-            className="p-2 bg-[#f0b429] text-[#1a1b2a] hover:bg-[#f0b429]/80 transition-[background-color] duration-200"
+            onClick={handleAdd}
+            className={`p-2 transition-[background-color] duration-200 ${added ? 'bg-green-500 text-white' : 'bg-[#f0b429] text-[#1a1b2a] hover:bg-[#f0b429]/80'}`}
             aria-label={`Add ${part.name} to cart`}
           >
-            <ShoppingCart fontSize="small" />
+            {added ? <Check fontSize="small" /> : <ShoppingCart fontSize="small" />}
           </button>
         </div>
       </div>

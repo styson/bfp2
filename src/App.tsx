@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import { Header } from './components/layout/Header';
 import { Hero } from './components/layout/Hero';
 import { ProductCarousel } from './components/products/ProductCarousel';
@@ -7,10 +8,12 @@ import { ProductModal } from './components/products/ProductModal';
 import { CartDrawer } from './components/cart/CartDrawer';
 import { PartsSection } from './components/parts/PartsSection';
 import { DownloadsSection } from './components/downloads/DownloadsSection';
+import { AccountPage } from './components/account/AccountPage';
+import { useCartSync } from './hooks/useCartSync';
 import type { Product } from './types';
 import { products } from './data/products';
 
-function App() {
+function StorePage() {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -107,6 +110,18 @@ function App() {
 
       <CartDrawer />
     </div>
+  );
+}
+
+function App() {
+  // Mount cart sync once at app level (handles sign-in merge + ongoing DB sync)
+  useCartSync();
+
+  return (
+    <Routes>
+      <Route path="/" element={<StorePage />} />
+      <Route path="/account" element={<AccountPage />} />
+    </Routes>
   );
 }
 

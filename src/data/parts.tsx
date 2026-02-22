@@ -2,7 +2,7 @@ import type { Part } from '../components/types';
 import { bdA, bdB, bdC, bdD, bdE, bdF, bdG, bdH, bdI, bdJ, bdK, bdL, bdM, bdN, bdO, bdP, bdS, bdT, bdU,
   bdQ, bdR, bitterest, corregidor, neptune, orsha, schmidt1, schmidt2, schmidt3, schmidt4, voss1, voss2,
   dw1, dw1b, dw2, dw2b, dw3, dw3b, dw4, dw4b, dw5, dw5b, dw6, dw6b,
-  dw7, dw7b, dw8, dw8b, dw9, dw9b, dw10, dw10b, hw1, hw1b } from './images';
+  dw7, dw7b, dw8, dw8b, dw9, dw9b, dw10, dw10b, hw1 } from './images';
 
 export const parts: Part[] = [
   {

@@ -14,8 +14,6 @@ export const Hero = () => {
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
         <h1 className="text-5xl sm:text-6xl lg:text-8xl uppercase leading-none text-[#f0b429]">
           Bounding Fire Productions
-          <br />
-          <span className="text-3xl sm:text-4xl lg:text-5xl text-[#e2e2e2]">Perfected</span>
         </h1>
 
         <p className="text-lg sm:text-xl text-[#e2e2e2]/80 max-w-2xl mx-auto leading-relaxed font-sans">

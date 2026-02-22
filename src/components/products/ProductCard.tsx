@@ -1,6 +1,6 @@
 import { formatPrice, isNewArrival } from '../../utils/dateHelpers';
-import { ShoppingCart } from '@mui/icons-material';
-import { useState } from 'react';
+import { ShoppingCart, Check } from '@mui/icons-material';
+import { useState, useRef } from 'react';
 import type { Product } from '../../types';
 
 interface ProductCardProps {
@@ -11,7 +11,17 @@ interface ProductCardProps {
 
 export const ProductCard = ({ product, onQuickAdd, onClick }: ProductCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [added, setAdded] = useState(false);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const isNew = isNewArrival(product.releaseDate);
+
+  const handleQuickAdd = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    onQuickAdd(product);
+    setAdded(true);
+    if (timerRef.current) clearTimeout(timerRef.current);
+    timerRef.current = setTimeout(() => setAdded(false), 1500);
+  };
 
   return (
     <div
@@ -36,16 +46,13 @@ export const ProductCard = ({ product, onQuickAdd, onClick }: ProductCardProps) 
         )}
 
         {/* Quick Add Button - Appears on Hover */}
-        {isHovered && (
+        {(isHovered || added) && (
           <button
-            onClick={(e) => {
-              e.stopPropagation();
-              onQuickAdd(product);
-            }}
-            className="absolute bottom-4 left-4 right-4 bg-[#f0b429] text-[#1a1b2a] py-3 font-bold uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-[#f0b429]/80 transition-[background-color] duration-200 font-sans"
+            onClick={handleQuickAdd}
+            className={`absolute bottom-4 left-4 right-4 py-3 font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-[background-color] duration-200 font-sans ${added ? 'bg-green-500 text-white' : 'bg-[#f0b429] text-[#1a1b2a] hover:bg-[#f0b429]/80'}`}
           >
-            <ShoppingCart fontSize="small" />
-            Quick Add
+            {added ? <Check fontSize="small" /> : <ShoppingCart fontSize="small" />}
+            {added ? 'Added!' : 'Quick Add'}
           </button>
         )}
       </div>

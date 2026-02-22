@@ -36,6 +36,7 @@ export interface CartStore {
   addItem: (product: Product, shippingType: 'domestic' | 'international') => void;
   removeItem: (productId: string) => void;
   updateQuantity: (productId: string, quantity: number) => void;
+  setItems: (items: CartItem[]) => void;
   clearCart: () => void;
   toggleCart: () => void;
   getSubtotal: () => number;

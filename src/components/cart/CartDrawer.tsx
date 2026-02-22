@@ -2,9 +2,12 @@ import { Close, Delete, Add, Remove } from '@mui/icons-material';
 import { useCartStore } from '../../store/cartStore';
 import { formatPrice } from '../../utils/dateHelpers';
 import { PayPalButtons, PayPalScriptProvider } from '@paypal/react-paypal-js';
+import { supabase } from '../../lib/supabase';
+import { useAuthStore } from '../../store/authStore';
 
 export const CartDrawer = () => {
   const { items, isOpen, toggleCart, removeItem, updateQuantity, getSubtotal, clearCart } = useCartStore();
+  const { user } = useAuthStore();
   const subtotal = getSubtotal();
 
   if (!isOpen) return null;
@@ -141,6 +144,18 @@ export const CartDrawer = () => {
                 onApprove={async (_data, actions) => {
                   if (actions.order) {
                     const details = await actions.order.capture();
+
+                    // Record order in Supabase if signed in
+                    if (user) {
+                      await supabase.from('orders').insert({
+                        user_id: user.id,
+                        paypal_order_id: details.id,
+                        status: 'completed',
+                        items: items,
+                        total_usd: subtotal,
+                      });
+                    }
+
                     alert('Transaction completed by ' + details.payer?.name?.given_name);
                     clearCart();
                     toggleCart();
