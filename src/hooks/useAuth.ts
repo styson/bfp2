@@ -16,12 +16,6 @@ export const useAuth = () => {
       options: { redirectTo: window.location.origin },
     });
 
-  const signInWithFacebook = () =>
-    supabase.auth.signInWithOAuth({
-      provider: 'facebook',
-      options: { redirectTo: window.location.origin },
-    });
-
   const signInWithEmail = (email: string) =>
     supabase.auth.signInWithOtp({
       email,
@@ -30,5 +24,5 @@ export const useAuth = () => {
 
   const signOut = () => supabase.auth.signOut();
 
-  return { user, loading, signInWithGoogle, signInWithGitHub, signInWithFacebook, signInWithEmail, signOut };
+  return { user, loading, signInWithGoogle, signInWithGitHub, signInWithEmail, signOut };
 };

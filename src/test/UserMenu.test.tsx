@@ -50,7 +50,6 @@ beforeEach(() => {
     loading: false,
     signInWithGoogle: vi.fn(),
     signInWithGitHub: vi.fn(),
-    signInWithFacebook: vi.fn(),
     signInWithEmail: vi.fn(),
     signOut,
   })
