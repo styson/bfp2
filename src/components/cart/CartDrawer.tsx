@@ -94,7 +94,7 @@ export const CartDrawer = () => {
 
         {/* Footer - Subtotal and Checkout */}
         {items.length > 0 && (
-          <div className="border-t border-[#f0b429]/20 p-6 space-y-4">
+          <div className="border-t border-[#f0b429]/20 p-6 space-y-4 overflow-y-auto max-h-[60vh]">
             <div className="flex items-center justify-between text-xl font-black uppercase text-[#e2e2e2] font-sans">
               <span>Subtotal:</span>
               <span className="text-[#f0b429]">{formatPrice(subtotal)}</span>
