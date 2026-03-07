@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir \"C:\\\\projects\\\\bfp2\")",
+      "WebFetch(domain:boundingfire.com)",
+      "WebFetch(domain:www.boundingfire.com)",
+      "Bash(cd:*)",
+      "WebFetch(domain:www.texas-asl.com)",
+      "Bash(cd /c/projects/bfp2 && npx vitest run 2>&1)"
+    ]
+  }
+}

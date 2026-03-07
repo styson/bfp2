@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Close } from '@mui/icons-material';
 import { useAuth } from '../../hooks/useAuth';
 
@@ -29,6 +29,13 @@ const GoogleIcon = () => (
   </svg>
 );
 
+// Facebook icon SVG
+const FacebookIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="#1877F2" aria-hidden="true">
+    <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.885v2.27h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z" />
+  </svg>
+);
+
 // GitHub icon SVG
 const GitHubIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -37,7 +44,10 @@ const GitHubIcon = () => (
 );
 
 export const AuthModal = ({ isOpen, onClose }: AuthModalProps) => {
-  const { signInWithGoogle, signInWithGitHub } = useAuth();
+  const { signInWithGoogle, signInWithGitHub, signInWithFacebook, signInWithEmail } = useAuth();
+  const [email, setEmail] = useState('');
+  const [emailSent, setEmailSent] = useState(false);
+  const [emailLoading, setEmailLoading] = useState(false);
 
   // Close on Escape
   useEffect(() => {
@@ -46,6 +56,15 @@ export const AuthModal = ({ isOpen, onClose }: AuthModalProps) => {
     window.addEventListener('keydown', handler);
     return () => window.removeEventListener('keydown', handler);
   }, [isOpen, onClose]);
+
+  const handleEmailSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    setEmailLoading(true);
+    await signInWithEmail(email);
+    setEmailLoading(false);
+    setEmailSent(true);
+  };
 
   if (!isOpen) return null;
 
@@ -99,6 +118,44 @@ export const AuthModal = ({ isOpen, onClose }: AuthModalProps) => {
               <GitHubIcon />
               Continue with GitHub
             </button>
+
+            <button
+              onClick={() => signInWithFacebook()}
+              className="w-full flex items-center gap-3 px-4 py-3 bg-[#24292e] text-white font-bold text-sm uppercase tracking-wider hover:bg-[#f0b429] hover:text-[#1a1b2a] transition-[background-color,color] duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#f0b429] active:scale-[0.98]"
+            >
+              <FacebookIcon />
+              Continue with Facebook
+            </button>
+
+            <div className="relative flex items-center gap-3 py-1">
+              <div className="flex-1 h-px bg-[#f0b429]/15" />
+              <span className="text-[10px] uppercase tracking-widest text-[#e2e2e2]/30 font-sans">or</span>
+              <div className="flex-1 h-px bg-[#f0b429]/15" />
+            </div>
+
+            {emailSent ? (
+              <p className="text-xs text-[#f0b429] text-center font-sans py-3 leading-relaxed">
+                Check your email — we sent a magic link to <strong>{email}</strong>.
+              </p>
+            ) : (
+              <form onSubmit={handleEmailSubmit} className="flex flex-col gap-2">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="your@email.com"
+                  required
+                  className="w-full px-4 py-3 bg-[#1a1b2a] border border-[#f0b429]/30 text-[#e2e2e2] text-sm placeholder:text-[#e2e2e2]/25 focus:outline-none focus:border-[#f0b429] transition-[border-color] duration-200"
+                />
+                <button
+                  type="submit"
+                  disabled={emailLoading}
+                  className="w-full px-4 py-3 bg-[#f0b429]/10 border border-[#f0b429]/40 text-[#f0b429] font-bold text-sm uppercase tracking-wider hover:bg-[#f0b429] hover:text-[#1a1b2a] hover:border-[#f0b429] transition-[background-color,color,border-color] duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#f0b429] active:scale-[0.98] disabled:opacity-40 disabled:cursor-not-allowed"
+                >
+                  {emailLoading ? 'Sending…' : 'Send Magic Link'}
+                </button>
+              </form>
+            )}
 
             <p className="text-[10px] text-[#e2e2e2]/25 text-center font-sans pt-2 leading-relaxed">
               By signing in you agree to our terms of service.
