@@ -1,6 +1,7 @@
 import type { Product } from '../components/types';
 import {
   aslCompanion,
+  asl_3_4,
   dx,
   ffs,
   ftc10,
@@ -33,6 +34,56 @@ import {
 
 const who = 'lft';
 export const products: Product[] = [
+  {
+    id: 110,
+    name: 'The ASL Companion #1',
+    description: '',
+    shortDescription: `<b>The ASL Companion</b> is divided into 90 chapters grouped into twelve parts.`,
+    includes: `<h3>This volumne includes the following chapters</h3>
+      <p>Chapter 1, “Welcome to Advanced Squad Leader” introduces the reader to ASL and discusses the history of the Squad Leader and ASL game systems.</p>
+      <p>Chapter 2, “Warriors and Weapons” describes the infantry squads, leaders, and weapons that make up the core of ASL. It also discusses vehicles and ordnance in general terms.</p>
+      <h4>PART I: The Many Facets of ASL</h4>
+      <ul>
+        <li> Chapter 1 Welcome to Advanced Squad Leader</li>
+        <li> Chapter 2 Warriors and Weapons</li>
+        <li> Chapter 3 The Lay of the Land</li>
+        <li> Chapter 4 The Play of the Game</li>
+        <li> Chapter 5 The Role of Fate</li>
+      </ul>`,
+    price: 50,
+    intPrice: 0,
+    button: 'QR9PDVXU5P8UL',
+    imageF: aslCompanion,
+    page: 'aslCompanion-pg',
+    active: true,
+    year: 2025,
+    who,
+  },
+  {
+    id: 20,
+    name: 'The ASL Companion #2',
+    description: '',
+    shortDescription: `<b>The ASL Companion</b> is divided into 90 chapters grouped into twelve parts.`,
+    includes: `<h3>This volumne includes the following chapters</h3>
+      <p>Chapter 3, “The Lay of the Land” discusses the various terrain types found on ASL mapboards and how they affect gameplay.</p>
+      <p>Chapter 4, “The Play of the Game” provides an overview of how a typical game turn proceeds, including movement, firing, and other actions.</p>
+      <h4>PART I: The Many Facets of ASL</h4>
+      <ul>
+        <li> Chapter 1 Welcome to Advanced Squad Leader</li>
+        <li> Chapter 2 Warriors and Weapons</li>
+        <li> Chapter 3 The Lay of the Land</li>
+        <li> Chapter 4 The Play of the Game</li>
+        <li> Chapter 5 The Role of Fate</li>
+      </ul>`,
+    price: 50,
+    intPrice: 0,
+    button: 'BFYNHYB2JKR3A',
+    imageF: asl_3_4,
+    page: 'asl34-pg',
+    active: true,
+    year: 2026,
+    who,
+  },
   {
     id: 93,
     name: 'The Trials of Task Force Faith',
@@ -786,7 +837,7 @@ export const products: Product[] = [
     who,
   },
   {
-    id: 92,
+    id: 30,
     name: 'Inor Players Guide',
     description: '',
     shortDescription: `All is in its title: 64 pages for "The Green Hell of Inor" fans, as well as 16 scenarios and a Campaign Game.`,
@@ -828,34 +879,5 @@ export const products: Product[] = [
       { id: 'FT INOR27', name: 'The Colonials Hold The Line', arc_id: '67224' },
       { id: 'FT INOR28', name: 'Visibility Zero', arc_id: '67227' },
     ],
-  },
-  {
-    id: 91,
-    name: 'The ASL Companion #1',
-    description: '',
-    shortDescription: `<b>The ASL Companion</b> is divided into 90 chapters grouped into twelve parts.`,
-    includes: `<p>PART I
-      <h4>The Many Facets of ASL</h4>
-      <ul>
-        <li> Chapter 1 Welcome to Advanced Squad Leader</li>
-        <li> Chapter 2 Warriors and Weapons</li>
-        <li> Chapter 3 The Lay of the Land</li>
-        <li> Chapter 4 The Play of the Game</li>
-        <li> Chapter 5 The Role of Fate</li>
-      </ul>
-      <p>Chapter 1, “Welcome to Advanced Squad Leader” introduces the reader to ASL and discusses the history of the Squad Leader and ASL game systems.</p>
-      <p>Chapter 2, “Warriors and Weapons” describes the infantry squads, leaders, and weapons that make up the core of ASL. It also discusses vehicles and ordnance in general terms.</p>
-      <p>Chapter 3, “The Lay of the Land” discusses the various terrain types found on ASL mapboards and how they affect gameplay.</p>
-      <p>Chapter 4, “The Play of the Game” provides an overview of how a typical game turn proceeds, including movement, firing, and other actions.</p>
-      <p>Chapter 5, “The Role of Fate” explains the use of dice in ASL and how randomness influences the outcome of actions in the game.</p>
-      <p>The next four chapters will discuss the four main components of ASL, the pieces, the mapboards and overlays, the scenarios, and the dice. These five chapters form Part I, “The Many Facets of ASL”.</p>`,
-    price: 50,
-    intPrice: 0,
-    button: 'QR9PDVXU5P8UL',
-    imageF: aslCompanion,
-    page: 'aslCompanion-pg',
-    active: true,
-    year: 2025,
-    who,
   },
 ];
