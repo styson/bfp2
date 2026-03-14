@@ -47,13 +47,15 @@ In the Amplify Console, go to:
 Add these required variables:
 
 ```
-VITE_SUPABASE_URL = https://iugmaydqyozdgyiziels.supabase.co
-VITE_SUPABASE_ANON_KEY = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+VITE_SUPABASE_URL = <url>
+VITE_SUPABASE_ANON_KEY = <key>
+VITE_PAYPAL_CLIENT_ID = <paypal_client_id>
 ```
+
+**⚠️ IMPORTANT:** The PayPal Client ID is required for checkout functionality. Get your production client ID from the [PayPal Developer Dashboard](https://developer.paypal.com/dashboard/).
 
 Optional variables for production:
 ```
-VITE_PAYPAL_CLIENT_ID = your_production_paypal_client_id
 VITE_GA_TRACKING_ID = your_google_analytics_id
 VITE_SENTRY_DSN = your_sentry_dsn
 ```

@@ -27,14 +27,14 @@ This guide covers everything needed to deploy the Bounding Fire Productions e-co
 Create these environment variables in your hosting platform (Netlify, Vercel, etc.):
 
 ```bash
-VITE_SUPABASE_URL=https://iugmaydqyozdgyiziels.supabase.co
-VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+VITE_SUPABASE_URL = <url>
+VITE_SUPABASE_ANON_KEY = <key>
+VITE_PAYPAL_CLIENT_ID = <paypal_client_id>
 ```
 
 Additional variables you may need:
 ```bash
 # PayPal Configuration (if using server-side)
-VITE_PAYPAL_CLIENT_ID=your_production_paypal_client_id
 
 # Analytics (optional)
 VITE_GA_TRACKING_ID=your_google_analytics_id
