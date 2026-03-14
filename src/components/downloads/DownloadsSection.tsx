@@ -2,7 +2,7 @@ import { FileDownload } from '@mui/icons-material';
 import { downloads } from '../../data/downloads';
 import type { Download } from '../types';
 
-const BASE = '/downloads/';
+const BASE = '/files/';
 
 // ── Helpers ────────────────────────────────────────────────────────────────────
 
