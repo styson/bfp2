@@ -47,12 +47,6 @@ export const Header = () => {
                 Downloads
               </a>
               <a
-                href="#about"
-                className="text-sm font-semibold uppercase tracking-wider text-[#e2e2e2] hover:text-[#f0b429] transition-colors duration-200"
-              >
-                About
-              </a>
-              <a
                 href="#contact"
                 className="text-sm font-semibold uppercase tracking-wider text-[#e2e2e2] hover:text-[#f0b429] transition-colors duration-200"
               >
