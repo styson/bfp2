@@ -11,6 +11,7 @@ interface ProductGridProps {
 
 export const ProductGrid = ({ products, onProductClick }: ProductGridProps) => {
   const { addItem } = useCartStore();
+  const [search, setSearch] = useState('');
   const [filters, setFilters] = useState<FilterState>({
     categories: [],
     sizes: [],
@@ -31,7 +32,9 @@ export const ProductGrid = ({ products, onProductClick }: ProductGridProps) => {
   }, [products]);
 
   const filteredProducts = useMemo(() => {
+    const q = search.trim().toLowerCase();
     return products.filter((product) => {
+      if (q && !product.name.toLowerCase().includes(q)) return false;
       if (filters.categories.length > 0 && !filters.categories.includes(product.category)) {
         return false;
       }
@@ -46,7 +49,7 @@ export const ProductGrid = ({ products, onProductClick }: ProductGridProps) => {
       }
       return true;
     });
-  }, [products, filters]);
+  }, [products, filters, search]);
 
   const handleQuickAdd = (product: Product) => {
     addItem(product, 'domestic');
@@ -71,6 +74,8 @@ export const ProductGrid = ({ products, onProductClick }: ProductGridProps) => {
             availableCategories={availableCategories}
             availableSizes={availableSizes}
             availableColors={availableColors}
+            search={search}
+            onSearchChange={setSearch}
           />
 
           <div className="flex-1">

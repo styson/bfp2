@@ -8,9 +8,11 @@ interface FilterSidebarProps {
   availableCategories: string[];
   availableSizes: string[];
   availableColors: string[];
+  search: string;
+  onSearchChange: (value: string) => void;
 }
 
-export const FilterSidebar = ({ filters, onFilterChange, availableCategories, availableSizes, availableColors }: FilterSidebarProps) => {
+export const FilterSidebar = ({ filters, onFilterChange, availableCategories, availableSizes, availableColors, search, onSearchChange }: FilterSidebarProps) => {
   const [openSections, setOpenSections] = useState<{ [key: string]: boolean }>({
     category: true,
     size: true,
@@ -52,8 +54,7 @@ export const FilterSidebar = ({ filters, onFilterChange, availableCategories, av
 
   const priceRanges = [
     { label: 'Under $50', min: 0, max: 50 },
-    { label: '$50 - $75', min: 50, max: 75 },
-    { label: '$75 - $100', min: 75, max: 100 },
+    { label: '$50 - $100', min: 50, max: 100 },
     { label: 'Over $100', min: 100, max: 99999 },
   ];
 
@@ -61,6 +62,36 @@ export const FilterSidebar = ({ filters, onFilterChange, availableCategories, av
     <aside className="w-full lg:w-64 bg-[#13141f] border border-[#f0b429]/20">
       <div className="sticky top-24 p-6 space-y-6">
         <h2 className="text-xl uppercase text-[#f0b429]">Filters</h2>
+
+        {/* Search */}
+        <div className="relative">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="absolute left-3 top-1/2 -translate-y-1/2 text-[#e2e2e2]/30 pointer-events-none"
+            width="16" height="16" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+          >
+            <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+          </svg>
+          <input
+            type="text"
+            value={search}
+            onChange={(e) => onSearchChange(e.target.value)}
+            placeholder="Search products…"
+            className="w-full bg-[#1a1b2a] border border-[#f0b429]/20 text-[#e2e2e2] placeholder-[#e2e2e2]/25 pl-9 pr-8 py-2.5 text-sm font-sans focus:outline-none focus:border-[#f0b429]/60 transition-[border-color] duration-200"
+          />
+          {search && (
+            <button
+              onClick={() => onSearchChange('')}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-[#e2e2e2]/30 hover:text-[#e2e2e2]/70 transition-[color] duration-200"
+              aria-label="Clear search"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M18 6L6 18M6 6l12 12"/>
+              </svg>
+            </button>
+          )}
+        </div>
 
         {/* Category Filter */}
         <div className="border-b border-[#f0b429]/20 pb-4">
@@ -202,16 +233,17 @@ export const FilterSidebar = ({ filters, onFilterChange, availableCategories, av
         </div>
 
         {/* Clear Filters */}
-        {(filters.categories.length > 0 || filters.priceRange[0] !== 0 || filters.priceRange[1] !== 99999) && (
+        {(search || filters.categories.length > 0 || filters.priceRange[0] !== 0 || filters.priceRange[1] !== 99999) && (
           <button
-            onClick={() =>
+            onClick={() => {
+              onSearchChange('');
               onFilterChange({
                 categories: [],
                 sizes: [],
                 colors: [],
                 priceRange: [0, 99999],
-              })
-            }
+              });
+            }}
             className="w-full py-3 bg-transparent text-[#e2e2e2]/60 border border-[#f0b429]/30 font-bold uppercase text-sm hover:bg-[#f0b429] hover:text-[#1a1b2a] hover:border-[#f0b429] transition-[background-color,color,border-color] duration-200 font-sans"
           >
             Clear All Filters
