@@ -417,6 +417,16 @@ export const parts: Part[] = [
     type: 'hasl',
     image: bitterest,
   },
+  {
+    name: 'Shipping',
+    prices: [
+      { type: 'US', price: 10 },
+      { type: 'Canada', price: 25 },
+      { type: 'International', price: 35 },
+    ],
+    paypalKey: 'EX5LQTKXQWVFY',
+    type: 'shipping',
+  },
 ];
 
 /*
