@@ -72,7 +72,7 @@ export const AuthModal = ({ isOpen, onClose }: AuthModalProps) => {
       {/* Modal */}
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
         <div
-          className="pointer-events-auto w-full max-w-sm bg-[#13141f] border border-[#f0b429]/30 shadow-[0_0_60px_rgba(240,180,41,0.1)]"
+          className="pointer-events-auto w-full max-w-sm bg-[var(--c-surface)] border border-[#f0b429]/30 shadow-[0_0_60px_rgba(240,180,41,0.1)]"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Header */}
@@ -81,13 +81,13 @@ export const AuthModal = ({ isOpen, onClose }: AuthModalProps) => {
               <h2 className="text-xl font-black uppercase tracking-widest text-[#f0b429]">
                 Sign In
               </h2>
-              <p className="text-xs text-[#e2e2e2]/75 uppercase tracking-wider mt-1 font-sans">
+              <p className="text-xs text-[var(--c-text)]/75 uppercase tracking-wider mt-1 font-sans">
                 Access your account
               </p>
             </div>
             <button
               onClick={onClose}
-              className="p-1.5 border border-[#f0b429]/30 text-[#e2e2e2]/50 hover:bg-[#f0b429] hover:text-[#1a1b2a] hover:border-[#f0b429] transition-[background-color,color,border-color] duration-200"
+              className="p-1.5 border border-[#f0b429]/30 text-[var(--c-text)]/50 hover:bg-[#f0b429] hover:text-[#1a1b2a] hover:border-[#f0b429] transition-[background-color,color,border-color] duration-200"
               aria-label="Close"
             >
               <Close fontSize="small" />
@@ -114,7 +114,7 @@ export const AuthModal = ({ isOpen, onClose }: AuthModalProps) => {
 
             <div className="relative flex items-center gap-3 py-1">
               <div className="flex-1 h-px bg-[#f0b429]/15" />
-              <span className="text-[10px] uppercase tracking-widest text-[#e2e2e2]/75 font-sans">or</span>
+              <span className="text-[10px] uppercase tracking-widest text-[var(--c-text)]/75 font-sans">or</span>
               <div className="flex-1 h-px bg-[#f0b429]/15" />
             </div>
 
@@ -130,7 +130,7 @@ export const AuthModal = ({ isOpen, onClose }: AuthModalProps) => {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="your@email.com"
                   required
-                  className="w-full px-4 py-3 bg-[#1a1b2a] border border-[#f0b429]/30 text-[#e2e2e2] text-sm placeholder:text-[#e2e2e2]/25 focus:outline-none focus:border-[#f0b429] transition-[border-color] duration-200"
+                  className="w-full px-4 py-3 bg-[var(--c-bg)] border border-[#f0b429]/30 text-[var(--c-text)] text-sm placeholder:text-[var(--c-text)]/25 focus:outline-none focus:border-[#f0b429] transition-[border-color] duration-200"
                 />
                 <button
                   type="submit"
@@ -142,7 +142,7 @@ export const AuthModal = ({ isOpen, onClose }: AuthModalProps) => {
               </form>
             )}
 
-            <p className="text-[10px] text-[#e2e2e2]/75 text-center font-sans pt-2 leading-relaxed">
+            <p className="text-[10px] text-[var(--c-text)]/75 text-center font-sans pt-2 leading-relaxed">
               By signing in you agree to our terms of service.
               <br />
               Your cart will be saved across devices.

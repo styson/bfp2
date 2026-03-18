@@ -54,9 +54,9 @@ export const ProfileForm = () => {
           type="text"
           value={user?.email ?? ''}
           disabled
-          className="w-full bg-[#0f1018] border border-[#f0b429]/10 px-4 py-3 text-sm text-[#e2e2e2]/30 font-sans cursor-not-allowed"
+          className="w-full bg-[var(--c-deep)] border border-[#f0b429]/10 px-4 py-3 text-sm text-[var(--c-text)]/30 font-sans cursor-not-allowed"
         />
-        <p className="text-[10px] text-[#e2e2e2]/25 font-sans mt-1">
+        <p className="text-[10px] text-[var(--c-text)]/25 font-sans mt-1">
           Managed by your sign-in provider.
         </p>
       </div>
@@ -76,16 +76,16 @@ export const ProfileForm = () => {
           onChange={(e) => setDisplayName(e.target.value)}
           placeholder="Your name"
           maxLength={60}
-          className="w-full bg-[#0f1018] border border-[#f0b429]/20 px-4 py-3 text-sm text-[#e2e2e2] font-sans placeholder:text-[#e2e2e2]/20 focus:outline-none focus:border-[#f0b429] transition-[border-color] duration-200"
+          className="w-full bg-[var(--c-deep)] border border-[#f0b429]/20 px-4 py-3 text-sm text-[var(--c-text)] font-sans placeholder:text-[var(--c-text)]/20 focus:outline-none focus:border-[#f0b429] transition-[border-color] duration-200"
         />
       </div>
 
       {/* Mailing list placeholder */}
-      <div className="border border-[#f0b429]/10 bg-[#0f1018] px-4 py-3">
-        <p className="text-[10px] font-black uppercase tracking-widest text-[#e2e2e2]/30">
+      <div className="border border-[#f0b429]/10 bg-[var(--c-deep)] px-4 py-3">
+        <p className="text-[10px] font-black uppercase tracking-widest text-[var(--c-text)]/30">
           Mailing List
         </p>
-        <p className="text-xs text-[#e2e2e2]/20 font-sans mt-1">
+        <p className="text-xs text-[var(--c-text)]/20 font-sans mt-1">
           Email preferences coming soon.
         </p>
       </div>

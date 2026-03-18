@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { useThemeStore } from './store/themeStore';
 import { Header } from './components/layout/Header';
 import { Hero } from './components/layout/Hero';
 import { ProductCarousel } from './components/products/ProductCarousel';
@@ -30,7 +31,7 @@ function StorePage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#1a1b2a]">
+    <div className="min-h-screen bg-[var(--c-bg)]">
       <Header />
 
       <main className="pt-20">
@@ -47,7 +48,7 @@ function StorePage() {
             { value: `${totalScenarios}+`, label: 'Scenarios' },
           ];
           return (
-            <div className="bg-[#0e0f1a] border-b border-[#f0b429]/20">
+            <div className="bg-[var(--c-deep)] border-b border-[#f0b429]/20">
               <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
                 <div className="grid grid-cols-3 divide-x divide-[#f0b429]/20">
                   {stats.map(({ value, label }) => (
@@ -55,7 +56,7 @@ function StorePage() {
                       <span className="text-4xl sm:text-5xl font-black text-[#f0b429] tracking-tight" style={{ fontVariantNumeric: 'tabular-nums' }}>
                         {value}
                       </span>
-                      <span className="text-xs sm:text-sm uppercase tracking-widest text-[#e2e2e2]/40 font-sans">
+                      <span className="text-xs sm:text-sm uppercase tracking-widest text-[var(--c-text)]/40 font-sans">
                         {label}
                       </span>
                     </div>
@@ -77,7 +78,7 @@ function StorePage() {
         <DownloadsSection />
 
         {/* About Section */}
-        <section id="about" className="bg-[#13141f] text-[#e2e2e2] py-20 border-t border-[#f0b429]/20">
+        <section id="about" className="bg-[var(--c-surface)] text-[var(--c-text)] py-20 border-t border-[#f0b429]/20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
             <h2 className="text-4xl sm:text-5xl uppercase text-[#f0b429] mb-12 text-center">
               Contact Bounding Fire Productions
@@ -86,7 +87,7 @@ function StorePage() {
               {/* Left column — Contact Us */}
               <div id="contact" className="flex flex-col items-center md:items-start text-center md:text-left">
                 <h3 className="text-2xl uppercase text-[#f0b429] mb-4 tracking-wide">Get in Touch</h3>
-                <p className="text-lg text-[#e2e2e2]/70 leading-relaxed mb-8 font-sans">
+                <p className="text-lg text-[var(--c-text)]/70 leading-relaxed mb-8 font-sans">
                   Questions about our products? Want to discuss custom orders?
                   <br />
                   We'd love to hear from you.
@@ -106,7 +107,7 @@ function StorePage() {
               {/* Right column — Facebook */}
               <div className="flex flex-col items-center md:items-start text-center md:text-left">
                 <h3 className="text-2xl uppercase text-[#f0b429] mb-4 tracking-wide">Join Us on Facebook</h3>
-                <p className="text-lg text-[#e2e2e2]/70 leading-relaxed mb-8 font-sans">
+                <p className="text-lg text-[var(--c-text)]/70 leading-relaxed mb-8 font-sans">
                   Connect with the Bounding Fire community. Share scenarios,
                   ask questions, and stay up to date with the latest news and releases.
                 </p>
@@ -128,16 +129,16 @@ function StorePage() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-[#13141f] text-[#e2e2e2] py-12 border-t border-[#f0b429]/20">
+      <footer className="bg-[var(--c-surface)] text-[var(--c-text)] py-12 border-t border-[#f0b429]/20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-4">
             <h3 className="text-2xl uppercase text-[#f0b429]">
               Bounding Fire Productions
             </h3>
-            <p className="text-sm text-[#e2e2e2]/40 uppercase tracking-wider font-sans">
+            <p className="text-sm text-[var(--c-text)]/40 uppercase tracking-wider font-sans">
               Premium Gaming Products
             </p>
-            <p className="text-xs text-[#e2e2e2]/25 font-sans">
+            <p className="text-xs text-[var(--c-text)]/25 font-sans">
               © 2026 Bounding Fire Productions. All rights reserved.
             </p>
           </div>
@@ -158,6 +159,11 @@ function StorePage() {
 function App() {
   // Mount cart sync once at app level (handles sign-in merge + ongoing DB sync)
   useCartSync();
+
+  const { theme } = useThemeStore();
+  useEffect(() => {
+    document.documentElement.classList.toggle('light', theme === 'light');
+  }, [theme]);
 
   return (
     <Routes>

@@ -1,13 +1,15 @@
 import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Person, ShoppingBag, Logout } from '@mui/icons-material';
+import { Person, ShoppingBag, Logout, LightMode, DarkMode } from '@mui/icons-material';
 import { useAuth } from '../../hooks/useAuth';
+import { useThemeStore } from '../../store/themeStore';
 
 export const UserMenu = () => {
   const { user, signOut } = useAuth();
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const { theme, toggleTheme } = useThemeStore();
 
   // Close on outside click
   useEffect(() => {
@@ -56,13 +58,13 @@ export const UserMenu = () => {
 
       {/* Dropdown */}
       {open && (
-        <div className="absolute right-0 top-full mt-2 w-52 bg-[#13141f] border border-[#f0b429]/30 shadow-[0_8px_32px_rgba(0,0,0,0.6)] z-50">
+        <div className="absolute right-0 top-full mt-2 w-52 bg-[var(--c-surface)] border border-[#f0b429]/30 shadow-[0_8px_32px_rgba(0,0,0,0.6)] z-50">
           {/* User info */}
           <div className="px-4 py-3 border-b border-[#f0b429]/20">
             <p className="text-xs font-black uppercase tracking-wider text-[#f0b429] truncate">
               {displayName}
             </p>
-            <p className="text-[10px] text-[#e2e2e2]/40 font-sans truncate mt-0.5">
+            <p className="text-[10px] text-[var(--c-text)]/40 font-sans truncate mt-0.5">
               {user.email}
             </p>
           </div>
@@ -71,24 +73,31 @@ export const UserMenu = () => {
           <div className="py-1">
             <button
               onClick={() => { setOpen(false); navigate('/account'); }}
-              className="w-full flex items-center gap-3 px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-[#e2e2e2] hover:bg-[#f0b429]/10 hover:text-[#f0b429] transition-[background-color,color] duration-150 text-left"
+              className="w-full flex items-center gap-3 px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-[var(--c-text)] hover:bg-[#f0b429]/10 hover:text-[#f0b429] transition-[background-color,color] duration-150 text-left"
             >
               <Person fontSize="small" />
               My Account
             </button>
             <button
               onClick={() => { setOpen(false); navigate('/account?tab=orders'); }}
-              className="w-full flex items-center gap-3 px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-[#e2e2e2] hover:bg-[#f0b429]/10 hover:text-[#f0b429] transition-[background-color,color] duration-150 text-left"
+              className="w-full flex items-center gap-3 px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-[var(--c-text)] hover:bg-[#f0b429]/10 hover:text-[#f0b429] transition-[background-color,color] duration-150 text-left"
             >
               <ShoppingBag fontSize="small" />
               Order History
+            </button>
+            <button
+              onClick={toggleTheme}
+              className="w-full flex items-center gap-3 px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-[var(--c-text)] hover:bg-[#f0b429]/10 hover:text-[#f0b429] transition-[background-color,color] duration-150 text-left"
+            >
+              {theme === 'dark' ? <LightMode fontSize="small" /> : <DarkMode fontSize="small" />}
+              {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
             </button>
           </div>
 
           <div className="border-t border-[#f0b429]/20 py-1">
             <button
               onClick={handleSignOut}
-              className="w-full flex items-center gap-3 px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-[#e2e2e2]/50 hover:bg-red-500/10 hover:text-red-400 transition-[background-color,color] duration-150 text-left"
+              className="w-full flex items-center gap-3 px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-[var(--c-text)]/50 hover:bg-red-500/10 hover:text-red-400 transition-[background-color,color] duration-150 text-left"
             >
               <Logout fontSize="small" />
               Sign Out

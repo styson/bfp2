@@ -59,7 +59,7 @@ export const FilterSidebar = ({ filters, onFilterChange, availableCategories, av
   ];
 
   return (
-    <aside className="w-full lg:w-64 bg-[#13141f] border border-[#f0b429]/20">
+    <aside className="w-full lg:w-64 bg-[var(--c-surface)] border border-[#f0b429]/20">
       <div className="sticky top-24 p-6 space-y-6">
         <h2 className="text-xl uppercase text-[#f0b429]">Filters</h2>
 
@@ -67,7 +67,7 @@ export const FilterSidebar = ({ filters, onFilterChange, availableCategories, av
         <div className="relative">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="absolute left-3 top-1/2 -translate-y-1/2 text-[#e2e2e2]/30 pointer-events-none"
+            className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--c-text)]/30 pointer-events-none"
             width="16" height="16" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
           >
@@ -78,12 +78,12 @@ export const FilterSidebar = ({ filters, onFilterChange, availableCategories, av
             value={search}
             onChange={(e) => onSearchChange(e.target.value)}
             placeholder="Search products…"
-            className="w-full bg-[#1a1b2a] border border-[#f0b429]/20 text-[#e2e2e2] placeholder-[#e2e2e2]/25 pl-9 pr-8 py-2.5 text-sm font-sans focus:outline-none focus:border-[#f0b429]/60 transition-[border-color] duration-200"
+            className="w-full bg-[var(--c-bg)] border border-[#f0b429]/20 text-[var(--c-text)] placeholder-[var(--c-text)]/25 pl-9 pr-8 py-2.5 text-sm font-sans focus:outline-none focus:border-[#f0b429]/60 transition-[border-color] duration-200"
           />
           {search && (
             <button
               onClick={() => onSearchChange('')}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-[#e2e2e2]/30 hover:text-[#e2e2e2]/70 transition-[color] duration-200"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--c-text)]/30 hover:text-[var(--c-text)]/70 transition-[color] duration-200"
               aria-label="Clear search"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -97,7 +97,7 @@ export const FilterSidebar = ({ filters, onFilterChange, availableCategories, av
         <div className="border-b border-[#f0b429]/20 pb-4">
           <button
             onClick={() => toggleSection('category')}
-            className="w-full flex items-center justify-between py-2 font-bold uppercase text-sm text-[#e2e2e2] hover:text-[#f0b429] transition-colors duration-200 font-sans"
+            className="w-full flex items-center justify-between py-2 font-bold uppercase text-sm text-[var(--c-text)] hover:text-[#f0b429] transition-colors duration-200 font-sans"
           >
             <span>Category</span>
             <ExpandMore
@@ -112,7 +112,7 @@ export const FilterSidebar = ({ filters, onFilterChange, availableCategories, av
               {availableCategories.map((category) => (
                 <label
                   key={category}
-                  className="flex items-center gap-2 cursor-pointer text-[#e2e2e2]/70 hover:text-[#f0b429] transition-colors duration-200 font-sans"
+                  className="flex items-center gap-2 cursor-pointer text-[var(--c-text)]/70 hover:text-[#f0b429] transition-colors duration-200 font-sans"
                 >
                   <input
                     type="checkbox"
@@ -132,7 +132,7 @@ export const FilterSidebar = ({ filters, onFilterChange, availableCategories, av
           <div className="border-b border-[#f0b429]/20 pb-4">
             <button
               onClick={() => toggleSection('size')}
-              className="w-full flex items-center justify-between py-2 font-bold uppercase text-sm text-[#e2e2e2] hover:text-[#f0b429] transition-colors duration-200 font-sans"
+              className="w-full flex items-center justify-between py-2 font-bold uppercase text-sm text-[var(--c-text)] hover:text-[#f0b429] transition-colors duration-200 font-sans"
             >
               <span>Size</span>
               <ExpandMore
@@ -147,7 +147,7 @@ export const FilterSidebar = ({ filters, onFilterChange, availableCategories, av
                 {availableSizes.map((size) => (
                   <label
                     key={size}
-                    className="flex items-center gap-2 cursor-pointer text-[#e2e2e2]/70 hover:text-[#f0b429] transition-colors duration-200 font-sans"
+                    className="flex items-center gap-2 cursor-pointer text-[var(--c-text)]/70 hover:text-[#f0b429] transition-colors duration-200 font-sans"
                   >
                     <input
                       type="checkbox"
@@ -168,7 +168,7 @@ export const FilterSidebar = ({ filters, onFilterChange, availableCategories, av
           <div className="border-b border-[#f0b429]/20 pb-4">
             <button
               onClick={() => toggleSection('color')}
-              className="w-full flex items-center justify-between py-2 font-bold uppercase text-sm text-[#e2e2e2] hover:text-[#f0b429] transition-colors duration-200 font-sans"
+              className="w-full flex items-center justify-between py-2 font-bold uppercase text-sm text-[var(--c-text)] hover:text-[#f0b429] transition-colors duration-200 font-sans"
             >
               <span>Color</span>
               <ExpandMore
@@ -183,7 +183,7 @@ export const FilterSidebar = ({ filters, onFilterChange, availableCategories, av
                 {availableColors.map((color) => (
                   <label
                     key={color}
-                    className="flex items-center gap-2 cursor-pointer text-[#e2e2e2]/70 hover:text-[#f0b429] transition-colors duration-200 font-sans"
+                    className="flex items-center gap-2 cursor-pointer text-[var(--c-text)]/70 hover:text-[#f0b429] transition-colors duration-200 font-sans"
                   >
                     <input
                       type="checkbox"
@@ -203,7 +203,7 @@ export const FilterSidebar = ({ filters, onFilterChange, availableCategories, av
         <div className="border-b border-[#f0b429]/20 pb-4">
           <button
             onClick={() => toggleSection('price')}
-            className="w-full flex items-center justify-between py-2 font-bold uppercase text-sm text-[#e2e2e2] hover:text-[#f0b429] transition-colors duration-200 font-sans"
+            className="w-full flex items-center justify-between py-2 font-bold uppercase text-sm text-[var(--c-text)] hover:text-[#f0b429] transition-colors duration-200 font-sans"
           >
             <span>Price Range</span>
             <ExpandMore
@@ -222,7 +222,7 @@ export const FilterSidebar = ({ filters, onFilterChange, availableCategories, av
                   className={`w-full text-left px-3 py-2 text-sm uppercase transition-[background-color,color] duration-200 border font-sans ${
                     filters.priceRange[0] === range.min && filters.priceRange[1] === range.max
                       ? 'bg-[#f0b429] text-[#1a1b2a] border-[#f0b429]'
-                      : 'bg-transparent text-[#e2e2e2]/70 border-[#f0b429]/20 hover:border-[#f0b429]/60 hover:text-[#f0b429]'
+                      : 'bg-transparent text-[var(--c-text)]/70 border-[#f0b429]/20 hover:border-[#f0b429]/60 hover:text-[#f0b429]'
                   }`}
                 >
                   {range.label}
@@ -244,7 +244,7 @@ export const FilterSidebar = ({ filters, onFilterChange, availableCategories, av
                 priceRange: [0, 99999],
               });
             }}
-            className="w-full py-3 bg-transparent text-[#e2e2e2]/60 border border-[#f0b429]/30 font-bold uppercase text-sm hover:bg-[#f0b429] hover:text-[#1a1b2a] hover:border-[#f0b429] transition-[background-color,color,border-color] duration-200 font-sans"
+            className="w-full py-3 bg-transparent text-[var(--c-text)]/60 border border-[#f0b429]/30 font-bold uppercase text-sm hover:bg-[#f0b429] hover:text-[#1a1b2a] hover:border-[#f0b429] transition-[background-color,color,border-color] duration-200 font-sans"
           >
             Clear All Filters
           </button>

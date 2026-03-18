@@ -1,6 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
+:root {
+  --c-bg: #1a1b2a;
+  --c-surface: #13141f;
+  --c-deep: #0f1018;
+  --c-text: #e2e2e2;
+}
+
+html.light {
+  --c-bg: #f5f4ef;
+  --c-surface: #eeeeee;
+  --c-deep: #ece9e2;
+  --c-text: #1a1b2a;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -13,8 +27,8 @@ html {
 body {
   margin: 0;
   padding: 0;
-  background-color: #1a1b2a;
-  color: #e2e2e2;
+  background-color: var(--c-bg);
+  color: var(--c-text);
   font-family: Inter, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

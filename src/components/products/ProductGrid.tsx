@@ -56,13 +56,13 @@ export const ProductGrid = ({ products, onProductClick }: ProductGridProps) => {
   };
 
   return (
-    <section id="products" className="bg-[#1a1b2a] py-16">
+    <section id="products" className="bg-[var(--c-bg)] py-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-4xl sm:text-5xl uppercase text-[#f0b429] mb-4">
             Our Products
           </h2>
-          <p className="text-[#e2e2e2]/60 max-w-2xl mx-auto font-sans">
+          <p className="text-[var(--c-text)]/60 max-w-2xl mx-auto font-sans">
             Scenarios, campaigns, counters, and boards crafted for serious tactical gamers
           </p>
         </div>
@@ -81,12 +81,12 @@ export const ProductGrid = ({ products, onProductClick }: ProductGridProps) => {
           <div className="flex-1">
             {filteredProducts.length === 0 ? (
               <div className="text-center py-20">
-                <p className="text-xl font-bold text-[#e2e2e2] mb-2">No products found</p>
-                <p className="text-[#e2e2e2]/50 font-sans">Try adjusting your filters</p>
+                <p className="text-xl font-bold text-[var(--c-text)] mb-2">No products found</p>
+                <p className="text-[var(--c-text)]/50 font-sans">Try adjusting your filters</p>
               </div>
             ) : (
               <>
-                <p className="text-sm text-[#e2e2e2]/40 mb-6 font-sans">
+                <p className="text-sm text-[var(--c-text)]/40 mb-6 font-sans">
                   Showing {filteredProducts.length} of {products.length} products
                 </p>
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">

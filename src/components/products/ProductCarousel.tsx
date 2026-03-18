@@ -32,7 +32,7 @@ export const ProductCarousel = ({ products, onProductClick }: ProductCarouselPro
   const currentProduct = products[currentIndex];
 
   return (
-    <section className="relative bg-[#13141f] text-[#e2e2e2] overflow-hidden border-y border-[#f0b429]/20">
+    <section className="relative bg-[var(--c-surface)] text-[var(--c-text)] overflow-hidden border-y border-[#f0b429]/20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Left - Product Info */}
@@ -43,11 +43,11 @@ export const ProductCarousel = ({ products, onProductClick }: ProductCarouselPro
             <h2 className="text-4xl sm:text-5xl lg:text-6xl uppercase leading-tight text-[#f0b429]">
               {currentProduct.name}
             </h2>
-            <p className="text-base text-[#e2e2e2]/70 leading-relaxed max-w-lg font-sans">
+            <p className="text-base text-[var(--c-text)]/70 leading-relaxed max-w-lg font-sans">
               {currentProduct.description}
             </p>
             <div className="flex items-center gap-6">
-              <p className="text-3xl font-black text-[#e2e2e2] font-sans">{formatPrice(currentProduct.price)}</p>
+              <p className="text-3xl font-black text-[var(--c-text)] font-sans">{formatPrice(currentProduct.price)}</p>
               <button
                 onClick={() => onProductClick(currentProduct)}
                 className="px-8 py-4 bg-[#f0b429] text-[#1a1b2a] font-bold uppercase tracking-wider hover:bg-[#f0b429]/80 transition-[background-color] duration-200 border-2 border-[#f0b429]"
@@ -64,7 +64,7 @@ export const ProductCarousel = ({ products, onProductClick }: ProductCarouselPro
               alt={currentProduct.name}
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#13141f]/40 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[var(--c-surface)]/40 to-transparent" />
           </div>
         </div>
 
@@ -72,7 +72,7 @@ export const ProductCarousel = ({ products, onProductClick }: ProductCarouselPro
         <div className="flex items-center justify-between mt-12">
           <button
             onClick={goToPrevious}
-            className="p-4 border border-[#f0b429]/40 text-[#e2e2e2] hover:bg-[#f0b429] hover:text-[#1a1b2a] hover:border-[#f0b429] transition-[background-color,color,border-color] duration-200"
+            className="p-4 border border-[#f0b429]/40 text-[var(--c-text)] hover:bg-[#f0b429] hover:text-[#1a1b2a] hover:border-[#f0b429] transition-[background-color,color,border-color] duration-200"
             aria-label="Previous product"
           >
             <ChevronLeft className="w-6 h-6" />
@@ -87,7 +87,7 @@ export const ProductCarousel = ({ products, onProductClick }: ProductCarouselPro
                 className={`h-2 transition-[width,background-color] duration-300 ${
                   index === currentIndex
                     ? 'bg-[#f0b429] w-8'
-                    : 'bg-[#e2e2e2]/30 w-2 hover:bg-[#e2e2e2]/60'
+                    : 'bg-[var(--c-text)]/30 w-2 hover:bg-[var(--c-text)]/60'
                 }`}
                 aria-label={`Go to product ${index + 1}`}
               />
@@ -96,7 +96,7 @@ export const ProductCarousel = ({ products, onProductClick }: ProductCarouselPro
 
           <button
             onClick={goToNext}
-            className="p-4 border border-[#f0b429]/40 text-[#e2e2e2] hover:bg-[#f0b429] hover:text-[#1a1b2a] hover:border-[#f0b429] transition-[background-color,color,border-color] duration-200"
+            className="p-4 border border-[#f0b429]/40 text-[var(--c-text)] hover:bg-[#f0b429] hover:text-[#1a1b2a] hover:border-[#f0b429] transition-[background-color,color,border-color] duration-200"
             aria-label="Next product"
           >
             <ChevronRight className="w-6 h-6" />

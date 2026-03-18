@@ -7,16 +7,16 @@ export const Hero = () => {
       style={{ backgroundImage: `url(${heroBg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
     >
       {/* Dark overlay */}
-      <div className="absolute inset-0 bg-[#1a1b2a]/80" />
-      {/* Gold vignette at bottom */}
-      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#1a1b2a] to-transparent" />
+      <div className="absolute inset-0 bg-black/60" />
+      {/* Vignette at bottom — only in dark mode */}
+      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/60 to-transparent" />
 
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
         <h1 className="text-5xl sm:text-6xl lg:text-8xl uppercase leading-none text-[#f0b429]">
           Bounding Fire Productions
         </h1>
 
-        <p className="text-lg sm:text-xl text-[#e2e2e2]/80 max-w-2xl mx-auto leading-relaxed font-sans">
+        <p className="text-lg sm:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed font-sans">
           Premium tactical gaming modules, counters, and boards designed for the
           ultimate war game experience
         </p>
@@ -30,7 +30,7 @@ export const Hero = () => {
           </a>
           <a
             href="#about"
-            className="px-10 py-4 bg-transparent text-[#e2e2e2] font-black uppercase tracking-wider hover:bg-[#f0b429] hover:text-[#1a1b2a] hover:border-[#f0b429] transition-[background-color,color,border-color] duration-200 border-2 border-[#e2e2e2]/40"
+            className="px-10 py-4 bg-transparent text-white font-black uppercase tracking-wider hover:bg-[#f0b429] hover:text-[#1a1b2a] hover:border-[#f0b429] transition-[background-color,color,border-color] duration-200 border-2 border-white/40"
           >
             Learn More
           </a>

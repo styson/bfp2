@@ -21,13 +21,13 @@ export const CartDrawer = () => {
       />
 
       {/* Drawer */}
-      <div className="fixed top-0 right-0 h-full w-full sm:w-[450px] bg-[#13141f] border-l border-[#f0b429]/20 shadow-2xl z-50 flex flex-col animate-slide-in">
+      <div className="fixed top-0 right-0 h-full w-full sm:w-[450px] bg-[var(--c-surface)] border-l border-[#f0b429]/20 shadow-2xl z-50 flex flex-col animate-slide-in">
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b border-[#f0b429]/20">
           <h2 className="text-2xl uppercase text-[#f0b429]">Your Cart</h2>
           <button
             onClick={toggleCart}
-            className="p-2 border border-[#f0b429]/30 text-[#e2e2e2] hover:bg-[#f0b429] hover:text-[#1a1b2a] hover:border-[#f0b429] transition-[background-color,color,border-color] duration-200"
+            className="p-2 border border-[#f0b429]/30 text-[var(--c-text)] hover:bg-[#f0b429] hover:text-[#1a1b2a] hover:border-[#f0b429] transition-[background-color,color,border-color] duration-200"
             aria-label="Close cart"
           >
             <Close />
@@ -38,8 +38,8 @@ export const CartDrawer = () => {
         <div className="flex-1 overflow-y-auto p-6 space-y-4">
           {items.length === 0 ? (
             <div className="flex flex-col items-center justify-center h-full text-center">
-              <p className="text-xl font-bold text-[#e2e2e2] mb-2">Your cart is empty</p>
-              <p className="text-[#e2e2e2]/40 font-sans">Add some products to get started</p>
+              <p className="text-xl font-bold text-[var(--c-text)] mb-2">Your cart is empty</p>
+              <p className="text-[var(--c-text)]/40 font-sans">Add some products to get started</p>
             </div>
           ) : (
             items.map((item) => (
@@ -48,7 +48,7 @@ export const CartDrawer = () => {
                 <img
                   src={item.image}
                   alt={item.name}
-                  className="w-20 h-20 object-cover bg-[#0f1018]"
+                  className="w-20 h-20 object-cover bg-[var(--c-deep)]"
                 />
 
                 {/* Product Details */}
@@ -57,21 +57,21 @@ export const CartDrawer = () => {
                   <p className="text-xs text-[#5bc9e8] uppercase mt-1 font-sans">
                     {item.shippingType} shipping
                   </p>
-                  <p className="font-bold mt-2 text-[#e2e2e2] font-sans">{formatPrice(item.price)}</p>
+                  <p className="font-bold mt-2 text-[var(--c-text)] font-sans">{formatPrice(item.price)}</p>
 
                   {/* Quantity Controls */}
                   <div className="flex items-center gap-2 mt-2">
                     <button
                       onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                      className="p-1 border border-[#f0b429]/30 text-[#e2e2e2] hover:bg-[#f0b429] hover:text-[#1a1b2a] hover:border-[#f0b429] transition-[background-color,color,border-color] duration-200"
+                      className="p-1 border border-[#f0b429]/30 text-[var(--c-text)] hover:bg-[#f0b429] hover:text-[#1a1b2a] hover:border-[#f0b429] transition-[background-color,color,border-color] duration-200"
                       aria-label="Decrease quantity"
                     >
                       <Remove fontSize="small" />
                     </button>
-                    <span className="font-bold w-8 text-center text-[#e2e2e2] font-sans">{item.quantity}</span>
+                    <span className="font-bold w-8 text-center text-[var(--c-text)] font-sans">{item.quantity}</span>
                     <button
                       onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                      className="p-1 border border-[#f0b429]/30 text-[#e2e2e2] hover:bg-[#f0b429] hover:text-[#1a1b2a] hover:border-[#f0b429] transition-[background-color,color,border-color] duration-200"
+                      className="p-1 border border-[#f0b429]/30 text-[var(--c-text)] hover:bg-[#f0b429] hover:text-[#1a1b2a] hover:border-[#f0b429] transition-[background-color,color,border-color] duration-200"
                       aria-label="Increase quantity"
                     >
                       <Add fontSize="small" />
@@ -82,7 +82,7 @@ export const CartDrawer = () => {
                 {/* Remove Button */}
                 <button
                   onClick={() => removeItem(item.id)}
-                  className="p-2 text-[#e2e2e2]/30 hover:text-red-400 transition-colors duration-200"
+                  className="p-2 text-[var(--c-text)]/30 hover:text-red-400 transition-colors duration-200"
                   aria-label="Remove item"
                 >
                   <Delete />
@@ -95,7 +95,7 @@ export const CartDrawer = () => {
         {/* Footer - Subtotal and Checkout */}
         {items.length > 0 && (
           <div className="border-t border-[#f0b429]/20 p-6 space-y-4 overflow-y-auto max-h-[60vh]">
-            <div className="flex items-center justify-between text-xl font-black uppercase text-[#e2e2e2] font-sans">
+            <div className="flex items-center justify-between text-xl font-black uppercase text-[var(--c-text)] font-sans">
               <span>Subtotal:</span>
               <span className="text-[#f0b429]">{formatPrice(subtotal)}</span>
             </div>
@@ -168,7 +168,7 @@ export const CartDrawer = () => {
               />
             </PayPalScriptProvider>
 
-            <p className="text-xs text-[#e2e2e2]/30 text-center font-sans">
+            <p className="text-xs text-[var(--c-text)]/30 text-center font-sans">
               Secure checkout powered by PayPal
             </p>
           </div>

@@ -35,19 +35,19 @@ function DownloadLink({ item }: { item: Download }) {
     <a
       href={BASE + item.page}
       download
-      className="group flex items-start gap-2 py-2 px-3 bg-[#0f1018] border border-[#f0b429]/10 hover:border-[#f0b429]/40 transition-[border-color] duration-200"
+      className="group flex items-start gap-2 py-2 px-3 bg-[var(--c-deep)] border border-[#f0b429]/10 hover:border-[#f0b429]/40 transition-[border-color] duration-200"
     >
       <FileDownload
         fontSize="small"
         className="text-[#f0b429]/50 group-hover:text-[#f0b429] transition-colors duration-200 mt-0.5 shrink-0"
       />
       <div className="min-w-0 flex-1">
-        <p className="text-[#e2e2e2]/80 group-hover:text-[#e2e2e2] text-sm font-sans transition-colors duration-200 leading-snug">
+        <p className="text-[var(--c-text)]/80 group-hover:text-[var(--c-text)] text-sm font-sans transition-colors duration-200 leading-snug">
           {item.name}
         </p>
         {item.description && (
           <div
-            className="text-[#e2e2e2]/40 text-xs font-sans mt-0.5 leading-snug [&_p]:mb-0 [&_br]:hidden"
+            className="text-[var(--c-text)]/40 text-xs font-sans mt-0.5 leading-snug [&_p]:mb-0 [&_br]:hidden"
             dangerouslySetInnerHTML={{ __html: item.description }}
           />
         )}
@@ -62,10 +62,10 @@ function DownloadLink({ item }: { item: Download }) {
 function VaslBoardsSection({ items }: { items: Download[] }) {
   return (
     <div className="mb-14">
-      <h3 className="text-2xl uppercase text-[#e2e2e2] mb-2 pb-2 border-b border-[#f0b429]/20">
+      <h3 className="text-2xl uppercase text-[var(--c-text)] mb-2 pb-2 border-b border-[#f0b429]/20">
         VASL Board Downloads
       </h3>
-      <p className="text-sm text-[#e2e2e2]/40 font-sans mb-6">
+      <p className="text-sm text-[var(--c-text)]/40 font-sans mb-6">
         Board files for use with VASL (Virtual Advanced Squad Leader)
       </p>
       <div className="space-y-6">
@@ -74,7 +74,7 @@ function VaslBoardsSection({ items }: { items: Download[] }) {
           if (activeFiles.length === 0) return null;
           return (
             <div key={product.name}>
-              <p className="text-lg uppercase tracking-widest text-[#e2e2e2]/90 font-sans mb-2">
+              <p className="text-lg uppercase tracking-widest text-[var(--c-text)]/90 font-sans mb-2">
                 {product.name}
               </p>
               <div className="flex flex-wrap gap-2">
@@ -83,13 +83,13 @@ function VaslBoardsSection({ items }: { items: Download[] }) {
                     key={file.name}
                     href={BASE + file.page}
                     download
-                    className="group flex items-center gap-1.5 px-3 py-1.5 bg-[#0f1018] border border-[#f0b429]/10 hover:border-[#f0b429]/40 transition-[border-color] duration-200"
+                    className="group flex items-center gap-1.5 px-3 py-1.5 bg-[var(--c-deep)] border border-[#f0b429]/10 hover:border-[#f0b429]/40 transition-[border-color] duration-200"
                   >
                     <FileDownload
                       fontSize="small"
                       className="text-[#f0b429]/40 group-hover:text-[#f0b429] transition-colors duration-200"
                     />
-                    <span className="text-sm text-[#e2e2e2]/90 group-hover:text-[#e2e2e2] font-sans transition-colors duration-200">
+                    <span className="text-sm text-[var(--c-text)]/90 group-hover:text-[var(--c-text)] font-sans transition-colors duration-200">
                       {file.name}
                     </span>
                     {file.page && <ExtBadge page={file.page} />}
@@ -118,7 +118,7 @@ function GroupSection({ item }: { item: Download }) {
 
   return (
     <div className="mb-10">
-      <h3 className="text-2xl uppercase text-[#e2e2e2] mb-6 pb-2 border-b border-[#f0b429]/20">
+      <h3 className="text-2xl uppercase text-[var(--c-text)] mb-6 pb-2 border-b border-[#f0b429]/20">
         {LABEL[item.group ?? ''] ?? item.name}
       </h3>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -138,11 +138,11 @@ export const DownloadsSection = () => {
   const flat         = downloads.filter((d) => !d.files?.length && !!d.page);
 
   return (
-    <section id="downloads" className="bg-[#1a1b2a] py-16 border-t border-[#f0b429]/20">
+    <section id="downloads" className="bg-[var(--c-bg)] py-16 border-t border-[#f0b429]/20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-4xl sm:text-5xl uppercase text-[#f0b429] mb-4">Downloads</h2>
-          <p className="text-[#e2e2e2]/60 max-w-2xl mx-auto font-sans">
+          <p className="text-[var(--c-text)]/60 max-w-2xl mx-auto font-sans">
             Rules, errata, VASL boards, overlays, and additional resources for all BFP products
           </p>
         </div>
@@ -158,7 +158,7 @@ export const DownloadsSection = () => {
         {/* Flat / individual files */}
         {flat.length > 0 && (
           <div>
-            <h3 className="text-2xl uppercase text-[#e2e2e2] mb-6 pb-2 border-b border-[#f0b429]/20">
+            <h3 className="text-2xl uppercase text-[var(--c-text)] mb-6 pb-2 border-b border-[#f0b429]/20">
               Rules &amp; Errata
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">

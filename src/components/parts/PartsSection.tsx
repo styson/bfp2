@@ -29,14 +29,14 @@ function Lightbox({ src, src2, title, onClose }: { src: string; src2?: string; t
       <div className='relative max-w-5xl w-full flex flex-col items-center gap-1' onClick={(e) => e.stopPropagation()}>
         <button
           onClick={onClose}
-          className='absolute -top-10 right-0 text-[#e2e2e2]/60 hover:text-[#f0b429] transition-colors duration-200'
+          className='absolute -top-10 right-0 text-[var(--c-text)]/60 hover:text-[#f0b429] transition-colors duration-200'
           aria-label='Close'
         >
           <Close />
         </button>
         <img src={src} alt={title} className='max-w-full' style={{ imageRendering: 'crisp-edges' }} />
         {src2 && <img src={src2} alt={`${title} (B)`} className='max-w-full' style={{ imageRendering: 'crisp-edges' }} />}
-        {title && <p className='mt-3 text-md uppercase tracking-widest text-[#e2e2e2]/80 font-sans'>{title}</p>}
+        {title && <p className='mt-3 text-md uppercase tracking-widest text-[var(--c-text)]/80 font-sans'>{title}</p>}
       </div>
     </div>
   );
@@ -72,10 +72,10 @@ function BoardCard({ part, onImageClick }: { part: Part; onImageClick: (src: str
   };
 
   return (
-    <div className='bg-[#13141f] border border-[#f0b429]/10 hover:border-[#f0b429]/40 transition-[border-color] duration-200 flex flex-col'>
+    <div className='bg-[var(--c-surface)] border border-[#f0b429]/10 hover:border-[#f0b429]/40 transition-[border-color] duration-200 flex flex-col'>
       {part.image && (
         <div
-          className='bg-[#0f1018] overflow-hidden relative group cursor-zoom-in'
+          className='bg-[var(--c-deep)] overflow-hidden relative group cursor-zoom-in'
           onClick={() => onImageClick(part.image!, part.name, part.image2)}
         >
           <img
@@ -99,10 +99,10 @@ function BoardCard({ part, onImageClick }: { part: Part; onImageClick: (src: str
       <div className='p-3 flex flex-col gap-2 flex-1 justify-between'>
         <p className='text-[#f0b429] uppercase text-sm font-bold leading-tight'>{part.name}</p>
         {soldOut ? (
-          <span className='text-xs font-bold uppercase tracking-wider text-[#e2e2e2]/30 font-sans'>Sold Out</span>
+          <span className='text-xs font-bold uppercase tracking-wider text-[var(--c-text)]/30 font-sans'>Sold Out</span>
         ) : (
           <div className='flex items-center justify-between gap-2'>
-            <span className='text-[#e2e2e2] font-black text-base font-sans'>{formatPrice(part.price)}</span>
+            <span className='text-[var(--c-text)] font-black text-base font-sans'>{formatPrice(part.price)}</span>
             <button
               onClick={handleAdd}
               className={`p-2 transition-[background-color] duration-200 ${added ? 'bg-green-500 text-white' : 'bg-[#f0b429] text-[#1a1b2a] hover:bg-[#f0b429]/80'}`}
@@ -135,18 +135,18 @@ function CounterCard({ part }: { part: Part }) {
   };
 
   return (
-    <div className='bg-[#13141f] border border-[#f0b429]/10 hover:border-[#f0b429]/40 transition-[border-color] duration-200 p-4 flex flex-col gap-3'>
+    <div className='bg-[var(--c-surface)] border border-[#f0b429]/10 hover:border-[#f0b429]/40 transition-[border-color] duration-200 p-4 flex flex-col gap-3'>
       <p className='text-[#f0b429] uppercase text-sm font-bold leading-tight'>{part.name}</p>
       <div className='flex flex-col gap-2'>
         {part.prices.map((tier, i) => (
           <label key={tier.type} className='flex items-center justify-between cursor-pointer group'>
             <span
-              className={`text-sm uppercase font-sans transition-colors duration-200 ${i === selectedIdx ? 'text-[#f0b429]' : 'text-[#e2e2e2]/50 group-hover:text-[#e2e2e2]/80'}`}
+              className={`text-sm uppercase font-sans transition-colors duration-200 ${i === selectedIdx ? 'text-[#f0b429]' : 'text-[var(--c-text)]/50 group-hover:text-[var(--c-text)]/80'}`}
             >
               {tier.type}
             </span>
             <span className='flex items-center gap-2'>
-              <span className={`text-sm font-black font-sans ${i === selectedIdx ? 'text-[#e2e2e2]' : 'text-[#e2e2e2]/40'}`}>
+              <span className={`text-sm font-black font-sans ${i === selectedIdx ? 'text-[var(--c-text)]' : 'text-[var(--c-text)]/40'}`}>
                 {formatPrice(tier.price)}
               </span>
               <input
@@ -186,10 +186,10 @@ function HaslCard({ part, onImageClick }: { part: Part; onImageClick: (src: stri
   };
 
   return (
-    <div className='bg-[#13141f] border border-[#f0b429]/10 hover:border-[#f0b429]/40 transition-[border-color] duration-200 flex flex-col'>
+    <div className='bg-[var(--c-surface)] border border-[#f0b429]/10 hover:border-[#f0b429]/40 transition-[border-color] duration-200 flex flex-col'>
       {part.image && (
         <div
-          className='bg-[#0f1018] overflow-hidden relative group cursor-zoom-in'
+          className='bg-[var(--c-deep)] overflow-hidden relative group cursor-zoom-in'
           onClick={() => onImageClick(part.image!, part.name)}
         >
           <img
@@ -205,7 +205,7 @@ function HaslCard({ part, onImageClick }: { part: Part; onImageClick: (src: stri
       <div className='p-3 flex flex-col gap-2 flex-1 justify-between'>
         <p className='text-[#f0b429] uppercase text-sm font-bold leading-tight'>{part.name}</p>
         <div className='flex items-center justify-between gap-2'>
-          <span className='text-[#e2e2e2] font-black text-base font-sans'>{formatPrice(part.price)}</span>
+          <span className='text-[var(--c-text)] font-black text-base font-sans'>{formatPrice(part.price)}</span>
           <button
             onClick={handleAdd}
             className={`p-2 transition-[background-color] duration-200 ${added ? 'bg-green-500 text-white' : 'bg-[#f0b429] text-[#1a1b2a] hover:bg-[#f0b429]/80'}`}
@@ -231,7 +231,7 @@ export const PartsSection = () => {
   const closeLightbox = useCallback(() => setLightbox(null), []);
 
   return (
-    <section id='parts' className='bg-[#13141f] py-16 border-t border-[#f0b429]/20'>
+    <section id='parts' className='bg-[var(--c-surface)] py-16 border-t border-[#f0b429]/20'>
       {lightbox && <Lightbox src={lightbox.src} src2={lightbox.src2} title={lightbox.title} onClose={closeLightbox} />}
       <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
         <div className='header mb-12'>
@@ -240,7 +240,7 @@ export const PartsSection = () => {
             <div className='lg:col-span-2 text-center flex items-center'>
               <div className='mx-50'>
                 <h2 className='text-4xl sm:text-5xl uppercase text-[#f0b429] mb-4'>Parts & Add-ons</h2>
-                <p className='text-[#e2e2e2]/60 font-sans'>
+                <p className='text-[var(--c-text)]/60 font-sans'>
                   Individual boards, replacement counters, and HASL map sheets available separately
                 </p>
               </div>
@@ -262,14 +262,14 @@ export const PartsSection = () => {
 
         {/* Boards */}
         <div className='mb-14'>
-          <h3 className='text-2xl uppercase text-[#e2e2e2] mb-6 pb-2 border-b border-[#f0b429]/20'>Individual Boards</h3>
+          <h3 className='text-2xl uppercase text-[var(--c-text)] mb-6 pb-2 border-b border-[#f0b429]/20'>Individual Boards</h3>
           <div className='space-y-8'>
             {boardGroups.map((group) => {
               const activeBoards = group.files ?? [];
               if (activeBoards.length === 0) return null;
               return (
                 <div key={group.group ?? group.name}>
-                  <p className='text-sm uppercase tracking-widest text-[#e2e2e2]/40 font-sans mb-3'>{group.name}</p>
+                  <p className='text-sm uppercase tracking-widest text-[var(--c-text)]/40 font-sans mb-3'>{group.name}</p>
                   <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3'>
                     {activeBoards.map((board) => (
                       <BoardCard key={board.paypalKey} part={board} onImageClick={openLightbox} />
@@ -283,7 +283,7 @@ export const PartsSection = () => {
 
         {/* Counters */}
         <div className='mb-14'>
-          <h3 className='text-2xl uppercase text-[#e2e2e2] mb-6 pb-2 border-b border-[#f0b429]/20'>Replacement Counters</h3>
+          <h3 className='text-2xl uppercase text-[var(--c-text)] mb-6 pb-2 border-b border-[#f0b429]/20'>Replacement Counters</h3>
           <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
             {counters.map((part) => (
               <CounterCard key={part.paypalKey} part={part} />
@@ -293,7 +293,7 @@ export const PartsSection = () => {
 
         {/* HASL Maps */}
         <div>
-          <h3 className='text-2xl uppercase text-[#e2e2e2] mb-6 pb-2 border-b border-[#f0b429]/20'>HASL Map Sheets</h3>
+          <h3 className='text-2xl uppercase text-[var(--c-text)] mb-6 pb-2 border-b border-[#f0b429]/20'>HASL Map Sheets</h3>
           <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3'>
             {haslMaps.map((part) => (
               <HaslCard key={part.paypalKey} part={part} onImageClick={openLightbox} />

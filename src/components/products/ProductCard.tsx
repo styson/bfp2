@@ -25,13 +25,13 @@ export const ProductCard = ({ product, onQuickAdd, onClick }: ProductCardProps) 
 
   return (
     <div
-      className="group relative bg-[#13141f] cursor-pointer hover-lift border border-[#f0b429]/10 hover:border-[#f0b429]/40 transition-[border-color] duration-200"
+      className="group relative bg-[var(--c-surface)] cursor-pointer hover-lift border border-[#f0b429]/10 hover:border-[#f0b429]/40 transition-[border-color] duration-200"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={() => onClick(product)}
     >
       {/* Image Container */}
-      <div className="relative aspect-[7/9] overflow-hidden bg-[#0f1018]">
+      <div className="relative aspect-[7/9] overflow-hidden bg-[var(--c-deep)]">
         <img
           src={product.image}
           alt={product.name}
@@ -62,10 +62,10 @@ export const ProductCard = ({ product, onQuickAdd, onClick }: ProductCardProps) 
         <h3 className="text-[#f0b429] uppercase text-[30px] line-clamp-2 min-h-[4rem] leading-tight">
           {product.name}
         </h3>
-        <p className="text-base text-[#e2e2e2]/50 uppercase font-sans">{product.category}</p>
-        <p className="text-2xl font-black text-[#e2e2e2] font-sans">{formatPrice(product.price)}</p>
+        <p className="text-base text-[var(--c-text)]/50 uppercase font-sans">{product.category}</p>
+        <p className="text-2xl font-black text-[var(--c-text)] font-sans">{formatPrice(product.price)}</p>
         {product.intPrice && (
-          <p className="text-sm text-[#e2e2e2]/60 font-sans">{formatPrice(product.intPrice)} intl.</p>
+          <p className="text-sm text-[var(--c-text)]/60 font-sans">{formatPrice(product.intPrice)} intl.</p>
         )}
       </div>
     </div>
