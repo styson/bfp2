@@ -107,6 +107,7 @@ import mini7 from '../images/boards/miniBFPDW7.jpg';
 // overlays
 import oRC1 from '../images/boards/bdBFPoC1.jpg';
 import oF1 from '../images/boards/bdBFPoF1.gif';
+import miniBFPoRC1 from '../images/boards/miniBFPoRC1.png';
 import miniRC1 from '../images/boards/miniBFPoC1.jpg';
 import miniF1 from '../images/boards/miniBFPoF1.png';
 
@@ -143,4 +144,4 @@ export { bdA, bdB, bdC, bdD, bdE, bdF, bdG, bdH, bdI, bdJ, bdK, bdL, bdM, bdN, b
 export { bitterest, corregidor, neptune, orsha, schmidt1, schmidt2, schmidt3, schmidt4, voss1, voss2 };
 export { bd_b, bj_b, btb_b, cos_b, ctr_b, hg_b, itr_b, mc_b, oc_b, on_b, os_b, oto_b, pif_b };
 export { miniA, miniB, miniH, miniI, miniJ, miniK, mini1, mini7 };
-export { oRC1, miniRC1, oF1, miniF1, bdBF1, bdBF2, miniBF1 };
+export { oRC1, miniBFPoRC1, miniRC1, oF1, miniF1, bdBF1, bdBF2, miniBF1 };

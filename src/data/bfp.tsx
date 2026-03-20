@@ -30,6 +30,7 @@ import {
   miniBF1,
   // oRC1,
   miniRC1,
+  miniBFPoRC1,
   // oF1,
   miniF1,
   itr,
@@ -815,7 +816,7 @@ export const products: Product[] = [
           <li>88 Full color, die cut &frac58;" counters</li>
           <li>Two 8"x22" geomorphic mapboards (BFP A and B) printed on heavy card stock, depicting city and railroad yard terrain. BFP B contains an errata update from the original ITR board<br /><img src="${miniA}" style="margin:.5em;" /><img src="${miniB}" style="margin:.5em;" /></li>
           <li>One 16"x22" geomorphic double-wide mapboard (BFP DW&#8209;7) printed on heavy card stock, depicting dense city terrain<br /><img src="${mini7}" style="margin:.5em;" /></li>
-          <li>One 8"x12" rubbled city overlay (BFP RC&#8209;1), 1 large factory overlay, 1 sheet of debris overlays, and 1 sheet of rubble/rubbled building overlays <img src="${miniRC1}" style="margin:.5em;" /><img src="${miniF1}" style="margin:.5em;height:100px;" /></li>
+          <li>One 8"x12" rubbled city overlay (BFP RC&#8209;1), 1 large factory overlay, 1 sheet of debris overlays, and 1 sheet of rubble/rubbled building overlays <img src="${miniBFPoRC1}" style="margin:.5em;" /><img src="${miniF1}" style="margin:.5em;height:100px;" /></li>
           <li>Rules pages describing new terrain, including Railroad Factories, and new unit types.</li>
         </ul>
       </p>
