@@ -61,6 +61,15 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
 
   useEffect(() => { setShowBack(false); }, [product?.id]);
 
+  useEffect(() => {
+    if (!isOpen) return;
+    const isMobile = window.matchMedia('(pointer: coarse)').matches;
+    if (isMobile) return;
+    const handler = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
+    window.addEventListener('keydown', handler);
+    return () => window.removeEventListener('keydown', handler);
+  }, [isOpen, onClose]);
+
   if (!isOpen || !product) return null;
 
   const isNew = isNewArrival(product.releaseDate);
