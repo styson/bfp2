@@ -15,7 +15,8 @@ export interface Product {
   scenarios?: Scenario[];
   price: number;
   intPrice?: number;
-  image: string;
+  imageF: string;
+  imageB: string;
   category: string;
   paypalItemCode: string;
   releaseDate: string;

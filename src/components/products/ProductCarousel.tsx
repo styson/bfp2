@@ -60,7 +60,7 @@ export const ProductCarousel = ({ products, onProductClick }: ProductCarouselPro
           {/* Right - Product Image */}
           <div className="relative aspect-[3/4]">
             <img
-              src={currentProduct.image}
+              src={currentProduct.imageF}
               alt={currentProduct.name}
               className="w-full h-full object-cover"
             />

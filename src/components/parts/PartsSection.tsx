@@ -48,7 +48,7 @@ function partToProduct(part: Part, price: number, label: string): Product {
     name: part.name + (label ? ` (${label})` : ''),
     description: '',
     price,
-    image: part.image ?? '',
+    imageF: part.image ?? '',
     category: 'Parts',
     paypalItemCode: part.paypalKey ?? '',
     releaseDate: '2024-01-01',

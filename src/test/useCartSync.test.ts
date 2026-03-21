@@ -22,7 +22,7 @@ const { useCartSync } = await import('../hooks/useCartSync')
 const mockUser = { id: 'user-123', email: 'test@example.com', user_metadata: {} } as unknown as User
 
 const makeCartItem = (id: string, qty: number, shipping: 'domestic' | 'international' = 'domestic'): CartItem => ({
-  id, name: `Product ${id}`, description: '', price: 10, image: '', category: 'boards',
+  id, name: `Product ${id}`, description: '', price: 10, imageF: '', category: 'boards',
   paypalItemCode: id, releaseDate: '2024-01-01', inStock: true,
   quantity: qty, shippingType: shipping,
 })

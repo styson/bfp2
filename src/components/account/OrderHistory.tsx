@@ -87,7 +87,7 @@ export const OrderHistory = () => {
             {(order.items ?? []).map((item, i) => (
               <div key={i} className="flex items-center gap-3">
                 <img
-                  src={item.image}
+                  src={item.imageF}
                   alt={item.name}
                   className="w-10 h-10 object-cover bg-[var(--c-deep)] flex-shrink-0"
                 />

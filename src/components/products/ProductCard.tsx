@@ -33,7 +33,7 @@ export const ProductCard = ({ product, onQuickAdd, onClick }: ProductCardProps) 
       {/* Image Container */}
       <div className="relative aspect-[7/9] overflow-hidden bg-[var(--c-deep)]">
         <img
-          src={product.image}
+          src={product.imageF}
           alt={product.name}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
         />

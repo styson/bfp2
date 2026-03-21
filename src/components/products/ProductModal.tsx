@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Close, Add, Remove } from '@mui/icons-material';
 import type { Product, Scenario } from '../../types';
 import { formatPrice, isNewArrival } from '../../utils/dateHelpers';
@@ -56,7 +56,10 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
   const [quantity, setQuantity] = useState(1);
   const [shippingType, setShippingType] = useState<'domestic' | 'international'>('domestic');
   const [activeTab, setActiveTab] = useState<Tab>('details');
+  const [showBack, setShowBack] = useState(false);
   const { addItem } = useCartStore();
+
+  useEffect(() => { setShowBack(false); }, [product?.id]);
 
   if (!isOpen || !product) return null;
 
@@ -83,30 +86,41 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
         onClick={onClose}
       >
         <div
-          className="relative bg-[var(--c-surface)] border border-[#f0b429]/20 max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+          className="relative bg-[var(--c-surface)] border border-[#f0b429]/20 max-w-4xl w-full max-h-[90vh] flex flex-col"
           onClick={(e) => e.stopPropagation()}
         >
-          {/* Close Button */}
-          <button
-            onClick={onClose}
-            className="absolute top-4 right-4 p-2 text-[var(--c-text)] border border-[#f0b429]/30 hover:bg-[#f0b429] hover:text-[#1a1b2a] hover:border-[#f0b429] transition-[background-color,color,border-color] duration-200 z-10"
-            aria-label="Close modal"
-          >
-            <Close />
-          </button>
+          {/* Sticky header with close button */}
+          <div className="shrink-0 flex justify-end p-3 border-b border-[#f0b429]/10">
+            <button
+              onClick={onClose}
+              className="p-2 text-[var(--c-text)] border border-[#f0b429]/30 hover:bg-[#f0b429] hover:text-[#1a1b2a] hover:border-[#f0b429] transition-[background-color,color,border-color] duration-200"
+              aria-label="Close modal"
+            >
+              <Close />
+            </button>
+          </div>
 
+          <div className="overflow-y-auto flex-1">
           <div className="grid md:grid-cols-2 gap-8 p-8">
             {/* Left — Image */}
-            <div className="relative">
-              <img
-                src={product.image}
-                alt={product.name}
-                className="w-full h-auto bg-[var(--c-deep)]"
-              />
-              {isNew && (
-                <div className="absolute top-4 left-4 bg-[#f0b429] text-[#1a1b2a] px-4 py-2 text-sm font-bold uppercase tracking-wider font-sans">
-                  New Arrival
-                </div>
+            <div>
+              <div className="relative">
+                <img
+                  src={showBack && product.imageB ? product.imageB : product.imageF}
+                  alt={product.name}
+                  className={`w-full h-auto bg-[var(--c-deep)] ${product.imageB ? 'cursor-pointer' : ''}`}
+                  onClick={() => product.imageB && setShowBack((v) => !v)}
+                />
+                {isNew && (
+                  <div className="absolute top-4 left-4 bg-[#f0b429] text-[#1a1b2a] px-4 py-2 text-sm font-bold uppercase tracking-wider font-sans">
+                    New Arrival
+                  </div>
+                )}
+              </div>
+              {product.imageB && (
+                <p className="mt-2 text-xs text-[var(--c-text)]/80 text-center font-sans">
+                  {showBack ? 'Back Cover' : 'Front Cover'} · click cover to flip
+                </p>
               )}
             </div>
 
@@ -218,6 +232,7 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
                 )}
               </div>
             </div>
+          </div>
           </div>
         </div>
       </div>

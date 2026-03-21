@@ -139,7 +139,7 @@ function StorePage() {
               Premium Gaming Products
             </p>
             <p className="text-xs text-[var(--c-text)]/25 font-sans">
-              © 2026 Bounding Fire Productions. All rights reserved.
+              © {new Date().getFullYear()} Bounding Fire Productions. All rights reserved.
             </p>
           </div>
         </div>

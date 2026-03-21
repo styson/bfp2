@@ -46,7 +46,7 @@ export const CartDrawer = () => {
               <div key={`${item.id}-${item.shippingType}`} className="flex gap-4 border-b border-[#f0b429]/10 pb-4">
                 {/* Product Image */}
                 <img
-                  src={item.image}
+                  src={item.imageF}
                   alt={item.name}
                   className="w-20 h-20 object-cover bg-[var(--c-deep)]"
                 />
