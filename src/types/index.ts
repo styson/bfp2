@@ -16,7 +16,7 @@ export interface Product {
   price: number;
   intPrice?: number;
   imageF: string;
-  imageB: string;
+  imageB?: string;
   category: string;
   paypalItemCode: string;
   releaseDate: string;
