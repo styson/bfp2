@@ -79,84 +79,83 @@ function StorePage() {
 
         {/* About Section */}
         <section id="about" className="bg-[var(--c-surface)] text-[var(--c-text)] py-20 border-t border-[#f0b429]/20">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-4 max-w-7xl">
             <h2 className="text-4xl sm:text-5xl uppercase text-[#f0b429] mb-12 text-center">
               Contact Bounding Fire Productions
             </h2>
 
-            {/* About blurb */}
-            <div className="mb-16 space-y-4 text-[var(--c-text)]/70 font-sans leading-relaxed text-base text-justify">
-              <p>
-                Bounding Fire Productions is proud to serve our customers with high quality products and dedicated customer service. In 1999, we released our first product — the Hell on Wheels pack. Since reforming in 2007, BFP has released 13 products.
-              </p>
-              <p>
-                Bounding Fire Productions continues to produce only the best, thoroughly playtested, action-packed scenarios and campaigns. Our commitment to customer service and satisfaction underlies everything we do. Bounding Fire places quality over quantity, and our track record demonstrates this. In addition to the Hell on Wheels pack, we were the design team responsible for such products as Onslaught to Orsha, the original Beyond the Beachhead, and scenarios of the year from Journals 2 and 3, just to name a few.
-              </p>
-              <p>
-                The team consists of highly renowned designer Chas Smith, Sam Tyson, Rick Reinesch, Dave "Sarge" Roth, Brian Blad, Nadir Elfarra, Brian Martuzas, and Dave Lamb. Since serving our customers is our highest priority, we strive to provide responsive communication and prompt shipping.
-              </p>
-              <p>
-                Our <a href="https://www.facebook.com/groups/boundingfire" target="_blank" rel="noopener noreferrer" className="text-[#f0b429] hover:text-[#f0b429]/70 transition-colors duration-200">Facebook group</a> provides frequent updates about current publications and future projects. The <a href="#downloads" className="text-[#f0b429] hover:text-[#f0b429]/70 transition-colors duration-200">Downloads section</a> above contains VASL map files for our various products, plus any product errata — including the errata for Hell on Wheels, just as a shout-out to the past.
-              </p>
-              <p>
-                Thank you for visiting! We hope to add you to our growing list of satisfied customers.
-              </p>
-              <p className="text-[var(--c-text)]/50 text-sm">
-                — The Team at BFP
-              </p>
-              <p className="text-[var(--c-text)]/50 text-sm">
-                P.S. Check out the{' '}
-                <a
-                  href="https://web.archive.org/web/20241210001436/http://asl-ratings.org/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[#f0b429] hover:text-[#f0b429]/70 transition-colors duration-200"
-                >
-                  ASL Player Ratings site
-                </a>{' '}
-                to see our scenarios in use!
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-              {/* Left column — Contact Us */}
-              <div id="contact" className="flex flex-col items-center md:items-start text-center md:text-left">
-                <h3 className="text-2xl uppercase text-[#f0b429] mb-4 tracking-wide">Get in Touch</h3>
-                <p className="text-lg text-[var(--c-text)]/70 leading-relaxed mb-8 font-sans">
-                  Questions about our products? Want to discuss custom orders?
-                  <br />
-                  We'd love to hear from you.
+            <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-12 items-start">
+              {/* Left column — About blurb */}
+              <div className="space-y-4 text-[var(--c-text)]/70 font-sans leading-relaxed text-base text-justify">
+                <p>
+                  Bounding Fire Productions is proud to serve our customers with high quality products and dedicated customer service. In 1999, we released our first product — the Hell on Wheels pack. Since reforming in 2007, BFP has released 13 products.
                 </p>
-                <a
-                  href="mailto:info@boundingfire.com"
-                  className="inline-flex items-center gap-3 px-10 py-4 bg-[#f0b429] text-[#1a1b2a] font-black uppercase tracking-wider hover:bg-[#f0b429]/80 transition-[background-color] duration-200 border-2 border-[#f0b429]"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <rect x="2" y="4" width="20" height="16" rx="2"/>
-                    <path d="M2 7l10 7 10-7"/>
-                  </svg>
-                  Contact Us
-                </a>
+                <p>
+                  Bounding Fire Productions continues to produce only the best, thoroughly playtested, action-packed scenarios and campaigns. Our commitment to customer service and satisfaction underlies everything we do. Bounding Fire places quality over quantity, and our track record demonstrates this. In addition to the Hell on Wheels pack, we were the design team responsible for such products as Onslaught to Orsha, the original Beyond the Beachhead, and scenarios of the year from Journals 2 and 3, just to name a few.
+                </p>
+                <p>
+                  The team consists of highly renowned designer Chas Smith, Sam Tyson, Rick Reinesch, Dave "Sarge" Roth, Brian Blad, Nadir Elfarra, Brian Martuzas, and Dave Lamb. Since serving our customers is our highest priority, we strive to provide responsive communication and prompt shipping.
+                </p>
+                <p>
+                  Our <a href="https://www.facebook.com/groups/boundingfire" target="_blank" rel="noopener noreferrer" className="text-[#f0b429] hover:text-[#f0b429]/70 transition-colors duration-200">Facebook group</a> provides frequent updates about current publications and future projects. The <a href="#downloads" className="text-[#f0b429] hover:text-[#f0b429]/70 transition-colors duration-200">Downloads section</a> above contains VASL map files for our various products, plus any product errata — including the errata for Hell on Wheels, just as a shout-out to the past.
+                </p>
+                <p>
+                  Thank you for visiting! We hope to add you to our growing list of satisfied customers.
+                </p>
+                <p className="text-[var(--c-text)]/50 text-sm">
+                  — The Team at BFP
+                </p>
+                <p className="text-[var(--c-text)]/50 text-sm">
+                  P.S. Check out the{' '}
+                  <a
+                    href="https://web.archive.org/web/20241210001436/http://asl-ratings.org/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#f0b429] hover:text-[#f0b429]/70 transition-colors duration-200"
+                  >
+                    ASL Player Ratings site
+                  </a>{' '}
+                  to see our scenarios in use!
+                </p>
               </div>
 
-              {/* Right column — Facebook */}
-              <div className="flex flex-col items-center md:items-start text-center md:text-left">
-                <h3 className="text-2xl uppercase text-[#f0b429] mb-4 tracking-wide">Join Us on Facebook</h3>
-                <p className="text-lg text-[var(--c-text)]/70 leading-relaxed mb-8 font-sans">
-                  Connect with the Bounding Fire community. Share scenarios,
-                  ask questions, and stay up to date with the latest news and releases.
-                </p>
-                <a
-                  href="https://www.facebook.com/groups/boundingfire"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-3 px-10 py-4 bg-[#1877f2] text-white font-black uppercase tracking-wider hover:bg-[#1877f2]/80 transition-[background-color] duration-200 border-2 border-[#1877f2]"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.269h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/>
-                  </svg>
-                  Visit Our Group
-                </a>
+              {/* Right column — Contact Us + Facebook stacked */}
+              <div className="flex flex-col gap-10">
+                <div id="contact" className="flex flex-col items-start">
+                  <h3 className="text-2xl uppercase text-[#f0b429] mb-4 tracking-wide">Get in Touch</h3>
+                  <p className="text-lg text-[var(--c-text)]/70 leading-relaxed mb-8 font-sans text-justify w-full">
+                    Questions about our products? Want to discuss custom orders?
+                    We'd love to hear from you.
+                  </p>
+                  <a
+                    href="mailto:info@boundingfire.com"
+                    className="inline-flex items-center gap-3 px-10 py-4 bg-[#f0b429] text-[#1a1b2a] font-black uppercase tracking-wider hover:bg-[#f0b429]/80 transition-[background-color] duration-200 border-2 border-[#f0b429]"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <rect x="2" y="4" width="20" height="16" rx="2"/>
+                      <path d="M2 7l10 7 10-7"/>
+                    </svg>
+                    Contact Us
+                  </a>
+                </div>
+
+                <div className="flex flex-col items-start">
+                  <h3 className="text-2xl uppercase text-[#f0b429] mb-4 tracking-wide">Join Us on Facebook</h3>
+                  <p className="text-lg text-[var(--c-text)]/70 leading-relaxed mb-8 font-sans text-justify w-full">
+                    Connect with the Bounding Fire community. Share scenarios, ask questions, and stay up to date with the latest news and releases.
+                  </p>
+                  <a
+                    href="https://www.facebook.com/groups/boundingfire"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-3 px-10 py-4 bg-[#1877f2] text-white font-black uppercase tracking-wider hover:bg-[#1877f2]/80 transition-[background-color] duration-200 border-2 border-[#1877f2]"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.269h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/>
+                    </svg>
+                    Visit Our Group
+                  </a>
+                </div>
               </div>
             </div>
           </div>

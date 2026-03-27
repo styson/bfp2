@@ -238,7 +238,7 @@ export const PartsSection = () => {
           <div className='grid grid-cols-1 lg:grid-cols-3 gap-2'>
             {/* Left section (2/3) */}
             <div className='lg:col-span-2 text-center flex items-center'>
-              <div className='mx-50'>
+              <div className='w-full'>
                 <h2 className='text-4xl sm:text-5xl uppercase text-[#f0b429] mb-4'>Parts & Add-ons</h2>
                 <p className='text-[var(--c-text)]/60 font-sans'>
                   Individual boards, replacement counters, and HASL map sheets available separately
