@@ -108,7 +108,7 @@ function StorePage() {
                 <p className="text-[var(--c-text)]/50 text-sm">
                   P.S. Check out the{' '}
                   <a
-                    href="https://web.archive.org/web/20241210001436/http://asl-ratings.org/"
+                    href="https://asl-ratings.org"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-[#f0b429] hover:text-[#f0b429]/70 transition-colors duration-200"
