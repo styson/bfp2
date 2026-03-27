@@ -42,12 +42,12 @@ function DownloadLink({ item }: { item: Download }) {
         className="text-[#f0b429]/50 group-hover:text-[#f0b429] transition-colors duration-200 mt-0.5 shrink-0"
       />
       <div className="min-w-0 flex-1">
-        <p className="text-[var(--c-text)]/80 group-hover:text-[var(--c-text)] text-sm font-sans transition-colors duration-200 leading-snug">
+        <p className="text-[var(--c-text)] group-hover:text-[var(--c-text)] text-sm font-sans transition-colors duration-200 leading-snug">
           {item.name}
         </p>
         {item.description && (
           <div
-            className="text-[var(--c-text)]/40 text-xs font-sans mt-0.5 leading-snug [&_p]:mb-0 [&_br]:hidden"
+            className="text-[var(--c-text)]/80 text-xs font-sans mt-0.5 leading-snug [&_p]:mb-0 [&_br]:hidden"
             dangerouslySetInnerHTML={{ __html: item.description }}
           />
         )}

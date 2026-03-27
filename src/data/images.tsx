@@ -36,8 +36,9 @@ import np from '../images/NorPack2.jpg';
 import rpc3 from '../images/rpc3.png';
 import tff from '../images/tff.png';
 
-import aslCompanion from '../images/asl_companion.jpg';
-import asl_3_4 from '../images/asl_3_4.jpg';
+import aslComp1 from '../images/comp1.png';
+import aslComp2 from '../images/comp1.png';
+import aslComp3 from '../images/comp3.png';
 import inorCg from '../images/inor-cg.jpg';
 import inorCounters from '../images/inor-counters.png';
 import inorMap from '../images/inor-small.jpg';
@@ -138,7 +139,7 @@ import pif_b from '../images/pif_b.png';
 
 export { bd, bj, btb, cs, ctr, hg, itr, mc, oc, on, os, oto, pf, how };
 export { dx, ffs, ftc10, ftc11, ftc12, ftc13, ftc5, ftc6, ftc8, ftc9, gh, inorPg, kgp, kgs, lft13, lft14, lft15, lft16, np, rpc3, tff };
-export { lft15maps, aslCompanion, asl_3_4, inorCg, inorMap, inorCounters, bdNP1, bdNP2, bdNP3 };
+export { lft15maps, aslComp1, aslComp2, aslComp3, inorCg, inorMap, inorCounters, bdNP1, bdNP2, bdNP3 };
 export { dw1, dw1b, dw2, dw2b, dw3, dw3b, dw4, dw4b, dw5, dw5b, dw6, dw6b, dw7, dw7b, dw8, dw8b, dw9, dw9b, dw10, dw10b, hw1, hw1b };
 export { bdA, bdB, bdC, bdD, bdE, bdF, bdG, bdH, bdI, bdJ, bdK, bdL, bdM, bdN, bdO, bdP, bdQ, bdR, bdS, bdT, bdU };
 export { bitterest, corregidor, neptune, orsha, schmidt1, schmidt2, schmidt3, schmidt4, voss1, voss2 };

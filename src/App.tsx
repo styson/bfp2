@@ -83,6 +83,41 @@ function StorePage() {
             <h2 className="text-4xl sm:text-5xl uppercase text-[#f0b429] mb-12 text-center">
               Contact Bounding Fire Productions
             </h2>
+
+            {/* About blurb */}
+            <div className="mb-16 space-y-4 text-[var(--c-text)]/70 font-sans leading-relaxed text-base text-justify">
+              <p>
+                Bounding Fire Productions is proud to serve our customers with high quality products and dedicated customer service. In 1999, we released our first product — the Hell on Wheels pack. Since reforming in 2007, BFP has released 13 products.
+              </p>
+              <p>
+                Bounding Fire Productions continues to produce only the best, thoroughly playtested, action-packed scenarios and campaigns. Our commitment to customer service and satisfaction underlies everything we do. Bounding Fire places quality over quantity, and our track record demonstrates this. In addition to the Hell on Wheels pack, we were the design team responsible for such products as Onslaught to Orsha, the original Beyond the Beachhead, and scenarios of the year from Journals 2 and 3, just to name a few.
+              </p>
+              <p>
+                The team consists of highly renowned designer Chas Smith, Sam Tyson, Rick Reinesch, Dave "Sarge" Roth, Brian Blad, Nadir Elfarra, Brian Martuzas, and Dave Lamb. Since serving our customers is our highest priority, we strive to provide responsive communication and prompt shipping.
+              </p>
+              <p>
+                Our <a href="https://www.facebook.com/groups/boundingfire" target="_blank" rel="noopener noreferrer" className="text-[#f0b429] hover:text-[#f0b429]/70 transition-colors duration-200">Facebook group</a> provides frequent updates about current publications and future projects. The <a href="#downloads" className="text-[#f0b429] hover:text-[#f0b429]/70 transition-colors duration-200">Downloads section</a> above contains VASL map files for our various products, plus any product errata — including the errata for Hell on Wheels, just as a shout-out to the past.
+              </p>
+              <p>
+                Thank you for visiting! We hope to add you to our growing list of satisfied customers.
+              </p>
+              <p className="text-[var(--c-text)]/50 text-sm">
+                — The Team at BFP
+              </p>
+              <p className="text-[var(--c-text)]/50 text-sm">
+                P.S. Check out the{' '}
+                <a
+                  href="https://web.archive.org/web/20241210001436/http://asl-ratings.org/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#f0b429] hover:text-[#f0b429]/70 transition-colors duration-200"
+                >
+                  ASL Player Ratings site
+                </a>{' '}
+                to see our scenarios in use!
+              </p>
+            </div>
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               {/* Left column — Contact Us */}
               <div id="contact" className="flex flex-col items-center md:items-start text-center md:text-left">
