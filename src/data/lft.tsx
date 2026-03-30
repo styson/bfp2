@@ -711,7 +711,7 @@ export const products: Product[] = [
     intButton: 'LL8M5SXLLCXE6',
     imageF: gh,
     page: 'green-hell',
-    active: true,
+    active: false,
     year: 2020,
     who,
     scenarios: [
@@ -858,7 +858,7 @@ export const products: Product[] = [
     intButton: '45AJ3KMUXEGZJ',
     imageF: inorPg,
     page: 'inor-pg',
-    active: true,
+    active: false,
     year: 2025,
     who,
     scenarios: [
