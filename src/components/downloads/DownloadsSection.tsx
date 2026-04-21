@@ -47,7 +47,7 @@ function DownloadLink({ item, onOpenInstructions }: { item: Download; onOpenInst
           </p>
           {item.description && (
             <div
-              className="text-[var(--c-text)]/80 text-xs font-sans mt-0.5 leading-snug [&_p]:mb-0 [&_br]:hidden"
+              className="text-[var(--c-text)]/80 text-xs font-sans mt-0.5 leading-snug [&_p]:mb-0"
               dangerouslySetInnerHTML={{ __html: item.description }}
             />
           )}
@@ -73,7 +73,7 @@ function DownloadLink({ item, onOpenInstructions }: { item: Download; onOpenInst
         </p>
         {item.description && (
           <div
-            className="text-[var(--c-text)]/80 text-xs font-sans mt-0.5 leading-snug [&_p]:mb-0 [&_br]:hidden"
+            className="text-[var(--c-text)]/80 text-xs font-sans mt-0.5 leading-snug [&_p]:mb-0"
             dangerouslySetInnerHTML={{ __html: item.description }}
           />
         )}

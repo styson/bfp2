@@ -104,57 +104,57 @@ export const downloads: Download[] = [
       {
         name: 'C-1 Castle',
         description: '',
-        page: 'ovrBFPCI',
+        page: 'ovrBFPCI.zip',
       },
       {
         name: 'Debris (single-hex)',
         description: '',
-        page: 'ovrBFPD',
+        page: 'ovrBFPD.zip',
       },
       {
         name: 'Factory (6 rotations)',
         description: '',
-        page: 'ovrBFPF',
+        page: 'ovrBFPF.zip',
       },
       {
         name: 'H-1 Hill',
         description: '',
-        page: 'ovrBFPHI',
+        page: 'ovrBFPHI.zip',
       },
       {
         name: 'H-2 Hill',
         description: '',
-        page: 'ovrBFPHII',
+        page: 'ovrBFPHII.zip',
       },
       {
         name: 'O-6a Orchard Village',
         description: '',
-        page: 'ovrBFPO',
+        page: 'ovrBFPO.zip',
       },
       {
         name: 'Ruined City',
         description: '',
-        page: 'ovrBFPRC',
+        page: 'ovrBFPRC.zip',
       },
       {
         name: 'V-1 Bocage Village',
         description: '',
-        page: 'ovrBFPVI',
+        page: 'ovrBFPVI.zip',
       },
       {
         name: 'V-2 Bocage Village',
         description: '',
-        page: 'ovrBFPVII',
+        page: 'ovrBFPVII.zip',
       },
       {
         name: 'V-3 Bocage Village',
         description: '',
-        page: 'ovrBFPVIII',
+        page: 'ovrBFPVIII.zip',
       },
       {
         name: 'Rubble Overlays',
         description: '',
-        page: 'ovrR',
+        page: 'ovrR.zip',
       },
       {
         name: 'Overlay Instructions',
