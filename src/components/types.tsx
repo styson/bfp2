@@ -46,6 +46,7 @@ export type Download = {
   files?: Download[];
   group?: string;
   active?: boolean;
+  instructionsModal?: boolean;
 };
 
 export type Order = {

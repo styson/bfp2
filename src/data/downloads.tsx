@@ -157,9 +157,9 @@ export const downloads: Download[] = [
         page: 'ovrR',
       },
       {
-        name: 'Instructions',
-        description: 'How to use the overlays in VASL',
-        page: 'instructions.pdf',
+        name: 'Overlay Instructions',
+        description: 'See how to use the overlays in VASL',
+        instructionsModal: true,
       },
     ],
   },
