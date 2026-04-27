@@ -94,7 +94,7 @@ function StorePage() {
                   Bounding Fire Productions continues to produce only the best, thoroughly playtested, action-packed scenarios and campaigns. Our commitment to customer service and satisfaction underlies everything we do. Bounding Fire places quality over quantity, and our track record demonstrates this. In addition to the Hell on Wheels pack, we were the design team responsible for such products as Onslaught to Orsha, the original Beyond the Beachhead, and scenarios of the year from Journals 2 and 3, just to name a few.
                 </p>
                 <p>
-                  The team consists of highly renowned designer Chas Smith, Sam Tyson, Rick Reinesch, Dave "Sarge" Roth, Brian Blad, Nadir Elfarra, Brian Martuzas, and Dave Lamb. Since serving our customers is our highest priority, we strive to provide responsive communication and prompt shipping.
+                  The team consists of highly renowned designer Chas Smith, Sam Tyson, Rick Reinesch, Dave "Sarge" Roth, Brian Blad, and Brian Martuzas. Since serving our customers is our highest priority, we strive to provide responsive communication and prompt shipping.
                 </p>
                 <p>
                   Our <a href="https://www.facebook.com/groups/boundingfire" target="_blank" rel="noopener noreferrer" className="text-[#f0b429] hover:text-[#f0b429]/70 transition-colors duration-200">Facebook group</a> provides frequent updates about current publications and future projects. The <a href="#downloads" className="text-[#f0b429] hover:text-[#f0b429]/70 transition-colors duration-200">Downloads section</a> above contains VASL map files for our various products, plus any product errata — including the errata for Hell on Wheels, just as a shout-out to the past.
@@ -128,7 +128,7 @@ function StorePage() {
                     We'd love to hear from you.
                   </p>
                   <a
-                    href="mailto:info@boundingfire.com"
+                    href="mailto:support@boundingfire.com"
                     className="inline-flex items-center gap-3 px-10 py-4 bg-[#f0b429] text-[#1a1b2a] font-black uppercase tracking-wider hover:bg-[#f0b429]/80 transition-[background-color] duration-200 border-2 border-[#f0b429]"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
