@@ -10,8 +10,8 @@ interface ProductModalProps {
   onClose: () => void;
 }
 
-const htmlProps = 'text-[var(--c-text)]/80 leading-relaxed font-sans [&_p]:mb-3 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:mb-3 [&_li]:mb-1 [&_h5]:text-[#f0b429] [&_h5]:uppercase [&_h5]:text-sm [&_h5]:font-bold [&_h5]:mt-4 [&_h5]:mb-2 [&_table]:text-sm [&_td]:pr-4 [&_td]:py-0.5 [&_b]:text-[var(--c-text)] [&_i]:text-[var(--c-text)]/70 [&_sup]:text-xs [&_a]:text-[#5bc9e8] [&_a]:underline';
-
+const htmlProps =
+  'text-[var(--c-text)]/80 leading-relaxed font-sans [&_p]:mb-3 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:mb-3 [&_li]:mb-1 [&_h5]:text-[#f0b429] [&_h5]:uppercase [&_h5]:text-sm [&_h5]:font-bold [&_h5]:mt-4 [&_h5]:mb-2 [&_table]:text-sm [&_td]:pr-4 [&_td]:py-0.5 [&_b]:text-[var(--c-text)] [&_i]:text-[var(--c-text)]/70 [&_sup]:text-xs [&_a]:text-[#5bc9e8] [&_a]:underline';
 
 function ScenarioTable({ scenarios }: { scenarios: Scenario[] }) {
   // Filter out legend/note rows (empty id and not a real scenario)
@@ -19,32 +19,33 @@ function ScenarioTable({ scenarios }: { scenarios: Scenario[] }) {
   const notes = scenarios.filter((s) => s.id === '' && s.name.startsWith('('));
 
   return (
-    <div className="overflow-x-auto">
-      <table className="w-full text-sm font-sans border-collapse">
+    <div className='overflow-x-auto'>
+      <table className='w-full text-sm font-sans border-collapse'>
         <thead>
-          <tr className="border-b border-[#f0b429]/20">
-            <th className="text-left py-2 pr-4 text-[var(--c-text)]/40 uppercase text-xs tracking-wider font-bold whitespace-nowrap">ID</th>
-            <th className="text-left py-2 pr-4 text-[var(--c-text)]/40 uppercase text-xs tracking-wider font-bold">Title</th>
-            <th className="text-left py-2 text-[var(--c-text)]/40 uppercase text-xs tracking-wider font-bold whitespace-nowrap">Attacker</th>
+          <tr className='border-b border-[#f0b429]/20'>
+            <th className='text-left py-2 pr-4 text-[var(--c-text)]/40 uppercase text-xs tracking-wider font-bold whitespace-nowrap'>
+              ID
+            </th>
+            <th className='text-left py-2 pr-4 text-[var(--c-text)]/40 uppercase text-xs tracking-wider font-bold'>Title</th>
+            <th className='text-left py-2 text-[var(--c-text)]/40 uppercase text-xs tracking-wider font-bold whitespace-nowrap'>
+              Attacker
+            </th>
           </tr>
         </thead>
         <tbody>
           {rows.map((s, i) => (
             <tr key={`${s.id}-${i}`} className={`border-b border-[#f0b429]/10 ${s.att ?? ''}`}>
-              <td className="py-1.5 pr-4 text-[var(--c-text)]/70 whitespace-nowrap align-top">{s.id}</td>
-              <td
-                className="py-1.5 pr-4 text-[var(--c-text)]/90 align-top"
-                dangerouslySetInnerHTML={{ __html: s.name }}
-              />
-              <td className="py-1.5 capitalize align-top whitespace-nowrap text-[var(--c-text)]/60">
-                {s.att ?? ''}
-              </td>
+              <td className='py-1.5 pr-4 text-[var(--c-text)]/70 whitespace-nowrap align-top'>{s.id}</td>
+              <td className='py-1.5 pr-4 text-[var(--c-text)]/90 align-top' dangerouslySetInnerHTML={{ __html: s.name }} />
+              <td className='py-1.5 capitalize align-top whitespace-nowrap text-[var(--c-text)]/60'>{s.att ?? ''}</td>
             </tr>
           ))}
         </tbody>
       </table>
       {notes.map((n, i) => (
-        <p key={i} className="mt-3 text-xs text-[var(--c-text)]/30 font-sans italic">{n.name}</p>
+        <p key={i} className='mt-3 text-xs text-[var(--c-text)]/30 font-sans italic'>
+          {n.name}
+        </p>
       ))}
     </div>
   );
@@ -59,13 +60,17 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
   const [showBack, setShowBack] = useState(false);
   const { addItem } = useCartStore();
 
-  useEffect(() => { setShowBack(false); }, [product?.id]);
+  useEffect(() => {
+    setShowBack(false);
+  }, [product?.id]);
 
   useEffect(() => {
     if (!isOpen) return;
     const isMobile = window.matchMedia('(pointer: coarse)').matches;
     if (isMobile) return;
-    const handler = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
     window.addEventListener('keydown', handler);
     return () => window.removeEventListener('keydown', handler);
   }, [isOpen, onClose]);
@@ -83,165 +88,169 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
   };
 
   const tabs: { id: Tab; label: string; show: boolean }[] = [
-    { id: 'details',   label: 'Details',   show: true },
-    { id: 'includes',  label: 'Includes',  show: !!product.includes },
-    { id: 'scenarios', label: 'Scenarios', show: !!(product.scenarios?.length) },
+    { id: 'details', label: 'Details', show: true },
+    { id: 'includes', label: 'Includes', show: !!product.includes },
+    { id: 'scenarios', label: 'Scenarios', show: !!product.scenarios?.length },
   ];
+
+  let allowInternational = false;
+  let shipping: ('domestic' | 'international')[] = ['domestic'];
+  if (product.intPrice && product.intPrice > 0) allowInternational = true;
+  if (allowInternational) shipping = [...shipping, 'international'];
+  const lftHref = `https://www.lefranctireur.org/spip.php?page=article&id_article=${product.lftId || 1}`
 
   return (
     <>
-      <div
-        className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4"
-        onClick={onClose}
-      >
+      <div className='fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4' onClick={onClose}>
         <div
-          className="relative bg-[var(--c-surface)] border border-[#f0b429]/20 max-w-4xl w-full max-h-[90vh] flex flex-col"
+          className='relative bg-[var(--c-surface)] border border-[#f0b429]/20 max-w-4xl w-full max-h-[90vh] flex flex-col'
           onClick={(e) => e.stopPropagation()}
         >
           {/* Sticky header with close button */}
-          <div className="shrink-0 flex justify-end p-3 border-b border-[#f0b429]/10">
+          <div className='shrink-0 flex justify-end p-3 border-b border-[#f0b429]/10'>
             <button
               onClick={onClose}
-              className="p-2 text-[var(--c-text)] border border-[#f0b429]/30 hover:bg-[#f0b429] hover:text-[#1a1b2a] hover:border-[#f0b429] transition-[background-color,color,border-color] duration-200"
-              aria-label="Close modal"
+              className='p-2 text-[var(--c-text)] border border-[#f0b429]/30 hover:bg-[#f0b429] hover:text-[#1a1b2a] hover:border-[#f0b429] transition-[background-color,color,border-color] duration-200'
+              aria-label='Close modal'
             >
               <Close />
             </button>
           </div>
 
-          <div className="overflow-y-auto flex-1">
-          <div className="grid md:grid-cols-2 gap-8 p-8">
-            {/* Left — Image */}
-            <div>
-              <div className="relative">
-                <img
-                  src={showBack && product.imageB ? product.imageB : product.imageF}
-                  alt={product.name}
-                  className={`w-full h-auto bg-[var(--c-deep)] ${product.imageB ? 'cursor-pointer' : ''}`}
-                  onClick={() => product.imageB && setShowBack((v) => !v)}
-                />
-                {isNew && (
-                  <div className="absolute top-4 left-4 bg-[#f0b429] text-[#1a1b2a] px-4 py-2 text-sm font-bold uppercase tracking-wider font-sans">
-                    New Arrival
-                  </div>
-                )}
-              </div>
-              {product.imageB && (
-                <p className="mt-2 text-xs text-[var(--c-text)]/80 text-center font-sans">
-                  {showBack ? 'Back Cover' : 'Front Cover'} · click cover to flip
-                </p>
-              )}
-            </div>
-
-            {/* Right — Header + Tabs + Content */}
-            <div className="flex flex-col space-y-4">
-              {/* Product header */}
+          <div className='overflow-y-auto flex-1'>
+            <div className='grid md:grid-cols-2 gap-8 p-8'>
+              {/* Left — Image */}
               <div>
-                <p className="text-xs text-[#5bc9e8] uppercase tracking-wider mb-2 font-sans">
-                  {product.category}
-                </p>
-                <h2 className="text-3xl uppercase text-[#f0b429] mb-2">
-                  {product.name}
-                </h2>
-                <p className="text-2xl font-black text-[var(--c-text)] font-sans">{formatPrice(product.price)}</p>
-              </div>
-
-              {/* Tab bar */}
-              <div className="flex border-b border-[#f0b429]/20">
-                {tabs.filter((t) => t.show).map((tab) => (
-                  <button
-                    key={tab.id}
-                    onClick={() => setActiveTab(tab.id)}
-                    className={`px-4 py-2 text-sm font-bold uppercase tracking-wider font-sans transition-[color,border-color] duration-200 border-b-2 -mb-px ${
-                      activeTab === tab.id
-                        ? 'text-[#f0b429] border-[#f0b429]'
-                        : 'text-[var(--c-text)]/40 border-transparent hover:text-[var(--c-text)]/70'
-                    }`}
-                  >
-                    {tab.label}
-                  </button>
-                ))}
-              </div>
-
-              {/* Tab content */}
-              <div className="flex-1 overflow-y-auto">
-                {activeTab === 'details' && (
-                  <div className="space-y-6">
-                    <div
-                      className={htmlProps}
-                      dangerouslySetInnerHTML={{ __html: product.description }}
-                    />
-
-                    {/* Shipping */}
-                    <div className="border-t border-[#f0b429]/20 pt-4">
-                      <h3 className="font-bold uppercase text-sm mb-3 text-[var(--c-text)]/60 font-sans">Shipping</h3>
-                      <div className="flex gap-3">
-                        {(['domestic', 'international'] as const).map((type) => (
-                          <button
-                            key={type}
-                            onClick={() => setShippingType(type)}
-                            className={`flex-1 py-3 px-4 font-bold uppercase text-sm transition-[background-color,color,border-color] duration-200 border font-sans ${
-                              shippingType === type
-                                ? 'bg-[#f0b429] text-[#1a1b2a] border-[#f0b429]'
-                                : 'bg-transparent text-[var(--c-text)]/70 border-[#f0b429]/30 hover:border-[#f0b429]/70'
-                            }`}
-                          >
-                            {type.charAt(0).toUpperCase() + type.slice(1)}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Quantity */}
-                    <div className="border-t border-[#f0b429]/20 pt-4">
-                      <h3 className="font-bold uppercase text-sm mb-3 text-[var(--c-text)]/60 font-sans">Quantity</h3>
-                      <div className="flex items-center gap-4">
-                        <button
-                          onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                          className="p-3 border border-[#f0b429]/30 text-[var(--c-text)] hover:bg-[#f0b429] hover:text-[#1a1b2a] hover:border-[#f0b429] transition-[background-color,color,border-color] duration-200"
-                          aria-label="Decrease quantity"
-                        >
-                          <Remove />
-                        </button>
-                        <span className="text-2xl font-bold w-12 text-center text-[var(--c-text)] font-sans">{quantity}</span>
-                        <button
-                          onClick={() => setQuantity(quantity + 1)}
-                          className="p-3 border border-[#f0b429]/30 text-[var(--c-text)] hover:bg-[#f0b429] hover:text-[#1a1b2a] hover:border-[#f0b429] transition-[background-color,color,border-color] duration-200"
-                          aria-label="Increase quantity"
-                        >
-                          <Add />
-                        </button>
-                      </div>
-                    </div>
-
-                    {/* Add to Cart */}
-                    <button
-                      onClick={handleAddToCart}
-                      className="w-full bg-[#f0b429] text-[#1a1b2a] py-4 font-black uppercase tracking-wider hover:bg-[#f0b429]/80 transition-[background-color] duration-200 font-sans disabled:opacity-40 disabled:cursor-not-allowed"
-                      disabled={!product.inStock}
-                    >
-                      {product.inStock ? 'Add to Cart' : 'Out of Stock'}
-                    </button>
-
-                    <p className="text-xs text-[var(--c-text)]/30 text-center font-sans">
-                      SKU: {product.paypalItemCode}
-                    </p>
-                  </div>
-                )}
-
-                {activeTab === 'includes' && product.includes && (
-                  <div
-                    className={htmlProps}
-                    dangerouslySetInnerHTML={{ __html: product.includes }}
+                <div className='relative'>
+                  <img
+                    src={showBack && product.imageB ? product.imageB : product.imageF}
+                    alt={product.name}
+                    className={`w-full h-auto bg-[var(--c-deep)] ${product.imageB ? 'cursor-pointer' : ''}`}
+                    onClick={() => product.imageB && setShowBack((v) => !v)}
                   />
+                  {isNew && (
+                    <div className='absolute top-4 left-4 bg-[#f0b429] text-[#1a1b2a] px-4 py-2 text-sm font-bold uppercase tracking-wider font-sans'>
+                      New Arrival
+                    </div>
+                  )}
+                </div>
+                {product.imageB && (
+                  <p className='mt-2 text-xs text-[var(--c-text)]/80 text-center font-sans'>
+                    {showBack ? 'Back Cover' : 'Front Cover'} · click cover to flip
+                  </p>
                 )}
+              </div>
 
-                {activeTab === 'scenarios' && product.scenarios && (
-                  <ScenarioTable scenarios={product.scenarios} />
-                )}
+              {/* Right — Header + Tabs + Content */}
+              <div className='flex flex-col space-y-4'>
+                {/* Product header */}
+                <div>
+                  <p className='text-xs text-[#5bc9e8] uppercase tracking-wider mb-2 font-sans'>{product.category}</p>
+                  <h2 className='text-3xl uppercase text-[#f0b429] mb-2'>{product.name}</h2>
+                  <p className='text-2xl font-black text-[var(--c-text)] font-sans'>{formatPrice(product.price)}</p>
+                </div>
+
+                {/* Tab bar */}
+                <div className='flex border-b border-[#f0b429]/20'>
+                  {tabs
+                    .filter((t) => t.show)
+                    .map((tab) => (
+                      <button
+                        key={tab.id}
+                        onClick={() => setActiveTab(tab.id)}
+                        className={`px-4 py-2 text-sm font-bold uppercase tracking-wider font-sans transition-[color,border-color] duration-200 border-b-2 -mb-px ${
+                          activeTab === tab.id
+                            ? 'text-[#f0b429] border-[#f0b429]'
+                            : 'text-[var(--c-text)]/40 border-transparent hover:text-[var(--c-text)]/70'
+                        }`}
+                      >
+                        {tab.label}
+                      </button>
+                    ))}
+                </div>
+
+                {/* Tab content */}
+                <div className='flex-1 overflow-y-auto'>
+                  {activeTab === 'details' && (
+                    <div className='space-y-6'>
+                      <div className={htmlProps} dangerouslySetInnerHTML={{ __html: product.description }} />
+
+                      {/* Shipping */}
+                      <div className='border-t border-[#f0b429]/20 pt-4'>
+                        <h3 className='font-bold uppercase text-sm mb-3 text-[var(--c-text)]/60 font-sans'>Shipping</h3>
+                        <div className='flex gap-3'>
+                          {shipping.map((type) => (
+                            <button
+                              key={type}
+                              onClick={() => setShippingType(type)}
+                              className={`flex-1 min-w-45 py-3 px-4 font-bold uppercase text-sm transition-[background-color,color,border-color] duration-200 border font-sans ${
+                                shippingType === type
+                                  ? 'bg-[#f0b429] text-[#1a1b2a] border-[#f0b429]'
+                                  : 'bg-transparent text-[var(--c-text)]/70 border-[#f0b429]/30 hover:border-[#f0b429]/70'
+                              }`}
+                            >
+                              {type.charAt(0).toUpperCase() + type.slice(1)}
+                            </button>
+                          ))}
+                          {!allowInternational && product.category === 'LFT' && (
+                            <span>
+                              For international shipping (except Canada), please order this directly from <br/>
+                              <a
+                                href={lftHref}
+                                target='_blank'
+                                rel='noreferrer'
+                                className='text-green-500'
+                              >
+                                Le Franc Tireur
+                              </a>
+                            </span>
+                          )}
+                        </div>
+                      </div>
+
+                      {/* Quantity */}
+                      <div className='border-t border-[#f0b429]/20 pt-4'>
+                        <h3 className='font-bold uppercase text-sm mb-3 text-[var(--c-text)]/60 font-sans'>Quantity</h3>
+                        <div className='flex items-center gap-4'>
+                          <button
+                            onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                            className='p-3 border border-[#f0b429]/30 text-[var(--c-text)] hover:bg-[#f0b429] hover:text-[#1a1b2a] hover:border-[#f0b429] transition-[background-color,color,border-color] duration-200'
+                            aria-label='Decrease quantity'
+                          >
+                            <Remove />
+                          </button>
+                          <span className='text-2xl font-bold w-12 text-center text-[var(--c-text)] font-sans'>{quantity}</span>
+                          <button
+                            onClick={() => setQuantity(quantity + 1)}
+                            className='p-3 border border-[#f0b429]/30 text-[var(--c-text)] hover:bg-[#f0b429] hover:text-[#1a1b2a] hover:border-[#f0b429] transition-[background-color,color,border-color] duration-200'
+                            aria-label='Increase quantity'
+                          >
+                            <Add />
+                          </button>
+                        </div>
+                      </div>
+
+                      {/* Add to Cart */}
+                      <button
+                        onClick={handleAddToCart}
+                        className='w-full bg-[#f0b429] text-[#1a1b2a] py-4 font-black uppercase tracking-wider hover:bg-[#f0b429]/80 transition-[background-color] duration-200 font-sans disabled:opacity-40 disabled:cursor-not-allowed'
+                        disabled={!product.inStock}
+                      >
+                        {product.inStock ? 'Add to Cart' : 'Out of Stock'}
+                      </button>
+
+                      <p className='text-xs text-[var(--c-text)]/30 text-center font-sans'>SKU: {product.paypalItemCode}</p>
+                    </div>
+                  )}
+
+                  {activeTab === 'includes' && product.includes && (
+                    <div className={htmlProps} dangerouslySetInnerHTML={{ __html: product.includes }} />
+                  )}
+
+                  {activeTab === 'scenarios' && product.scenarios && <ScenarioTable scenarios={product.scenarios} />}
+                </div>
               </div>
             </div>
-          </div>
           </div>
         </div>
       </div>

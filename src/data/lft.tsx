@@ -58,6 +58,7 @@ export const products: Product[] = [
     active: true,
     year: 2025,
     who,
+    lftId: 188,
   },
   {
     id: 20,
@@ -83,6 +84,7 @@ export const products: Product[] = [
     active: true,
     year: 2026,
     who,
+    lftId: 189,
   },
   {
     id: 93,
@@ -105,6 +107,7 @@ export const products: Product[] = [
     active: true,
     year: 2025,
     who,
+    lftId: 185,
     scenarios: [
       { id: 'TF-F1', name: 'Red Dragon Stalking Polar Bears', arc_id: '67157' },
       { id: 'TF-F2', name: 'Shaking Off the Shock Wave', arc_id: '67158' },
@@ -139,6 +142,7 @@ export const products: Product[] = [
     active: false,
     year: 2024,
     who,
+    lftId: 184,
     scenarios: [{ id: '', name: '(color indicates attacking side)' }],
   },
   {
@@ -378,6 +382,7 @@ export const products: Product[] = [
     active: true,
     year: 2024,
     who,
+    lftId: 172,
     scenarios: [
       { id: 'FT304', name: 'Loosening the Noose', arc_id: '65659' },
       { id: 'FT305', name: 'Kutrik', arc_id: '65660' },
@@ -407,6 +412,7 @@ export const products: Product[] = [
     active: true,
     year: 2024,
     who,
+    lftId: 175,
     scenarios: [
       { id: 'FT314', name: 'Red Army Funnies', arc_id: '65886' },
       { id: 'FT315', name: 'Stumbling Colossus', arc_id: '65887' },
@@ -526,6 +532,7 @@ export const products: Product[] = [
     active: true,
     year: 2024,
     who,
+    lftId: 138,
     scenarios: [
       { id: 'FT 209', name: 'Euphrates Clash', att: 'allied', arc_id: '63071' },
       { id: 'FT 210', name: 'The Longest Week', arc_id: '63069' },
@@ -560,6 +567,7 @@ export const products: Product[] = [
     active: true,
     year: 2024,
     who,
+    lftId: 147,
     scenarios: [
       { id: 'FT 257', name: 'Too little, Too Soon', arc_id: '63872' },
       { id: 'FT 258', name: 'Panzerschlacht!', arc_id: '63863' },
@@ -595,6 +603,7 @@ export const products: Product[] = [
     active: false,
     year: 2024,
     who,
+    lftId: 116,
     scenarios: [{ id: '', name: '(color indicates attacking side)' }],
   },
   {
@@ -644,6 +653,7 @@ export const products: Product[] = [
     active: true,
     year: 2024,
     who,
+    lftId: 148,
     scenarios: [
       { id: '', name: "Smith's Ridge Scenarios" },
       { id: 'FT SmR1', name: 'Mired', att: 'KPA', arc_id: '64082' },
@@ -714,6 +724,7 @@ export const products: Product[] = [
     active: false,
     year: 2020,
     who,
+    lftId: 161,
     scenarios: [
       { id: 'INOR 1', name: 'Deep Into the French Front', att: 'german', arc_id: '65490' },
       { id: 'INOR 2', name: 'Villy Muss Fallen ! East', att: 'german', arc_id: '65491' },
@@ -749,6 +760,7 @@ export const products: Product[] = [
     active: false,
     year: 2024,
     who,
+    lftId: 142,
     scenarios: [{ id: '', name: '(color indicates attacking side)' }],
   },
   {
@@ -766,6 +778,7 @@ export const products: Product[] = [
     active: false,
     year: 2024,
     who,
+    lftId: 143,
     scenarios: [{ id: '', name: '(color indicates attacking side)' }],
   },
   {
@@ -790,6 +803,7 @@ export const products: Product[] = [
     active: true,
     year: 2021,
     who,
+    lftId: 153,
     scenarios: [
       { id: 'YASL 14', name: 'Szczuki', arc_id: '65416' },
       { id: 'YASL 15', name: 'Chances are Slim', arc_id: '65323' },
@@ -861,6 +875,7 @@ export const products: Product[] = [
     active: false,
     year: 2025,
     who,
+    lftId: 186,
     scenarios: [
       { id: 'FT342', name: 'Extra-Muros', arc_id: '67244' },
       { id: 'FT343', name: 'Manu Militari', arc_id: '67245' },

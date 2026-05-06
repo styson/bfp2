@@ -24,6 +24,7 @@ export interface Product {
   colors?: string[];
   inStock: boolean;
   featured?: boolean;
+  lftId?: number;
 }
 
 export interface CartItem extends Product {

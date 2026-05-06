@@ -46,7 +46,7 @@ export const ProductCard = ({ product, onQuickAdd, onClick }: ProductCardProps) 
         )}
 
         {/* Quick Add Button - Appears on Hover */}
-        {(isHovered || added) && (
+        {(isHovered || added) && product.category !== 'LFT' && (
           <button
             onClick={handleQuickAdd}
             className={`absolute bottom-4 left-4 right-4 py-3 font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-[background-color] duration-200 font-sans ${added ? 'bg-green-500 text-white' : 'bg-[#f0b429] text-[#1a1b2a] hover:bg-[#f0b429]/80'}`}

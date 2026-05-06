@@ -37,6 +37,7 @@ export type Product = {
   scenarios?: Scenario[];
   button?: string;
   intButton?: string;
+  lftId?: number;
 };
 
 export type Download = {

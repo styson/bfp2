@@ -15,13 +15,12 @@ export default defineConfig({
     sourcemap: false, // Set to true if you need debugging in production
     rollupOptions: {
       output: {
-        manualChunks: {
-          // Split vendor code for better caching
-          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
-          'mui-vendor': ['@mui/material', '@mui/icons-material', '@emotion/react', '@emotion/styled'],
-          'supabase': ['@supabase/supabase-js'],
-          'paypal': ['@paypal/react-paypal-js'],
-          'state': ['zustand'],
+        manualChunks: (id) => {
+          if (['react', 'react-dom', 'react-router-dom'].some(p => id.includes(`/node_modules/${p}/`))) return 'react-vendor';
+          if (['@mui/material', '@mui/icons-material', '@emotion/react', '@emotion/styled'].some(p => id.includes(`/node_modules/${p}/`))) return 'mui-vendor';
+          if (id.includes('/node_modules/@supabase/')) return 'supabase';
+          if (id.includes('/node_modules/@paypal/')) return 'paypal';
+          if (id.includes('/node_modules/zustand/')) return 'state';
         }
       }
     },
