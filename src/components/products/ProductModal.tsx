@@ -147,7 +147,13 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
                 <div>
                   <p className='text-xs text-[#5bc9e8] uppercase tracking-wider mb-2 font-sans'>{product.category}</p>
                   <h2 className='text-3xl uppercase text-[#f0b429] mb-2'>{product.name}</h2>
-                  <p className='text-2xl font-black text-[var(--c-text)] font-sans'>{formatPrice(product.price)}</p>
+                  <p className='text-2xl font-black text-[var(--c-text)] font-sans float-left'>{formatPrice(product.price)}</p>
+                  {product.intPrice && (
+                    <p className="text-2xl font-black text-[var(--c-text)] font-sans float-right">{formatPrice(product.intPrice)} intl.</p>
+                  )}
+                  {!product.intPrice && (
+                    <p className="text-2xl font-black text-[var(--c-text)] font-sans float-right">N/A intl.</p>
+                  )}
                 </div>
 
                 {/* Tab bar */}
