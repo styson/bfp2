@@ -2,6 +2,7 @@ import type { Product } from '../components/types';
 import {
   aslComp1,
   aslComp2,
+  aslComp3,
   dx,
   ffs,
   ftc10,
@@ -73,8 +74,7 @@ export const products: Product[] = [
         <li> Chapter 1 Welcome to Advanced Squad Leader</li>
         <li> Chapter 2 Warriors and Weapons</li>
         <li> Chapter 3 The Lay of the Land</li>
-        <li> Chapter 4 The Play of the Game</li>
-        <li> Chapter 5 The Role of Fate</li>
+        <li> Chapter 4 The Play of the Game (part I)</li>
       </ul>`,
     price: 50,
     intPrice: 0,
@@ -82,9 +82,32 @@ export const products: Product[] = [
     imageF: aslComp2,
     page: 'aslComp2-pg',
     active: true,
-    year: 2026,
+    year: 2025,
     who,
     lftId: 189,
+  },
+  {
+    id: 21,
+    name: 'The ASL Companion #3',
+    description: '',
+    shortDescription: `<b>The ASL Companion</b> is divided into 90 chapters grouped into twelve parts.`,
+    includes: `<h3>This volumne includes the following chapters</h3>
+      <h4>PART I: The Many Facets of ASL</h4>
+      <ul>
+        <li> Chapter 4 The Play of the Game (part II)</li>
+        <li> Chapter 5 The Role of Fate</li>
+        <li> Chapter 6 Concentration of Force</li>
+        <li> Chapter 7 Men on March</li>
+      </ul>`,
+    price: 50,
+    intPrice: 0,
+    button: '9WJ2ZV2K7LACC',
+    imageF: aslComp3,
+    page: 'aslComp3-pg',
+    active: true,
+    year: 2026,
+    who,
+    lftId: 190,
   },
   {
     id: 93,
