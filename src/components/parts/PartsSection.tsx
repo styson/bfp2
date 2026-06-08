@@ -249,7 +249,7 @@ export const PartsSection = () => {
             {/* Right section (1/3) */}
             <div className='lg:col-span-1 flex flex-col gap-3'>
               <p className='text-[red] font-sans text-center'>
-                Don't forget to add shipping if you are only buying boards/maps or counters!
+                Don't forget to add shipping if you are only buying boards or maps!
               </p>
               <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3'>
                 {shipping.map((part) => (
