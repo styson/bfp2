@@ -14,13 +14,13 @@ This site is configured for **automatic deployment to AWS Amplify** via GitHub i
 2. Push changes to GitHub
 3. Amplify automatically builds and deploys
 
-See [AWS-AMPLIFY-DEPLOYMENT.md](./AWS-AMPLIFY-DEPLOYMENT.md) for complete setup instructions.
+See [AWS-AMPLIFY-DEPLOYMENT.md](./docs/AWS-AMPLIFY-DEPLOYMENT.md) for complete setup instructions.
 
 ## 📚 Documentation
 
-- **[AWS-AMPLIFY-DEPLOYMENT.md](./AWS-AMPLIFY-DEPLOYMENT.md)** - Complete AWS Amplify deployment guide
-- **[DEPLOYMENT.md](./DEPLOYMENT.md)** - Comprehensive production deployment guide
-- **[QUICK-START-DEPLOYMENT.md](./QUICK-START-DEPLOYMENT.md)** - Quick reference for deployment
+- **[AWS-AMPLIFY-DEPLOYMENT.md](./docs/AWS-AMPLIFY-DEPLOYMENT.md)** - Complete AWS Amplify deployment guide
+- **[DEPLOYMENT.md](./docs/DEPLOYMENT.md)** - Comprehensive production deployment guide
+- **[QUICK-START-DEPLOYMENT.md](./docs/QUICK-START-DEPLOYMENT.md)** - Quick reference for deployment
 
 ## 🛠️ Technology Stack
 
@@ -138,5 +138,5 @@ Proprietary - All rights reserved by Bounding Fire Productions
 ## 🆘 Support
 
 For deployment issues, see:
-- [AWS-AMPLIFY-DEPLOYMENT.md](./AWS-AMPLIFY-DEPLOYMENT.md) - Amplify-specific help
-- [DEPLOYMENT.md](./DEPLOYMENT.md) - General deployment troubleshooting
+- [AWS-AMPLIFY-DEPLOYMENT.md](./docs/AWS-AMPLIFY-DEPLOYMENT.md) - Amplify-specific help
+- [DEPLOYMENT.md](./docs/DEPLOYMENT.md) - General deployment troubleshooting
