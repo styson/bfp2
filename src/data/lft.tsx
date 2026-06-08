@@ -37,7 +37,7 @@ const who = 'lft';
 export const products: Product[] = [
   {
     id: 110,
-    name: 'The ASL Companion #1',
+    name: 'Vol #1, ASL Companion',
     description: '',
     shortDescription: `<b>The ASL Companion</b> is divided into 90 chapters grouped into twelve parts.`,
     includes: `<h3>This volumne includes the following chapters</h3>
@@ -47,9 +47,6 @@ export const products: Product[] = [
       <ul>
         <li> Chapter 1 Welcome to Advanced Squad Leader</li>
         <li> Chapter 2 Warriors and Weapons</li>
-        <li> Chapter 3 The Lay of the Land</li>
-        <li> Chapter 4 The Play of the Game</li>
-        <li> Chapter 5 The Role of Fate</li>
       </ul>`,
     price: 50,
     intPrice: 0,
@@ -63,16 +60,14 @@ export const products: Product[] = [
   },
   {
     id: 20,
-    name: 'The ASL Companion #2',
+    name: 'Vol #2, ASL Companion',
     description: '',
     shortDescription: `<b>The ASL Companion</b> is divided into 90 chapters grouped into twelve parts.`,
     includes: `<h3>This volumne includes the following chapters</h3>
       <p>Chapter 3, “The Lay of the Land” discusses the various terrain types found on ASL mapboards and how they affect gameplay.</p>
       <p>Chapter 4, “The Play of the Game” provides an overview of how a typical game turn proceeds, including movement, firing, and other actions.</p>
-      <h4>PART I: The Many Facets of ASL</h4>
+      <h4>PART I</h4>
       <ul>
-        <li> Chapter 1 Welcome to Advanced Squad Leader</li>
-        <li> Chapter 2 Warriors and Weapons</li>
         <li> Chapter 3 The Lay of the Land</li>
         <li> Chapter 4 The Play of the Game (part I)</li>
       </ul>`,
@@ -88,11 +83,11 @@ export const products: Product[] = [
   },
   {
     id: 21,
-    name: 'The ASL Companion #3',
+    name: 'Vol #3, ASL Companion',
     description: '',
     shortDescription: `<b>The ASL Companion</b> is divided into 90 chapters grouped into twelve parts.`,
     includes: `<h3>This volumne includes the following chapters</h3>
-      <h4>PART I: The Many Facets of ASL</h4>
+      <h4>PARTS I & II</h4>
       <ul>
         <li> Chapter 4 The Play of the Game (part II)</li>
         <li> Chapter 5 The Role of Fate</li>

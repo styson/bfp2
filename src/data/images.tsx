@@ -37,7 +37,7 @@ import rpc3 from '../images/rpc3.png';
 import tff from '../images/tff.png';
 
 import aslComp1 from '../images/comp1.png';
-import aslComp2 from '../images/comp1.png';
+import aslComp2 from '../images/comp2.png';
 import aslComp3 from '../images/comp3.png';
 import inorCg from '../images/inor-cg.jpg';
 import inorCounters from '../images/inor-counters.png';
