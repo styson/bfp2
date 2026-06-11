@@ -128,7 +128,7 @@ function StorePage() {
                     We'd love to hear from you.
                   </p>
                   <a
-                    href="mailto:support@boundingfire.com"
+                    href="mailto:bfp.tyson@gmail.com"
                     className="inline-flex items-center gap-3 px-10 py-4 bg-[#f0b429] text-[#1a1b2a] font-black uppercase tracking-wider hover:bg-[#f0b429]/80 transition-[background-color] duration-200 border-2 border-[#f0b429]"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
