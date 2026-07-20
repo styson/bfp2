@@ -288,6 +288,16 @@ export const parts: Part[] = [
     type: 'counters',
   },
   {
+    name: 'Into the Rubble',
+    prices: [
+      { type: 'US', price: 20 },
+      { type: 'Canada', price: 30 },
+      { type: 'International', price: 45 },
+    ],
+    paypalKey: '4MSCXNM2E93CQ',
+    type: 'counters',
+  },
+  {
     name: 'Corregidor the Rock',
     prices: [
       { type: 'US', price: 30 },
