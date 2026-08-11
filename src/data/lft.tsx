@@ -3,6 +3,7 @@ import {
   aslComp1,
   aslComp2,
   aslComp3,
+  aslComp4,
   dx,
   ffs,
   ftc10,
@@ -103,6 +104,27 @@ export const products: Product[] = [
     year: 2026,
     who,
     lftId: 190,
+  },
+  {
+    id: 22,
+    name: 'Vol #4, ASL Companion',
+    description: '',
+    shortDescription: `<b>The ASL Companion</b> is divided into 90 chapters grouped into twelve parts.`,
+    includes: `<h3>This volumne includes the following chapters</h3>
+      <h4>PART II</h4>
+      <ul>
+        <li> Chapter 7 Men on March</li>
+        <li> Chapter 8 Infantry Attacks</li>
+      </ul>`,
+    price: 50,
+    intPrice: 0,
+    button: 'TYVJPTVVXM5W4',
+    imageF: aslComp4,
+    page: 'aslComp4-pg',
+    active: true,
+    year: 2026,
+    who,
+    lftId: 191,
   },
   {
     id: 93,
