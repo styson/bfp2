@@ -13,41 +13,138 @@ interface ProductModalProps {
 const htmlProps =
   'text-[var(--c-text)]/80 leading-relaxed font-sans [&_p]:mb-3 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:mb-3 [&_li]:mb-1 [&_h5]:text-[#f0b429] [&_h5]:uppercase [&_h5]:text-sm [&_h5]:font-bold [&_h5]:mt-4 [&_h5]:mb-2 [&_table]:text-sm [&_td]:pr-4 [&_td]:py-0.5 [&_b]:text-[var(--c-text)] [&_i]:text-[var(--c-text)]/70 [&_sup]:text-xs [&_a]:text-[#5bc9e8] [&_a]:underline';
 
+interface ArchiveData {
+  title?: string;
+  attacker?: string;
+  defender?: string;
+  author?: string;
+  playings?: { attacker_wins?: number; defender_wins?: number }[];
+}
+
 function ScenarioTable({ scenarios }: { scenarios: Scenario[] }) {
-  // Filter out legend/note rows (empty id and not a real scenario)
   const rows = scenarios.filter((s) => s.name && !(s.id === '' && s.name.startsWith('(')));
   const notes = scenarios.filter((s) => s.id === '' && s.name.startsWith('('));
+  const hasArchiveIds = rows.some((s) => s.arc_id);
+
+  const [loading, setLoading] = useState<string | null>(null);
+  const [fetchError, setFetchError] = useState<string | null>(null);
+  const [activePopover, setActivePopover] = useState<string | null>(null);
+  const [popoverData, setPopoverData] = useState<ArchiveData | null>(null);
+
+  async function openArchive(arc_id: string) {
+    setLoading(arc_id);
+    setFetchError(null);
+    try {
+      const res = await fetch(`https://aslscenarioarchive.com/rest/scenario/list/${arc_id}`);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      setPopoverData(await res.json());
+      setActivePopover(arc_id);
+    } catch (err) {
+      setFetchError(err instanceof Error ? err.message : 'Failed to fetch');
+    } finally {
+      setLoading(null);
+    }
+  }
+
+  function closePopover() {
+    setActivePopover(null);
+    setPopoverData(null);
+    setFetchError(null);
+  }
 
   return (
-    <div className='overflow-x-auto'>
-      <table className='w-full text-sm font-sans border-collapse'>
-        <thead>
-          <tr className='border-b border-[#f0b429]/20'>
-            <th className='text-left py-2 pr-4 text-[var(--c-text)]/40 uppercase text-xs tracking-wider font-bold whitespace-nowrap'>
-              ID
-            </th>
-            <th className='text-left py-2 pr-4 text-[var(--c-text)]/40 uppercase text-xs tracking-wider font-bold'>Title</th>
-            <th className='text-left py-2 text-[var(--c-text)]/40 uppercase text-xs tracking-wider font-bold whitespace-nowrap'>
-              Attacker
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map((s, i) => (
-            <tr key={`${s.id}-${i}`} className={`border-b border-[#f0b429]/10 ${s.att ?? ''}`}>
-              <td className='py-1.5 pr-4 text-[var(--c-text)]/70 whitespace-nowrap align-top'>{s.id}</td>
-              <td className='py-1.5 pr-4 text-[var(--c-text)]/90 align-top' dangerouslySetInnerHTML={{ __html: s.name }} />
-              <td className='py-1.5 capitalize align-top whitespace-nowrap text-[var(--c-text)]/60'>{s.att ?? ''}</td>
+    <>
+      <div className='overflow-x-auto'>
+        <table className='w-full text-sm font-sans border-collapse'>
+          <thead>
+            <tr className='border-b border-[#f0b429]/20'>
+              <th className='text-left py-2 pr-4 text-[var(--c-text)]/40 uppercase text-xs tracking-wider font-bold whitespace-nowrap'>
+                ID
+              </th>
+              <th className='text-left py-2 pr-4 text-[var(--c-text)]/40 uppercase text-xs tracking-wider font-bold'>Title</th>
+              <th className='text-left py-2 text-[var(--c-text)]/40 uppercase text-xs tracking-wider font-bold whitespace-nowrap'>
+                Attacker
+              </th>
+              {hasArchiveIds && (
+                <th className='text-left py-2 pl-4 text-[var(--c-text)]/40 uppercase text-xs tracking-wider font-bold whitespace-nowrap'>
+                  Archive
+                </th>
+              )}
             </tr>
-          ))}
-        </tbody>
-      </table>
-      {notes.map((n, i) => (
-        <p key={i} className='mt-3 text-xs text-[var(--c-text)]/30 font-sans italic'>
-          {n.name}
-        </p>
-      ))}
-    </div>
+          </thead>
+          <tbody>
+            {rows.map((s, i) => (
+              <tr key={`${s.id}-${i}`} className={`border-b border-[#f0b429]/10 ${s.att ?? ''}`}>
+                <td className='py-1.5 pr-4 text-[var(--c-text)]/70 whitespace-nowrap align-top'>{s.id}</td>
+                <td className='py-1.5 pr-4 text-[var(--c-text)]/90 align-top' dangerouslySetInnerHTML={{ __html: s.name }} />
+                <td className='py-1.5 capitalize align-top whitespace-nowrap text-[var(--c-text)]/60'>{s.att ?? ''}</td>
+                {hasArchiveIds && (
+                  <td className='py-1.5 pl-4 align-top'>
+                    {s.arc_id && (
+                      <button
+                        onClick={() => openArchive(s.arc_id!)}
+                        disabled={loading === s.arc_id}
+                        className='px-2 py-0.5 text-xs border border-[#5bc9e8]/40 text-[#5bc9e8] hover:bg-[#5bc9e8]/10 disabled:opacity-40 disabled:cursor-not-allowed transition-colors font-sans'
+                      >
+                        {loading === s.arc_id ? '…' : 'Details'}
+                      </button>
+                    )}
+                  </td>
+                )}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        {notes.map((n, i) => (
+          <p key={i} className='mt-3 text-xs text-[var(--c-text)]/30 font-sans italic'>
+            {n.name}
+          </p>
+        ))}
+      </div>
+
+      {(activePopover || fetchError) && (
+        <div className='fixed inset-0 bg-black/60 z-[60] flex items-center justify-center p-4' onClick={closePopover}>
+          <div
+            className='bg-[var(--c-surface)] border border-[#f0b429]/20 p-6 max-w-md w-full'
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className='flex justify-between items-center mb-4'>
+              <h3 className='text-base font-bold uppercase tracking-wider text-[#f0b429] font-sans'>
+                {popoverData?.title || 'Scenario Details'}
+              </h3>
+              <button onClick={closePopover} className='text-[var(--c-text)]/40 hover:text-[var(--c-text)] text-lg leading-none'>
+                ✕
+              </button>
+            </div>
+            {fetchError && <p className='text-red-400 text-sm font-sans'>{fetchError}</p>}
+            {popoverData && (
+              <table className='w-full text-sm font-sans'>
+                <tbody>
+                  <tr className='border-b border-[#f0b429]/10'>
+                    <td className='py-1.5 pr-4 text-[var(--c-text)]/40 uppercase text-xs tracking-wider whitespace-nowrap'>Attacker</td>
+                    <td className='py-1.5 text-[var(--c-text)]/80'>
+                      {popoverData.attacker}
+                      {popoverData.playings?.[0] ? ` (${popoverData.playings[0].attacker_wins} wins)` : ''}
+                    </td>
+                  </tr>
+                  <tr className='border-b border-[#f0b429]/10'>
+                    <td className='py-1.5 pr-4 text-[var(--c-text)]/40 uppercase text-xs tracking-wider whitespace-nowrap'>Defender</td>
+                    <td className='py-1.5 text-[var(--c-text)]/80'>
+                      {popoverData.defender}
+                      {popoverData.playings?.[0] ? ` (${popoverData.playings[0].defender_wins} wins)` : ''}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className='py-1.5 pr-4 text-[var(--c-text)]/40 uppercase text-xs tracking-wider whitespace-nowrap'>Designer</td>
+                    <td className='py-1.5 text-[var(--c-text)]/80'>{popoverData.author}</td>
+                  </tr>
+                </tbody>
+              </table>
+            )}
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 
