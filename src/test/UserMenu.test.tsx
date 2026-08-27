@@ -11,6 +11,8 @@ vi.mock('@mui/icons-material', () => ({
   Person: () => <span>Person</span>,
   ShoppingBag: () => <span>ShoppingBag</span>,
   Logout: () => <span>Logout</span>,
+  LightMode: () => <span>LightMode</span>,
+  DarkMode: () => <span>DarkMode</span>,
 }))
 
 const signOut = vi.fn()

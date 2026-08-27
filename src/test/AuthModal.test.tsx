@@ -58,7 +58,7 @@ describe('AuthModal', () => {
   it('clicking modal content does NOT call onClose', () => {
     const onClose = vi.fn()
     render(<AuthModal isOpen={true} onClose={onClose} />)
-    const modal = document.querySelector('.bg-\\[\\#13141f\\]') as HTMLElement
+    const modal = document.querySelector('.pointer-events-auto') as HTMLElement
     fireEvent.click(modal)
     expect(onClose).not.toHaveBeenCalled()
   })
