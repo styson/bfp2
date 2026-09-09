@@ -1112,10 +1112,10 @@ export const products: Product[] = [
         <ul>
           <li>16 Action-Packed, heavily play-tested scenarios, in full-color print</li>
           <li>Four 8"x22" geomorphic mapboards (BFP H, I, J, and K) printed on heavy card stock, depicting mountains with village terrain.<br/>
-            title="BFP H"><img src="${miniH}" style="margin:.5em;"/>
-            title="BFP I"><img src="${miniI}" style="margin:.5em;"/>
-            title="BFP J"><img src="${miniJ}" style="margin:.5em;"/>
-            title="BFP K"><img src="${miniK}" style="margin:.5em;"/>
+            <img title="BFP H" src="${miniH}" style="margin:.5em;"/>
+            <img title="BFP I" src="${miniI}" style="margin:.5em;"/>
+            <img title="BFP J" src="${miniJ}" style="margin:.5em;"/>
+            <img title="BFP K" src="${miniK}" style="margin:.5em;"/>
           </li>
           <li>One new specialized half-board castle overlay (BFP C-1)<br/>
             <img src="${miniRC1}" style="margin:.5em;"/>

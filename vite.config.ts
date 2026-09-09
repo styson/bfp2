@@ -35,13 +35,13 @@ export default defineConfig({
   // Path aliases for cleaner imports
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src'),
-      '@components': path.resolve(__dirname, './src/components'),
-      '@hooks': path.resolve(__dirname, './src/hooks'),
-      '@store': path.resolve(__dirname, './src/store'),
-      '@utils': path.resolve(__dirname, './src/utils'),
-      '@data': path.resolve(__dirname, './src/data'),
-      '@types': path.resolve(__dirname, './src/types'),
+      '@': path.resolve(import.meta.dirname, './src'),
+      '@components': path.resolve(import.meta.dirname, './src/components'),
+      '@hooks': path.resolve(import.meta.dirname, './src/hooks'),
+      '@store': path.resolve(import.meta.dirname, './src/store'),
+      '@utils': path.resolve(import.meta.dirname, './src/utils'),
+      '@data': path.resolve(import.meta.dirname, './src/data'),
+      '@types': path.resolve(import.meta.dirname, './src/types'),
     },
   },
 })
