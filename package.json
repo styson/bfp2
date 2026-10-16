@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "lint": "eslint .",
+    "lint": "oxlint .",
     "preview": "vite build --watch",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage"
@@ -38,9 +38,7 @@
     "@types/react-dom": "^19.2.5",
     "@vitejs/plugin-react": "^6.1.0",
     "@vitest/coverage-v8": "^4.1.11",
-    "eslint": "^9.39.5",
-    "eslint-plugin-react-hooks": "^7.1.1",
-    "eslint-plugin-react-refresh": "^0.5.4",
+    "oxlint": "1.87.0",
     "globals": "^16.5.0",
     "jsdom": "^26.1.0",
     "typescript": "^5.9.3",

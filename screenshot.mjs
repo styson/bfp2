@@ -1,7 +1,7 @@
 import { createRequire } from 'module';
 import { existsSync, mkdirSync, readdirSync } from 'fs';
+import { fileURLToPath } from 'url';
 import { join, dirname } from 'path';
-import { fileURLToPath, pathToFileURL } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const require = createRequire(import.meta.url);
