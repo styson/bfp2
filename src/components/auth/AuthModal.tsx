@@ -72,7 +72,7 @@ export const AuthModal = ({ isOpen, onClose }: AuthModalProps) => {
       {/* Modal */}
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
         <div
-          className="pointer-events-auto w-full max-w-sm bg-[var(--c-surface)] border border-[#f0b429]/30 shadow-[0_0_60px_rgba(240,180,41,0.1)]"
+          className="pointer-events-auto w-full max-w-sm bg-(--c-surface) border border-[#f0b429]/30 shadow-[0_0_60px_rgba(240,180,41,0.1)]"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Header */}
@@ -81,13 +81,13 @@ export const AuthModal = ({ isOpen, onClose }: AuthModalProps) => {
               <h2 className="text-xl font-black uppercase tracking-widest text-[#f0b429]">
                 Sign In
               </h2>
-              <p className="text-xs text-[var(--c-text)]/75 uppercase tracking-wider mt-1 font-sans">
+              <p className="text-xs text-(--c-text)/75 uppercase tracking-wider mt-1 font-sans">
                 Access your account
               </p>
             </div>
             <button
               onClick={onClose}
-              className="p-1.5 border border-[#f0b429]/30 text-[var(--c-text)]/50 hover:bg-[#f0b429] hover:text-[#1a1b2a] hover:border-[#f0b429] transition-[background-color,color,border-color] duration-200"
+              className="p-1.5 border border-[#f0b429]/30 text-(--c-text)/50 hover:bg-[#f0b429] hover:text-[#1a1b2a] hover:border-[#f0b429] transition-[background-color,color,border-color] duration-200"
               aria-label="Close"
             >
               <Close fontSize="small" />
@@ -98,7 +98,7 @@ export const AuthModal = ({ isOpen, onClose }: AuthModalProps) => {
           <div className="p-6 space-y-3">
             <button
               onClick={() => signInWithGoogle()}
-              className="w-full flex items-center gap-3 px-4 py-3 bg-white text-[#1a1b2a] font-bold text-sm uppercase tracking-wider hover:bg-[#f0b429] transition-[background-color] duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#f0b429] active:scale-[0.98] transition-transform"
+              className="w-full flex items-center gap-3 px-4 py-3 bg-white text-[#1a1b2a] font-bold text-sm uppercase tracking-wider hover:bg-[#f0b429] transition-[background-color] duration-200 focus-visible:outline-2 focus-visible:outline-[#f0b429] active:scale-[0.98] transition-transform"
             >
               <GoogleIcon />
               Continue with Google
@@ -106,7 +106,7 @@ export const AuthModal = ({ isOpen, onClose }: AuthModalProps) => {
 
             <button
               onClick={() => signInWithGitHub()}
-              className="w-full flex items-center gap-3 px-4 py-3 bg-[#24292e] text-white font-bold text-sm uppercase tracking-wider hover:bg-[#f0b429] hover:text-[#1a1b2a] transition-[background-color,color] duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#f0b429] active:scale-[0.98]"
+              className="w-full flex items-center gap-3 px-4 py-3 bg-[#24292e] text-white font-bold text-sm uppercase tracking-wider hover:bg-[#f0b429] hover:text-[#1a1b2a] transition-[background-color,color] duration-200 focus-visible:outline-2 focus-visible:outline-[#f0b429] active:scale-[0.98]"
             >
               <GitHubIcon />
               Continue with GitHub
@@ -114,7 +114,7 @@ export const AuthModal = ({ isOpen, onClose }: AuthModalProps) => {
 
             <div className="relative flex items-center gap-3 py-1">
               <div className="flex-1 h-px bg-[#f0b429]/15" />
-              <span className="text-[10px] uppercase tracking-widest text-[var(--c-text)]/75 font-sans">or</span>
+              <span className="text-[10px] uppercase tracking-widest text-(--c-text)/75 font-sans">or</span>
               <div className="flex-1 h-px bg-[#f0b429]/15" />
             </div>
 
@@ -130,19 +130,19 @@ export const AuthModal = ({ isOpen, onClose }: AuthModalProps) => {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="your@email.com"
                   required
-                  className="w-full px-4 py-3 bg-[var(--c-bg)] border border-[#f0b429]/30 text-[var(--c-text)] text-sm placeholder:text-[var(--c-text)]/25 focus:outline-none focus:border-[#f0b429] transition-[border-color] duration-200"
+                  className="w-full px-4 py-3 bg-(--c-bg) border border-[#f0b429]/30 text-(--c-text) text-sm placeholder:text-(--c-text)/25 focus:outline-none focus:border-[#f0b429] transition-[border-color] duration-200"
                 />
                 <button
                   type="submit"
                   disabled={emailLoading}
-                  className="w-full px-4 py-3 bg-[#f0b429]/10 border border-[#f0b429]/40 text-[#f0b429] font-bold text-sm uppercase tracking-wider hover:bg-[#f0b429] hover:text-[#1a1b2a] hover:border-[#f0b429] transition-[background-color,color,border-color] duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#f0b429] active:scale-[0.98] disabled:opacity-40 disabled:cursor-not-allowed"
+                  className="w-full px-4 py-3 bg-[#f0b429]/10 border border-[#f0b429]/40 text-[#f0b429] font-bold text-sm uppercase tracking-wider hover:bg-[#f0b429] hover:text-[#1a1b2a] hover:border-[#f0b429] transition-[background-color,color,border-color] duration-200 focus-visible:outline-2 focus-visible:outline-[#f0b429] active:scale-[0.98] disabled:opacity-40 disabled:cursor-not-allowed"
                 >
                   {emailLoading ? 'Sending…' : 'Send Magic Link'}
                 </button>
               </form>
             )}
 
-            <p className="text-[10px] text-[var(--c-text)]/75 text-center font-sans pt-2 leading-relaxed">
+            <p className="text-[10px] text-(--c-text)/75 text-center font-sans pt-2 leading-relaxed">
               By signing in you agree to our terms of service.
               <br />
               Your cart will be saved across devices.

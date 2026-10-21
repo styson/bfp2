@@ -14,6 +14,8 @@ import { useCartSync } from './hooks/useCartSync';
 import type { Product } from './types';
 import { products } from './data/products';
 
+const currentYear = new Date().getFullYear();
+
 function StorePage() {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -31,7 +33,7 @@ function StorePage() {
   };
 
   return (
-    <div className="min-h-screen bg-[var(--c-bg)]">
+    <div className="min-h-screen bg-(--c-bg)">
       <Header />
 
       <main className="pt-20">
@@ -41,14 +43,14 @@ function StorePage() {
         {(() => {
           const bfpOnly = products.filter((p) => p.category === 'BFP');
           const totalScenarios = bfpOnly.reduce((sum, p) => sum + (p.scenarios?.length ?? 0), 0);
-          const yearsActive = new Date().getFullYear() - 1998;
+          const yearsActive = currentYear - 1998;
           const stats = [
             { value: `${yearsActive}+`, label: 'Years Publishing' },
             { value: String(bfpOnly.length), label: 'BFP Modules' },
             { value: `${totalScenarios}+`, label: 'Scenarios' },
           ];
           return (
-            <div className="bg-[var(--c-deep)] border-b border-[#f0b429]/20">
+            <div className="bg-(--c-deep) border-b border-[#f0b429]/20">
               <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
                 <div className="grid grid-cols-3 divide-x divide-[#f0b429]/20">
                   {stats.map(({ value, label }) => (
@@ -56,7 +58,7 @@ function StorePage() {
                       <span className="text-4xl sm:text-5xl font-black text-[#f0b429] tracking-tight" style={{ fontVariantNumeric: 'tabular-nums' }}>
                         {value}
                       </span>
-                      <span className="text-xs sm:text-sm uppercase tracking-widest text-[var(--c-text)]/40 font-sans">
+                      <span className="text-xs sm:text-sm uppercase tracking-widest text-(--c-text)/40 font-sans">
                         {label}
                       </span>
                     </div>
@@ -78,7 +80,7 @@ function StorePage() {
         <DownloadsSection />
 
         {/* About Section */}
-        <section id="about" className="bg-[var(--c-surface)] text-[var(--c-text)] py-20 border-t border-[#f0b429]/20">
+        <section id="about" className="bg-(--c-surface) text-(--c-text) py-20 border-t border-[#f0b429]/20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-4 max-w-7xl">
             <h2 className="text-4xl sm:text-5xl uppercase text-[#f0b429] mb-12 text-center">
               Contact Bounding Fire Productions
@@ -86,7 +88,7 @@ function StorePage() {
 
             <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-12 items-start">
               {/* Left column — About blurb */}
-              <div className="space-y-4 text-[var(--c-text)]/70 font-sans leading-relaxed text-base text-justify">
+              <div className="space-y-4 text-(--c-text)/70 font-sans leading-relaxed text-base text-justify">
                 <p>
                   Bounding Fire Productions is proud to serve our customers with high quality products and dedicated customer service. In 1999, we released our first product — the Hell on Wheels pack. Since reforming in 2007, BFP has released 13 products.
                 </p>
@@ -102,10 +104,10 @@ function StorePage() {
                 <p>
                   Thank you for visiting! We hope to add you to our growing list of satisfied customers.
                 </p>
-                <p className="text-[var(--c-text)]/50 text-sm">
+                <p className="text-(--c-text)/50 text-sm">
                   — The Team at BFP
                 </p>
-                <p className="text-[var(--c-text)]/50 text-sm">
+                <p className="text-(--c-text)/50 text-sm">
                   P.S. Check out the{' '}
                   <a
                     href="https://asl-ratings.org"
@@ -123,7 +125,7 @@ function StorePage() {
               <div className="flex flex-col gap-10">
                 <div id="contact" className="flex flex-col items-start">
                   <h3 className="text-2xl uppercase text-[#f0b429] mb-4 tracking-wide">Get in Touch</h3>
-                  <p className="text-lg text-[var(--c-text)]/70 leading-relaxed mb-8 font-sans text-justify w-full">
+                  <p className="text-lg text-(--c-text)/70 leading-relaxed mb-8 font-sans text-justify w-full">
                     Questions about our products? Want to discuss custom orders?
                     We'd love to hear from you.
                   </p>
@@ -141,7 +143,7 @@ function StorePage() {
 
                 <div className="flex flex-col items-start">
                   <h3 className="text-2xl uppercase text-[#f0b429] mb-4 tracking-wide">Join Us on Facebook</h3>
-                  <p className="text-lg text-[var(--c-text)]/70 leading-relaxed mb-8 font-sans text-justify w-full">
+                  <p className="text-lg text-(--c-text)/70 leading-relaxed mb-8 font-sans text-justify w-full">
                     Connect with the Bounding Fire community. Share scenarios, ask questions, and stay up to date with the latest news and releases.
                   </p>
                   <a
@@ -163,17 +165,17 @@ function StorePage() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-[var(--c-surface)] text-[var(--c-text)] py-12 border-t border-[#f0b429]/20">
+      <footer className="bg-(--c-surface) text-(--c-text) py-12 border-t border-[#f0b429]/20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-4">
             <h3 className="text-2xl uppercase text-[#f0b429]">
               Bounding Fire Productions
             </h3>
-            <p className="text-sm text-[var(--c-text)]/40 uppercase tracking-wider font-sans">
+            <p className="text-sm text-(--c-text)/40 uppercase tracking-wider font-sans">
               Premium Gaming Products
             </p>
-            <p className="text-xs text-[var(--c-text)]/25 font-sans">
-              © {new Date().getFullYear()} Bounding Fire Productions. All rights reserved.
+            <p className="text-xs text-(--c-text)/25 font-sans">
+              © {currentYear} Bounding Fire Productions. All rights reserved.
             </p>
           </div>
         </div>

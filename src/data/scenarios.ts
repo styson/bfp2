@@ -1,3 +1,4 @@
+// Resource file: scenario archive reference data, kept for lookups but not imported by the app.
 import type { Scenario } from '../types';
 
 export const scenarios: Scenario[] = [

@@ -9,19 +9,21 @@ export const ProfileForm = () => {
   const [saved, setSaved] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  const userId = user?.id;
+
   // Load profile on mount
   useEffect(() => {
-    if (!user) return;
+    if (!userId) return;
     const load = async () => {
       const { data } = await supabase
         .from('profiles')
         .select('display_name')
-        .eq('id', user.id)
+        .eq('id', userId)
         .single();
       if (data?.display_name) setDisplayName(data.display_name);
     };
     load();
-  }, [user?.id]);
+  }, [userId]);
 
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -54,9 +56,9 @@ export const ProfileForm = () => {
           type="text"
           value={user?.email ?? ''}
           disabled
-          className="w-full bg-[var(--c-deep)] border border-[#f0b429]/10 px-4 py-3 text-sm text-[var(--c-text)]/30 font-sans cursor-not-allowed"
+          className="w-full bg-(--c-deep) border border-[#f0b429]/10 px-4 py-3 text-sm text-(--c-text)/30 font-sans cursor-not-allowed"
         />
-        <p className="text-[10px] text-[var(--c-text)]/25 font-sans mt-1">
+        <p className="text-[10px] text-(--c-text)/25 font-sans mt-1">
           Managed by your sign-in provider.
         </p>
       </div>
@@ -76,16 +78,16 @@ export const ProfileForm = () => {
           onChange={(e) => setDisplayName(e.target.value)}
           placeholder="Your name"
           maxLength={60}
-          className="w-full bg-[var(--c-deep)] border border-[#f0b429]/20 px-4 py-3 text-sm text-[var(--c-text)] font-sans placeholder:text-[var(--c-text)]/20 focus:outline-none focus:border-[#f0b429] transition-[border-color] duration-200"
+          className="w-full bg-(--c-deep) border border-[#f0b429]/20 px-4 py-3 text-sm text-(--c-text) font-sans placeholder:text-(--c-text)/20 focus:outline-none focus:border-[#f0b429] transition-[border-color] duration-200"
         />
       </div>
 
       {/* Mailing list placeholder */}
-      <div className="border border-[#f0b429]/10 bg-[var(--c-deep)] px-4 py-3">
-        <p className="text-[10px] font-black uppercase tracking-widest text-[var(--c-text)]/30">
+      <div className="border border-[#f0b429]/10 bg-(--c-deep) px-4 py-3">
+        <p className="text-[10px] font-black uppercase tracking-widest text-(--c-text)/30">
           Mailing List
         </p>
-        <p className="text-xs text-[var(--c-text)]/20 font-sans mt-1">
+        <p className="text-xs text-(--c-text)/20 font-sans mt-1">
           Email preferences coming soon.
         </p>
       </div>
@@ -99,7 +101,7 @@ export const ProfileForm = () => {
       <button
         type="submit"
         disabled={saving}
-        className="px-8 py-3 bg-[#f0b429] text-[#1a1b2a] text-xs font-black uppercase tracking-widest hover:bg-[#f0b429]/80 transition-[background-color] duration-200 disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#f0b429] active:scale-[0.98]"
+        className="px-8 py-3 bg-[#f0b429] text-[#1a1b2a] text-xs font-black uppercase tracking-widest hover:bg-[#f0b429]/80 transition-[background-color] duration-200 disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-[#f0b429] active:scale-[0.98]"
       >
         {saving ? 'Saving…' : saved ? 'Saved ✓' : 'Save Changes'}
       </button>

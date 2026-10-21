@@ -3,7 +3,7 @@ import { supabase } from '../lib/supabase';
 import { useAuthStore } from '../store/authStore';
 import type { CartItem } from '../types';
 
-export interface Order {
+interface Order {
   id: string;
   paypal_order_id: string | null;
   status: 'pending' | 'completed' | 'refunded';
@@ -12,37 +12,47 @@ export interface Order {
   created_at: string;
 }
 
+interface OrdersResult {
+  userId: string;
+  orders: Order[];
+  error: string | null;
+}
+
 export const useOrders = () => {
   const { user } = useAuthStore();
-  const [orders, setOrders] = useState<Order[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const userId = user?.id;
+  // Keyed by user so a sign-out or user switch never shows another user's orders
+  const [result, setResult] = useState<OrdersResult | null>(null);
 
   useEffect(() => {
-    if (!user) {
-      setOrders([]);
-      return;
-    }
+    if (!userId) return;
+    let cancelled = false;
 
     const fetchOrders = async () => {
-      setLoading(true);
-      setError(null);
       const { data, error: err } = await supabase
         .from('orders')
         .select('*')
-        .eq('user_id', user.id)
+        .eq('user_id', userId)
         .order('created_at', { ascending: false });
 
-      if (err) {
-        setError(err.message);
-      } else {
-        setOrders((data ?? []) as Order[]);
-      }
-      setLoading(false);
+      if (cancelled) return;
+      setResult({
+        userId,
+        orders: err ? [] : ((data ?? []) as Order[]),
+        error: err ? err.message : null,
+      });
     };
 
     fetchOrders();
-  }, [user?.id]);
+    return () => {
+      cancelled = true;
+    };
+  }, [userId]);
 
-  return { orders, loading, error };
+  const current = userId && result?.userId === userId ? result : null;
+  return {
+    orders: current?.orders ?? [],
+    loading: !!userId && !current,
+    error: current?.error ?? null,
+  };
 };

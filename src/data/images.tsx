@@ -69,7 +69,6 @@ import dw10 from '../images/boards/bdBFPDW10a.gif';
 import dw10b from '../images/boards/bdBFPDW10b.gif';
 
 import hw1 from '../images/boards/bdBFPHW1a.gif';
-import hw1b from '../images/boards/bdBFPHW1b.gif';
 
 import bdA from '../images/boards/bdBFPA.gif';
 import bdB from '../images/boards/bdBFPB.gif';
@@ -93,8 +92,6 @@ import bdS from '../images/boards/bdBFPS.gif';
 import bdT from '../images/boards/bdBFPT.gif';
 import bdU from '../images/boards/bdBFPU.gif';
 
-import bdBF1 from '../images/boards/bdBFP1.gif';
-import bdBF2 from '../images/boards/bdBFP2.gif';
 import miniBF1 from '../images/boards/miniBF1.gif';
 
 import miniA from '../images/boards/miniBFPA.gif';
@@ -103,12 +100,9 @@ import miniH from '../images/boards/miniBFPH.jpg';
 import miniI from '../images/boards/miniBFPI.jpg';
 import miniJ from '../images/boards/miniBFPJ.jpg';
 import miniK from '../images/boards/miniBFPK.jpg';
-import mini1 from '../images/boards/miniBFPDW1.png';
 import mini7 from '../images/boards/miniBFPDW7.jpg';
 
 // overlays
-import oRC1 from '../images/boards/bdBFPoC1.jpg';
-import oF1 from '../images/boards/bdBFPoF1.gif';
 import miniBFPoRC1 from '../images/boards/miniBFPoRC1.png';
 import miniRC1 from '../images/boards/miniBFPoC1.jpg';
 import miniF1 from '../images/boards/miniBFPoF1.png';
@@ -141,9 +135,9 @@ import pif_b from '../images/pif_b.png';
 export { bd, bj, btb, cs, ctr, hg, itr, mc, oc, on, os, oto, pf, how };
 export { dx, ffs, ftc10, ftc11, ftc12, ftc13, ftc5, ftc6, ftc8, ftc9, gh, inorPg, kgp, kgs, lft13, lft14, lft15, lft16, np, rpc3, tff };
 export { lft15maps, aslComp1, aslComp2, aslComp3, aslComp4, inorCg, inorMap, inorCounters, bdNP1, bdNP2, bdNP3 };
-export { dw1, dw1b, dw2, dw2b, dw3, dw3b, dw4, dw4b, dw5, dw5b, dw6, dw6b, dw7, dw7b, dw8, dw8b, dw9, dw9b, dw10, dw10b, hw1, hw1b };
+export { dw1, dw1b, dw2, dw2b, dw3, dw3b, dw4, dw4b, dw5, dw5b, dw6, dw6b, dw7, dw7b, dw8, dw8b, dw9, dw9b, dw10, dw10b, hw1 };
 export { bdA, bdB, bdC, bdD, bdE, bdF, bdG, bdH, bdI, bdJ, bdK, bdL, bdM, bdN, bdO, bdP, bdQ, bdR, bdS, bdT, bdU };
 export { bitterest, corregidor, neptune, orsha, schmidt1, schmidt2, schmidt3, schmidt4, voss1, voss2 };
 export { bd_b, bj_b, btb_b, cos_b, ctr_b, hg_b, itr_b, mc_b, oc_b, on_b, os_b, oto_b, pif_b };
-export { miniA, miniB, miniH, miniI, miniJ, miniK, mini1, mini7 };
-export { oRC1, miniBFPoRC1, miniRC1, oF1, miniF1, bdBF1, bdBF2, miniBF1 };
+export { miniA, miniB, miniH, miniI, miniJ, miniK, mini7 };
+export { miniBFPoRC1, miniRC1, miniF1, miniBF1 };

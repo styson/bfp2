@@ -1,4 +1,4 @@
-export type Scenario = {
+type Scenario = {
   name: string;
   id: string;
   att?: string;
@@ -50,12 +50,7 @@ export type Download = {
   instructionsModal?: boolean;
 };
 
-export type Order = {
-  productId: string;
-  quantity: number;
-};
-
-export type CounterOption = {
+type CounterOption = {
   type: string;
   price: number;
 };

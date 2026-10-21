@@ -28,7 +28,7 @@ export const AccountPage = () => {
 
   if (loading || !user) {
     return (
-      <div className="min-h-screen bg-[var(--c-bg)] flex items-center justify-center">
+      <div className="min-h-screen bg-(--c-bg) flex items-center justify-center">
         <div className="w-8 h-8 border-2 border-[#f0b429]/30 border-t-[#f0b429] rounded-full animate-spin" />
       </div>
     );
@@ -41,17 +41,17 @@ export const AccountPage = () => {
     'User';
 
   return (
-    <div className="min-h-screen bg-[var(--c-bg)]">
+    <div className="min-h-screen bg-(--c-bg)">
       <Header />
       <CartDrawer />
 
       <div className="pt-20">
         {/* Page header */}
-        <div className="bg-[var(--c-surface)] border-b border-[#f0b429]/20">
+        <div className="bg-(--c-surface) border-b border-[#f0b429]/20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl py-8">
             <Link
               to="/"
-              className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-[var(--c-text)]/40 hover:text-[#f0b429] transition-[color] duration-200 mb-6"
+              className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-(--c-text)/40 hover:text-[#f0b429] transition-[color] duration-200 mb-6"
             >
               <ArrowBack fontSize="small" />
               Back to store
@@ -59,7 +59,7 @@ export const AccountPage = () => {
             <h1 className="text-3xl sm:text-4xl font-black uppercase tracking-wider text-[#f0b429]">
               My Account
             </h1>
-            <p className="text-sm text-[var(--c-text)]/40 font-sans mt-1">
+            <p className="text-sm text-(--c-text)/40 font-sans mt-1">
               {displayName} · {user.email}
             </p>
           </div>
@@ -75,7 +75,7 @@ export const AccountPage = () => {
                 className={`px-6 py-3 text-xs font-black uppercase tracking-widest border-b-2 transition-[color,border-color] duration-200 ${
                   tab === t
                     ? 'border-[#f0b429] text-[#f0b429]'
-                    : 'border-transparent text-[var(--c-text)]/40 hover:text-[var(--c-text)]'
+                    : 'border-transparent text-(--c-text)/40 hover:text-(--c-text)'
                 }`}
               >
                 {t === 'orders' ? 'Order History' : 'Profile'}

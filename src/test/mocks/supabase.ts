@@ -30,5 +30,3 @@ export const createSupabaseMock = () => {
 
   return mock
 }
-
-export type SupabaseMock = ReturnType<typeof createSupabaseMock>

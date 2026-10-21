@@ -13,12 +13,13 @@ import type { CartItem } from '../types';
  */
 export const useCartSync = () => {
   const { user } = useAuthStore();
+  const userId = user?.id;
   const prevUserIdRef = useRef<string | null>(null);
   const isSyncing = useRef(false);
 
   // ── 1. Merge on sign-in ──────────────────────────────────────────────────
   useEffect(() => {
-    if (!user) return;
+    if (!userId) return;
 
     const merge = async () => {
       isSyncing.current = true;
@@ -28,7 +29,7 @@ export const useCartSync = () => {
         const { data: dbRows } = await supabase
           .from('cart_items')
           .select('*')
-          .eq('user_id', user.id);
+          .eq('user_id', userId);
 
         // Build merged map keyed by `productId-shippingType`
         const mergedMap = new Map<string, CartItem>();
@@ -57,11 +58,11 @@ export const useCartSync = () => {
         useCartStore.getState().setItems(mergedItems);
 
         // Write merged state to DB (replace)
-        await supabase.from('cart_items').delete().eq('user_id', user.id);
+        await supabase.from('cart_items').delete().eq('user_id', userId);
         if (mergedItems.length > 0) {
           await supabase.from('cart_items').insert(
             mergedItems.map((item) => ({
-              user_id: user.id,
+              user_id: userId,
               product_id: item.id,
               quantity: item.quantity,
               variant: { shippingType: item.shippingType },
@@ -74,12 +75,12 @@ export const useCartSync = () => {
     };
 
     merge();
-  }, [user?.id]);
+  }, [userId]);
 
   // ── 2. Clear local cart on sign-out ─────────────────────────────────────
   useEffect(() => {
     const prevId = prevUserIdRef.current;
-    const currentId = user?.id ?? null;
+    const currentId = userId ?? null;
 
     if (prevId && !currentId) {
       // User just signed out — clear local cart (DB cart is untouched)
@@ -87,11 +88,11 @@ export const useCartSync = () => {
     }
 
     prevUserIdRef.current = currentId;
-  }, [user?.id]);
+  }, [userId]);
 
   // ── 3. Ongoing sync: subscribe to cart changes while signed in ───────────
   useEffect(() => {
-    if (!user) return;
+    if (!userId) return;
 
     const unsubscribe = useCartStore.subscribe(async (state, prevState) => {
       if (state.items === prevState.items) return;
@@ -115,5 +116,5 @@ export const useCartSync = () => {
     });
 
     return unsubscribe;
-  }, [user?.id]);
+  }, [userId]);
 };

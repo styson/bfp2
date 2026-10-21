@@ -11,7 +11,7 @@ interface ProductModalProps {
 }
 
 const htmlProps =
-  'text-[var(--c-text)]/80 leading-relaxed font-sans [&_p]:mb-3 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:mb-3 [&_li]:mb-1 [&_h5]:text-[#f0b429] [&_h5]:uppercase [&_h5]:text-sm [&_h5]:font-bold [&_h5]:mt-4 [&_h5]:mb-2 [&_table]:text-sm [&_td]:pr-4 [&_td]:py-0.5 [&_b]:text-[var(--c-text)] [&_i]:text-[var(--c-text)]/70 [&_sup]:text-xs [&_a]:text-[#5bc9e8] [&_a]:underline';
+  'text-(--c-text)/80 leading-relaxed font-sans [&_p]:mb-3 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:mb-3 [&_li]:mb-1 [&_h5]:text-[#f0b429] [&_h5]:uppercase [&_h5]:text-sm [&_h5]:font-bold [&_h5]:mt-4 [&_h5]:mb-2 [&_table]:text-sm [&_td]:pr-4 [&_td]:py-0.5 [&_b]:text-(--c-text) [&_i]:text-(--c-text)/70 [&_sup]:text-xs [&_a]:text-[#5bc9e8] [&_a]:underline';
 
 interface ArchiveData {
   title?: string;
@@ -58,15 +58,15 @@ function ScenarioTable({ scenarios }: { scenarios: Scenario[] }) {
         <table className='w-full text-sm font-sans border-collapse'>
           <thead>
             <tr className='border-b border-[#f0b429]/20'>
-              <th className='text-left py-2 pr-4 text-[var(--c-text)]/40 uppercase text-xs tracking-wider font-bold whitespace-nowrap'>
+              <th className='text-left py-2 pr-4 text-(--c-text)/40 uppercase text-xs tracking-wider font-bold whitespace-nowrap'>
                 ID
               </th>
-              <th className='text-left py-2 pr-4 text-[var(--c-text)]/40 uppercase text-xs tracking-wider font-bold'>Title</th>
-              <th className='text-left py-2 text-[var(--c-text)]/40 uppercase text-xs tracking-wider font-bold whitespace-nowrap'>
+              <th className='text-left py-2 pr-4 text-(--c-text)/40 uppercase text-xs tracking-wider font-bold'>Title</th>
+              <th className='text-left py-2 text-(--c-text)/40 uppercase text-xs tracking-wider font-bold whitespace-nowrap'>
                 Attacker
               </th>
               {hasArchiveIds && (
-                <th className='text-left py-2 pl-4 text-[var(--c-text)]/40 uppercase text-xs tracking-wider font-bold whitespace-nowrap'>
+                <th className='text-left py-2 pl-4 text-(--c-text)/40 uppercase text-xs tracking-wider font-bold whitespace-nowrap'>
                   Archive
                 </th>
               )}
@@ -75,9 +75,9 @@ function ScenarioTable({ scenarios }: { scenarios: Scenario[] }) {
           <tbody>
             {rows.map((s, i) => (
               <tr key={`${s.id}-${i}`} className={`border-b border-[#f0b429]/10 ${s.att ?? ''}`}>
-                <td className='py-1.5 pr-4 text-[var(--c-text)]/70 whitespace-nowrap align-top'>{s.id}</td>
-                <td className='py-1.5 pr-4 text-[var(--c-text)]/90 align-top' dangerouslySetInnerHTML={{ __html: s.name }} />
-                <td className='py-1.5 capitalize align-top whitespace-nowrap text-[var(--c-text)]/60'>{s.att ?? ''}</td>
+                <td className='py-1.5 pr-4 text-(--c-text)/70 whitespace-nowrap align-top'>{s.id}</td>
+                <td className='py-1.5 pr-4 text-(--c-text)/90 align-top' dangerouslySetInnerHTML={{ __html: s.name }} />
+                <td className='py-1.5 capitalize align-top whitespace-nowrap text-(--c-text)/60'>{s.att ?? ''}</td>
                 {hasArchiveIds && (
                   <td className='py-1.5 pl-4 align-top'>
                     {s.arc_id && (
@@ -96,23 +96,23 @@ function ScenarioTable({ scenarios }: { scenarios: Scenario[] }) {
           </tbody>
         </table>
         {notes.map((n, i) => (
-          <p key={i} className='mt-3 text-xs text-[var(--c-text)]/30 font-sans italic'>
+          <p key={i} className='mt-3 text-xs text-(--c-text)/30 font-sans italic'>
             {n.name}
           </p>
         ))}
       </div>
 
       {(activePopover || fetchError) && (
-        <div className='fixed inset-0 bg-black/60 z-[60] flex items-center justify-center p-4' onClick={closePopover}>
+        <div className='fixed inset-0 bg-black/60 z-60 flex items-center justify-center p-4' onClick={closePopover}>
           <div
-            className='bg-[var(--c-surface)] border border-[#f0b429]/20 p-6 max-w-md w-full'
+            className='bg-(--c-surface) border border-[#f0b429]/20 p-6 max-w-md w-full'
             onClick={(e) => e.stopPropagation()}
           >
             <div className='flex justify-between items-center mb-4'>
               <h3 className='text-base font-bold uppercase tracking-wider text-[#f0b429] font-sans'>
                 {popoverData?.title || 'Scenario Details'}
               </h3>
-              <button onClick={closePopover} className='text-[var(--c-text)]/40 hover:text-[var(--c-text)] text-lg leading-none'>
+              <button onClick={closePopover} className='text-(--c-text)/40 hover:text-(--c-text) text-lg leading-none'>
                 ✕
               </button>
             </div>
@@ -121,22 +121,22 @@ function ScenarioTable({ scenarios }: { scenarios: Scenario[] }) {
               <table className='w-full text-sm font-sans'>
                 <tbody>
                   <tr className='border-b border-[#f0b429]/10'>
-                    <td className='py-1.5 pr-4 text-[var(--c-text)]/40 uppercase text-xs tracking-wider whitespace-nowrap'>Attacker</td>
-                    <td className='py-1.5 text-[var(--c-text)]/80'>
+                    <td className='py-1.5 pr-4 text-(--c-text)/40 uppercase text-xs tracking-wider whitespace-nowrap'>Attacker</td>
+                    <td className='py-1.5 text-(--c-text)/80'>
                       {popoverData.attacker}
                       {popoverData.playings?.[0] ? ` (${popoverData.playings[0].attacker_wins} wins)` : ''}
                     </td>
                   </tr>
                   <tr className='border-b border-[#f0b429]/10'>
-                    <td className='py-1.5 pr-4 text-[var(--c-text)]/40 uppercase text-xs tracking-wider whitespace-nowrap'>Defender</td>
-                    <td className='py-1.5 text-[var(--c-text)]/80'>
+                    <td className='py-1.5 pr-4 text-(--c-text)/40 uppercase text-xs tracking-wider whitespace-nowrap'>Defender</td>
+                    <td className='py-1.5 text-(--c-text)/80'>
                       {popoverData.defender}
                       {popoverData.playings?.[0] ? ` (${popoverData.playings[0].defender_wins} wins)` : ''}
                     </td>
                   </tr>
                   <tr>
-                    <td className='py-1.5 pr-4 text-[var(--c-text)]/40 uppercase text-xs tracking-wider whitespace-nowrap'>Designer</td>
-                    <td className='py-1.5 text-[var(--c-text)]/80'>{popoverData.author}</td>
+                    <td className='py-1.5 pr-4 text-(--c-text)/40 uppercase text-xs tracking-wider whitespace-nowrap'>Designer</td>
+                    <td className='py-1.5 text-(--c-text)/80'>{popoverData.author}</td>
                   </tr>
                 </tbody>
               </table>
@@ -155,11 +155,14 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
   const [shippingType, setShippingType] = useState<'domestic' | 'international'>('domestic');
   const [activeTab, setActiveTab] = useState<Tab>('details');
   const [showBack, setShowBack] = useState(false);
+  const [prevProductId, setPrevProductId] = useState(product?.id);
   const { addItem } = useCartStore();
 
-  useEffect(() => {
+  // Reset to the front cover whenever the product changes
+  if (product?.id !== prevProductId) {
+    setPrevProductId(product?.id);
     setShowBack(false);
-  }, [product?.id]);
+  }
 
   useEffect(() => {
     if (!isOpen) return;
@@ -200,14 +203,14 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
     <>
       <div className='fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4' onClick={onClose}>
         <div
-          className='relative bg-[var(--c-surface)] border border-[#f0b429]/20 max-w-4xl w-full max-h-[90vh] flex flex-col'
+          className='relative bg-(--c-surface) border border-[#f0b429]/20 max-w-4xl w-full max-h-[90vh] flex flex-col'
           onClick={(e) => e.stopPropagation()}
         >
           {/* Sticky header with close button */}
           <div className='shrink-0 flex justify-end p-3 border-b border-[#f0b429]/10'>
             <button
               onClick={onClose}
-              className='p-2 text-[var(--c-text)] border border-[#f0b429]/30 hover:bg-[#f0b429] hover:text-[#1a1b2a] hover:border-[#f0b429] transition-[background-color,color,border-color] duration-200'
+              className='p-2 text-(--c-text) border border-[#f0b429]/30 hover:bg-[#f0b429] hover:text-[#1a1b2a] hover:border-[#f0b429] transition-[background-color,color,border-color] duration-200'
               aria-label='Close modal'
             >
               <Close />
@@ -222,7 +225,7 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
                   <img
                     src={showBack && product.imageB ? product.imageB : product.imageF}
                     alt={product.name}
-                    className={`w-full h-auto bg-[var(--c-deep)] ${product.imageB ? 'cursor-pointer' : ''}`}
+                    className={`w-full h-auto bg-(--c-deep) ${product.imageB ? 'cursor-pointer' : ''}`}
                     onClick={() => product.imageB && setShowBack((v) => !v)}
                   />
                   {isNew && (
@@ -232,7 +235,7 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
                   )}
                 </div>
                 {product.imageB && (
-                  <p className='mt-2 text-xs text-[var(--c-text)]/80 text-center font-sans'>
+                  <p className='mt-2 text-xs text-(--c-text)/80 text-center font-sans'>
                     {showBack ? 'Back Cover' : 'Front Cover'} · click cover to flip
                   </p>
                 )}
@@ -244,12 +247,12 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
                 <div>
                   <p className='text-xs text-[#5bc9e8] uppercase tracking-wider mb-2 font-sans'>{product.category}</p>
                   <h2 className='text-3xl uppercase text-[#f0b429] mb-2'>{product.name}</h2>
-                  <p className='text-2xl font-black text-[var(--c-text)] font-sans float-left'>{formatPrice(product.price)}</p>
+                  <p className='text-2xl font-black text-(--c-text) font-sans float-left'>{formatPrice(product.price)}</p>
                   {product.intPrice && (
-                    <p className="text-2xl font-black text-[var(--c-text)] font-sans float-right">{formatPrice(product.intPrice)} intl.</p>
+                    <p className="text-2xl font-black text-(--c-text) font-sans float-right">{formatPrice(product.intPrice)} intl.</p>
                   )}
                   {!product.intPrice && (
-                    <p className="text-2xl font-black text-[var(--c-text)] font-sans float-right">N/A intl.</p>
+                    <p className="text-2xl font-black text-(--c-text) font-sans float-right">N/A intl.</p>
                   )}
                 </div>
 
@@ -264,7 +267,7 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
                         className={`px-4 py-2 text-sm font-bold uppercase tracking-wider font-sans transition-[color,border-color] duration-200 border-b-2 -mb-px ${
                           activeTab === tab.id
                             ? 'text-[#f0b429] border-[#f0b429]'
-                            : 'text-[var(--c-text)]/40 border-transparent hover:text-[var(--c-text)]/70'
+                            : 'text-(--c-text)/40 border-transparent hover:text-(--c-text)/70'
                         }`}
                       >
                         {tab.label}
@@ -280,7 +283,7 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
 
                       {/* Shipping */}
                       <div className='border-t border-[#f0b429]/20 pt-4'>
-                        <h3 className='font-bold uppercase text-sm mb-3 text-[var(--c-text)]/60 font-sans'>Shipping</h3>
+                        <h3 className='font-bold uppercase text-sm mb-3 text-(--c-text)/60 font-sans'>Shipping</h3>
                         <div className='flex gap-3'>
                           {shipping.map((type) => (
                             <button
@@ -289,7 +292,7 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
                               className={`flex-1 min-w-45 py-3 px-4 font-bold uppercase text-sm transition-[background-color,color,border-color] duration-200 border font-sans ${
                                 shippingType === type
                                   ? 'bg-[#f0b429] text-[#1a1b2a] border-[#f0b429]'
-                                  : 'bg-transparent text-[var(--c-text)]/70 border-[#f0b429]/30 hover:border-[#f0b429]/70'
+                                  : 'bg-transparent text-(--c-text)/70 border-[#f0b429]/30 hover:border-[#f0b429]/70'
                               }`}
                             >
                               {type.charAt(0).toUpperCase() + type.slice(1)}
@@ -313,19 +316,19 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
 
                       {/* Quantity */}
                       <div className='border-t border-[#f0b429]/20 pt-4'>
-                        <h3 className='font-bold uppercase text-sm mb-3 text-[var(--c-text)]/60 font-sans'>Quantity</h3>
+                        <h3 className='font-bold uppercase text-sm mb-3 text-(--c-text)/60 font-sans'>Quantity</h3>
                         <div className='flex items-center gap-4'>
                           <button
                             onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                            className='p-3 border border-[#f0b429]/30 text-[var(--c-text)] hover:bg-[#f0b429] hover:text-[#1a1b2a] hover:border-[#f0b429] transition-[background-color,color,border-color] duration-200'
+                            className='p-3 border border-[#f0b429]/30 text-(--c-text) hover:bg-[#f0b429] hover:text-[#1a1b2a] hover:border-[#f0b429] transition-[background-color,color,border-color] duration-200'
                             aria-label='Decrease quantity'
                           >
                             <Remove />
                           </button>
-                          <span className='text-2xl font-bold w-12 text-center text-[var(--c-text)] font-sans'>{quantity}</span>
+                          <span className='text-2xl font-bold w-12 text-center text-(--c-text) font-sans'>{quantity}</span>
                           <button
                             onClick={() => setQuantity(quantity + 1)}
-                            className='p-3 border border-[#f0b429]/30 text-[var(--c-text)] hover:bg-[#f0b429] hover:text-[#1a1b2a] hover:border-[#f0b429] transition-[background-color,color,border-color] duration-200'
+                            className='p-3 border border-[#f0b429]/30 text-(--c-text) hover:bg-[#f0b429] hover:text-[#1a1b2a] hover:border-[#f0b429] transition-[background-color,color,border-color] duration-200'
                             aria-label='Increase quantity'
                           >
                             <Add />
@@ -342,7 +345,7 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
                         {product.inStock ? 'Add to Cart' : 'Out of Stock'}
                       </button>
 
-                      <p className='text-xs text-[var(--c-text)]/30 text-center font-sans'>SKU: {product.paypalItemCode}</p>
+                      <p className='text-xs text-(--c-text)/30 text-center font-sans'>SKU: {product.paypalItemCode}</p>
                     </div>
                   )}
 

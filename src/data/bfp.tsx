@@ -1250,8 +1250,10 @@ export const products: Product[] = [
   },
 ];
 
+/** @lintignore */
 export const sales: Sale[] = [];
 
+/** @lintignore */
 export const bf2025sales: Sale[] = [
   {
     name: 'OtO',
