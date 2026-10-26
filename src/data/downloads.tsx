@@ -478,9 +478,34 @@ export const downloads: Download[] = [
     page: 'B&J Rules.pdf',
   },
   {
-    name: 'BD Errata 08-10-2024',
+    name: 'B&J Capabilities Chart',
     description: '',
-    page: 'BD Errata 08-10-2024.pdf',
+    page: 'capabilities.pdf',
+  },
+  {
+    name: 'BJ Chapter G',
+    description: '',
+    page: 'BJ_Chapter_G.pdf',
+  },
+  {
+    name: 'B&J Errata A4',
+    description: '',
+    page: 'Blood and Jungle Errata-A4.pdf',
+  },
+  {
+    name: 'B&J Errata',
+    description: '',
+    page: 'Blood and Jungle Errata.pdf',
+  },
+  {
+    name: 'B&J Sticky Errata A4',
+    description: '',
+    page: 'Blood and Jungle Sticky Errata-A4.pdf',
+  },
+  {
+    name: 'B&J Sticky Errata',
+    description: '',
+    page: 'Blood and Jungle Sticky Errata.pdf',
   },
   {
     name: 'BFP Rules',
@@ -503,36 +528,6 @@ export const downloads: Download[] = [
     page: 'BFP3_aircraft.pdf',
   },
   {
-    name: 'BJ Chapter G',
-    description: '',
-    page: 'BJ_Chapter_G.pdf',
-  },
-  {
-    name: 'Blood and Jungle Errata A4',
-    description: '',
-    page: 'Blood and Jungle Errata-A4.pdf',
-  },
-  {
-    name: 'Blood and Jungle Errata',
-    description: '',
-    page: 'Blood and Jungle Errata.pdf',
-  },
-  {
-    name: 'Blood and Jungle Sticky Errata A4',
-    description: '',
-    page: 'Blood and Jungle Sticky Errata-A4.pdf',
-  },
-  {
-    name: 'Blood and Jungle Sticky Errata',
-    description: '',
-    page: 'Blood and Jungle Sticky Errata.pdf',
-  },
-  {
-    name: 'Blood',
-    description: '',
-    page: 'blood.zip',
-  },
-  {
     name: 'BtB2 Rules',
     description: '',
     page: 'BtB2 Rules.pdf',
@@ -548,29 +543,9 @@ export const downloads: Download[] = [
     page: 'BTB2_Chapter_B.pdf',
   },
   {
-    name: 'Capabilities',
-    description: '',
-    page: 'capabilities.pdf',
-  },
-  {
     name: 'CG Roster',
     description: '',
     page: 'CG Roster.pdf',
-  },
-  {
-    name: 'Chip 20',
-    description: '',
-    page: 'chip20.PDF',
-  },
-  {
-    name: 'Chip 30',
-    description: '',
-    page: 'chip30.PDF',
-  },
-  {
-    name: 'Chip 35',
-    description: '',
-    page: 'chip35.PDF',
   },
   {
     name: 'Cobra',
@@ -658,11 +633,6 @@ export const downloads: Download[] = [
     page: 'debris.jpg',
   },
   {
-    name: 'Fact',
-    description: '',
-    page: 'fact.jpg',
-  },
-  {
     name: 'HG2 Errata A4',
     description: '',
     page: 'HG2 Errata-A4.pdf',
@@ -688,11 +658,6 @@ export const downloads: Download[] = [
     page: 'HG2 Sticky Errata.pdf',
   },
   {
-    name: 'HG2',
-    description: '',
-    page: 'hg2.zip',
-  },
-  {
     name: 'High Ground 2 Errata A4',
     description: '',
     page: 'High Ground 2 Errata-A4.pdf',
@@ -708,7 +673,7 @@ export const downloads: Download[] = [
     page: 'High Ground 2 Sticky Errata.pdf',
   },
   {
-    name: 'How Errata',
+    name: 'HoW Errata',
     description: '',
     page: 'howErrata.zip',
   },
@@ -783,14 +748,9 @@ export const downloads: Download[] = [
     page: 'ITR_Chapter_B.pdf',
   },
   {
-    name: 'J',
+    name: 'MC Rules',
     description: '',
-    page: 'J.gif',
-  },
-  {
-    name: 'K33',
-    description: '',
-    page: 'k33.pdf',
+    page: 'BFP6 Rules.zip',
   },
   {
     name: 'Normandy Errata-A4',
@@ -896,25 +856,5 @@ export const downloads: Download[] = [
     name: 'Poland in Flames Sticky Errata',
     description: '',
     page: 'Poland in Flames Sticky Errata.pdf',
-  },
-  {
-    name: 'rc',
-    description: '',
-    page: 'rc.jpg',
-  },
-  {
-    name: 'rules_summary',
-    description: '',
-    page: 'rules_summary.docx',
-  },
-  {
-    name: 'rules_summary',
-    description: '',
-    page: 'rules_summary.pdf',
-  },
-  {
-    name: 'tarawa_add_on_map',
-    description: '',
-    page: 'tarawa_add_on_map.pdf',
   },
 ];
